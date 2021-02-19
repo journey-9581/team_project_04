@@ -4,21 +4,20 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- css  -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head><!-- 헤드 -->
+<!-------------타이틀 (페이지 제목)------------->
+<title>TRIBUS</title>
+
+<!------------- css 영역------------->  
+<jsp:include page="include/resource.jsp"></jsp:include>
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
 </style>
-<head><!-- 헤드 -->
-<!-------------타이틀 (페이지 제목)------------->
-<title>TRIBUS</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!------------- css 영역------------->  
-<jsp:include page="include/resource.jsp"></jsp:include>
 <!-- 
 	CSS ,js,image 링크 주소	
 	${pageContext.request.contextPath }/resources/css7/
@@ -362,7 +361,7 @@
 			<!---- 세번째 POST4 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="gallery/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
 					</a>
 					<div class="text float-right d-block">
