@@ -163,7 +163,7 @@
 			<!--내용 -->
 			<p id="font_1">광고 광고중 대놓고 광고중</p>
 			<!-- 버튼 -->
-			<a id="font_1 href="#" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
+			<a id="font_1" href="${pageContext.request.contextPath }/board_premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
 		</div>
 		</div>
 	
@@ -343,7 +343,7 @@
 			<!---- 세번째 POST3 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/freeboard/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_3.jpg');">
 					</a>
 					<div class="text float-right d-block">
