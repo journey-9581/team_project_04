@@ -2,33 +2,62 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
-<title>/gallery/private/ajax_form.jsp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+<!-------------타이틀 (페이지 제목)------------->
+<title>Image upload</title>
+<!------------- css 영역------------->  
+<jsp:include page="../../include/resource.jsp"></jsp:include>
+
+<style>	
+/*한글 폰트 적용 (사용법 id="font_1")*/
+	#font_1{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 </head>
 <body>
-<div class="container">
-	<form action="insert.do" method="post" id="insertForm">
+<!-------------navbar 네비바------------->
+<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<section class="ftco-section" id="contents-section">
+	<div class="container">
+		<div class="comment-form-wrap pt-5">
+			<!---- 제목 부분 ---->
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<!--소제목-->
+					<span class="subheading">Gallery</span>
+					<!--제목-->
+					<h2 class="mb-4">Image Upload</h2>			
+				</div>
+			</div>		
+		</div>
+		<!-- 이미지 업로드 폼 -->
+		<form action="insert.do" method="post" id="insertForm">
 		<input type="hidden" name="imagePath" id="imagePath"/>
-		<div>
-			<label for="caption">설명</label>
-			<input type="text" name="caption" id="caption"/>
+			<div class="form-group">
+				<label for="caption">Caption</label>
+				<input class="form-control" type="text" name="caption" id="caption"/>
+			</div>
+		</form>
+		<form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="image">Image</label>
+				<input class="form-control" type="file" name="image" id="image" 
+					accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
+			</div>
+		</form>
+		<button class="btn py-3 px-4 btn-primary" id="submitBtn">Upload</button>
+		<div class="img-wrapper">
+			<img />
 		</div>
-	</form>
-	<form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
-		<div>
-			<label for="image">이미지</label>
-			<input type="file" name="image" id="image" 
-				accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
-		</div>
-	</form>
-	<button id="submitBtn">등록</button>
-	<div class="img-wrapper">
-		<img />
-	</div>
-</div>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
+	</div><!-- container -->
+</section>
 <!-- jquery form 플러그인 javascript 로딩 -->
+<!-------------script 스크립트------------->
+<jsp:include page="../../include/resource_script.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 <script>
 	//form 플러그인을 이용해서 form 이 ajax 전송(페이지 전환없이) 되도록 한다.
