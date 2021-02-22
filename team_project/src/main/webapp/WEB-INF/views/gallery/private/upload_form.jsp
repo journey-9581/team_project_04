@@ -37,15 +37,15 @@
 			<form action="upload.do" class="p-5 bg-light" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label id="font_1" for="caption">설명*</label>
-					<input type="text" class="form-control" id="caption"/>
+					<input class="form-control" type="text" id="caption"/>
 				</div>
 				<div class="form-group">
 					<label id="font_1" for="image">이미지*</label>
-					<input type="file" class="form-control" id="image"
+					<input class="form-control" type="file" id="image"
 						accept=".jpg, .jpeg, .png, .JPEG"/>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Upload" class="btn py-3 px-4 btn-primary">
+					<input class="btn py-3 px-4 btn-primary" type="submit" value="Upload">
 				</div>
 			</form>
 		</div>

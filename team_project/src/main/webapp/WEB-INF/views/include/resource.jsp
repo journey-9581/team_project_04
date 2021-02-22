@@ -17,3 +17,4 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/style.css"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" />

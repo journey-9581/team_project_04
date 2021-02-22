@@ -15,7 +15,7 @@
 		<!-- 네비바 메뉴 -->
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav nav ml-auto">
-				<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+				<li class="nav-item"><a href="${pageContext.request.contextPath }/" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>about</span></a></li>
 				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>contents</span></a></li>
 				<li class="nav-item"><a href="#Reservation-section" class="nav-link"><span>Reservation</span></a></li>
