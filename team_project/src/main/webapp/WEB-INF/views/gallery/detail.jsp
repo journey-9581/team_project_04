@@ -12,10 +12,14 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 
 <style>	
-/*한글 폰트 적용 (사용법 id="font_1")*/
+	/*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	/*이미지 사이즈*/
+	.img-fluid{
+		Weight: 800px;			
+	}	
 </style>
 </head>
 <body>
@@ -35,34 +39,34 @@
 				</div>
 			</div>
 			<!--detail 이미지 출력 -->
-			<img src="${pageContext.request.contextPath }${tmp.imagePath}" class="img-fluid" alt="Colorlib Free Template">
-			<div class="col-md-5 ftco-animate">
-				<div class="text py-5">
-					<!-- 작성자 -->
-					<h3><a href="#">${dto.writer }</a></h3>
-					<!-- 날짜 -->
-					<p class="pos">${dto.regdate}</p>					
-					<!-- 이전글 다음글 이동 -->
-					<c:choose>
-						<c:when test="${dto.prevNum ne 0 }">
-							<a href="detail.do?num=${dto.prevNum }" class="btn btn-secondary">Prev</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:" class="btn btn-secondary">Prev</a>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${dto.nextNum ne 0 }">
-							<a href="detail.do?num=${dto.nextNum }" class="btn btn-primary">Next</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:" class="btn btn-primary">Next</a>
-						</c:otherwise>
-					</c:choose>					 					
-				</div>
-    		</div>
+			<p style="text-align: center">
+				<img src="${pageContext.request.contextPath }${dto.imagePath}" class="img-fluid" alt="Colorlib Free Template" style="text-align: center">
+			</p>			
+			<div class="text py-5" style="text-align: center">
+				<!-- 작성자 -->
+				<h3><a href="#">${dto.writer }</a></h3>
+				<!-- 날짜 -->
+				<p class="pos">${dto.regdate}</p>					
+				<!-- 이전글 다음글 이동 -->
+				<c:choose>
+					<c:when test="${dto.prevNum ne 0 }">
+						<a href="detail.do?num=${dto.prevNum }" class="btn btn-secondary">Prev</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:" class="btn btn-secondary">Prev</a>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${dto.nextNum ne 0 }">
+						<a href="detail.do?num=${dto.nextNum }" class="btn btn-primary">Next</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:" class="btn btn-primary">Next</a>
+					</c:otherwise>
+				</c:choose>					 					
+			</div>   		
 		</div>
-	</div>
+	</div><!-- container -->
 </section>
 <!------------- footer ------------->    
 <jsp:include page="../include/footer.jsp"></jsp:include>   
