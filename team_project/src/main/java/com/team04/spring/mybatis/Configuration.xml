@@ -7,7 +7,8 @@
 	<typeAliases>
 		<typeAlias type="com.team04.spring.gallery.dto.GalleryDto"
 		alias="galleryDto"/>
-		<typeAlias type="com.team04.spring.freeboard.dto.FreeBoardDto"/>
+		<typeAlias type="com.team04.spring.freeboard.dto.FreeBoardDto"
+		alias="freeBoardDto"/>
 	</typeAliases>
 
 	<!-- Mapper xml 문서 위치 설정 -->
