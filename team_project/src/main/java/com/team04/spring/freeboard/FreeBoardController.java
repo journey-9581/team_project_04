@@ -23,8 +23,8 @@ public class FreeBoardController {
 	//freeboard 글 목록 요청처리
 	@RequestMapping("/freeboard/list")
 	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
-		
-		//mView.setViewName("freeboard/list");
+		service.getList(mView, request);
+		mView.setViewName("freeboard/list");
 		return mView;
 	}
 	
@@ -49,3 +49,5 @@ public class FreeBoardController {
 	
 	
 }
+
+

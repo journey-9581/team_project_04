@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
 <!-------------타이틀 (페이지 제목)------------->
-<title>Image upload</title>
+<title>FreeBoard</title>
 <!------------- css 영역------------->  
 <jsp:include page="../include/resource.jsp"></jsp:include>
 
@@ -44,7 +44,7 @@
 				<!-- category 카테고리 -->	
 				<h3 class="heading-sidebar">Select Category</h3>
 				<div class="tagcloud">
-					<a id="font_1" href="#" class="tag-cloud-link">전체</a>
+					<a id="font_1" href="list.do" class="tag-cloud-link">전체</a>
 					<a id="font_1" href="#" class="tag-cloud-link">잡담</a>
 					<a id="font_1" href="#" class="tag-cloud-link">정보</a>
 					<a id="font_1" href="#" class="tag-cloud-link">나눔</a>
@@ -72,14 +72,16 @@
 						</tr>
 					</tbody>					
 					<tbody>
+					<c:forEach var="tmp" items="${list }">
 						<tr>
-							<td>번호</td>
-							<td>카테고리</td>
-							<td><a href="#">제목</a></td>
-							<td>작성자</td>
-							<td>날짜</td>
-							<td>조회</td>
+							<td>${tmp.num }</td>
+							<td>${tmp.category }</td>
+							<td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
+							<td>${tmp.writer }</td>
+							<td>${tmp.regdate }</td>
+							<td>${tmp.viewCount }</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -133,14 +135,15 @@
 					</div>
 				</div>
 			</div><!-- 페이징처리 -->
-			
+			<br>
 			<!--검색 Search -->
 			<div class="form-group">
 				<form action="list.do" method="get" class="search-form">				
 					<select id="font_1" name="condition" id="condition">
-						<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
+						<option value="title_content_category" ${condition eq 'title_content_category' ? 'selected' : '' }>제목+내용+카테고리</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
+						<option value="category" ${condition eq 'category' ? 'selected' : '' }>카테고리</option>
 					</select>		
 					<input id="font_1" class="form-control" type="text" name="keyword" placeholder="검색어..." value="${keyword }"/>
 					<button class="btn btn-primary px-5 py-8 mt-1" type="submit">Search</button>		
@@ -152,6 +155,7 @@
 					<strong>${totalRow }</strong> 개의 자료가 검색되었습니다.
 				</div>
 			</c:if>
+		</div>
 	</div><!-- container -->
 </section>
 <!------------- footer ------------->    

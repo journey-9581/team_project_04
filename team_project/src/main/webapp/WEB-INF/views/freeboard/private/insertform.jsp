@@ -39,9 +39,9 @@
 				<label for="category">Category</label>
 				<select class="form-control" id="font_1" name="category" id="category">
 						<option value="">선택</option>
-						<option value="freetalk" >잡담</option>
-						<option value="info">정보</option>
-						<option value="share">나눔</option>
+						<option value="잡담">잡담</option>
+						<option value="정보">정보</option>
+						<option value="나눔">나눔</option>
 				</select>
 				<br>
 				<label for="title">Title</label>
