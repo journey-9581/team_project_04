@@ -39,12 +39,14 @@
 				<!--대분류-->
 				<span class="subheading">contents</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4">FreeBoard</h2>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
 				<!--소분류 한글 -->
 				<p id="font_1">자유게시판</p>
 				<!--수정,삭제 버튼  -->
-				<a id="font_1" href="${pageContext.request.contextPath }/" class="btn btn-primary px-5 py-8 mt-1"> Update Post</a>	
+				<!-- 아이디가 같으면 수정or 삭제 나중에 처리하기 -->
+				<a id="font_1" href="private/updateform.do?num=${dto.num}" class="btn btn-primary px-5 py-8 mt-1"> Update Post</a>	
 				<a id="font_1" href="${pageContext.request.contextPath }/" class="btn btn px-5 py-8 mt-1"> Delete Post</a>							
+			
 			</div>
 		</div>	
 				
@@ -66,9 +68,7 @@
 					</table>			
 				</div>
 	            <!-- 컨텐츠 내용 -->
-	            <p>
-	              ${dto.content } 
-	            </p>
+	            <p>${dto.content } </p>
 			</div> 
 	
 			<!-- 사이드 컨텐츠 메뉴바 Side bar Contents Categories  -->

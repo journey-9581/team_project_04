@@ -29,7 +29,7 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--대분류-->
-					<span class="subheading">FreeBoard</span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></span>
 					<!--소분류 영어-->
 					<h2 class="mb-4">Post</h2>					
 				</div>

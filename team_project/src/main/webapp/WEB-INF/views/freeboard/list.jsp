@@ -31,11 +31,11 @@
 					<!--대분류-->
 					<span class="subheading">contents</span>
 					<!--소분류 영어-->
-					<h2 class="mb-4">FreeBoard</h2>
+					<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
 					<!--소분류 한글 -->
 					<p id="font_1">자유게시판</p>
 					<!-- 버튼 -->						
-					<a id="font_1" href="private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>				
+					<a id="font_1" href="${pageContext.request.contextPath }/freeboard/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>				
 				</div>
 			</div>	
 										
