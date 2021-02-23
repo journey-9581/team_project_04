@@ -39,7 +39,7 @@
 				<!--대분류-->
 				<span class="subheading">contents</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4">Gallery</h2>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></h2>
 				<!--소분류 한글 -->
 				<p id="font_1">갤러리</p>
 				<!-- 버튼 -->

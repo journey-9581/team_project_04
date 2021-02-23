@@ -33,7 +33,7 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--카테고리-->
-					<span class="subheading">Gallery</span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></span>
 					<!--내용-->
 					<h2 class="mb-4">${dto.caption }</h2>			
 				</div>
