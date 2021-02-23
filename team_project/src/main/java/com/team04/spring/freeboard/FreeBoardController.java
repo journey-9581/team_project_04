@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,28 @@ public class FreeBoardController {
 	//의존객체 DI
 	@Autowired
 	private FreeBoardService service;
+	
+	//delete 요청 
+	@RequestMapping("/freeboard/private/delete")
+	public String delete(@RequestParam int num) {
+		service.deleteContent(num);
+		return "freeboard/private/delete";
+	}
+	//update 페이지 요청 처리
+	@RequestMapping("/freeboard/private/update")
+	public String update(@ModelAttribute("dto") FreeBoardDto dto) {
+		service.updateContent(dto);
+		return "freeboard/private/update";
+	}
+	
+	//updateform 페이지 요청처리
+	@RequestMapping("/freeboard/private/updateform")
+	public ModelAndView updateform(@RequestParam int num, ModelAndView mView) {
+		service.getDetail(num, mView);
+		mView.setViewName("freeboard/private/updateform");
+		return mView;
+	}
+	
 	
 	//detail 페이지 요청 처리
 	@RequestMapping("/freeboard/detail")

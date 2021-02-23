@@ -45,7 +45,7 @@
 				<!--수정,삭제 버튼  -->
 				<!-- 아이디가 같으면 수정or 삭제 나중에 처리하기 -->
 				<a id="font_1" href="private/updateform.do?num=${dto.num}" class="btn btn-primary px-5 py-8 mt-1"> Update Post</a>	
-				<a id="font_1" href="${pageContext.request.contextPath }/" class="btn btn px-5 py-8 mt-1"> Delete Post</a>							
+				<a id="font_1" href="javascript:deleteConfirm()" class="btn btn px-5 py-8 mt-1"> Delete Post</a>							
 			
 			</div>
 		</div>	
@@ -93,6 +93,13 @@
 
 <!-------------script 스크립트------------->
 <jsp:include page="../include/resource_script.jsp"></jsp:include> 
-
+<script>
+	function deleteConfirm(){
+		var isDelete=confirm("이 글을 삭제 하시겠습니까?");
+		if(isDelete){
+			location.href="${pageContext.request.contextPath }/freeboard/private/delete.do?num=${dto.num}";
+		}
+	}
+</script>
 </body>
 </html>

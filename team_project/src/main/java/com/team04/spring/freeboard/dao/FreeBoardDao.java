@@ -13,4 +13,10 @@ public interface FreeBoardDao {
 	public int getCount(FreeBoardDto dto);
 	//글 하나의 정보 얻어오기
 	public FreeBoardDto getData(int num);
+	//글 수정
+	public void update(FreeBoardDto dto);
+	//글 삭제
+	public void delete(int num);
+	//글 조회수 올리기
+	public void addViewCount(int num);
 }

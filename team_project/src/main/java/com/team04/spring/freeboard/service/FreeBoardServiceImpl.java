@@ -124,8 +124,19 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		FreeBoardDto dto=freeBoardDao.getData(num);
 		mView.addObject("dto",dto);
 		//조회수
+		freeBoardDao.addViewCount(num);
 		
 	}
+		@Override
+		public void updateContent(FreeBoardDto dto) {
+			freeBoardDao.update(dto);
+			
+		}
+		@Override
+		public void deleteContent(int num) {
+			freeBoardDao.delete(num);
+			
+		}
 	
 
 }
