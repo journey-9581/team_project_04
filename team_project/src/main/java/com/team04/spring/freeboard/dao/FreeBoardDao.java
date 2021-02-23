@@ -11,4 +11,6 @@ public interface FreeBoardDao {
 	public List<FreeBoardDto> getlist(FreeBoardDto dto);
 	//글의 갯수 얻어오기(검색 키워드에 해당하는 갯수)
 	public int getCount(FreeBoardDto dto);
+	//글 하나의 정보 얻어오기
+	public FreeBoardDto getData(int num);
 }

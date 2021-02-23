@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team04.spring.freeboard.dto.FreeBoardDto;
@@ -19,6 +20,14 @@ public class FreeBoardController {
 	//의존객체 DI
 	@Autowired
 	private FreeBoardService service;
+	
+	//detail 페이지 요청 처리
+	@RequestMapping("/freeboard/detail")
+	public ModelAndView detail(@RequestParam int num,ModelAndView mView) {
+		service.getDetail(num, mView);
+		mView.setViewName("freeboard/detail");
+		return mView;
+	}
 	
 	//freeboard 글 목록 요청처리
 	@RequestMapping("/freeboard/list")
@@ -49,5 +58,3 @@ public class FreeBoardController {
 	
 	
 }
-
-

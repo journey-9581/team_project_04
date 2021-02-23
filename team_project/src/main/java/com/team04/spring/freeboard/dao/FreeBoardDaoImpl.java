@@ -31,6 +31,12 @@ public class FreeBoardDaoImpl implements FreeBoardDao{
 		return count;
 	}
 
+	@Override
+	public FreeBoardDto getData(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

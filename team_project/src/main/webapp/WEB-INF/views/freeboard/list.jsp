@@ -61,6 +61,7 @@
 							<th>Count</th>
 						</tr>
 					</thead>
+					<!-- 공지 -->
 					<tbody style="font-weight:bold; color: black;">
 						<tr>
 							<td style="color: purple;">Notice</td>
@@ -70,7 +71,8 @@
 							<td>날짜</td>
 							<td>조회</td>
 						</tr>
-					</tbody>					
+					</tbody>	
+					<!--반복 content -->				
 					<tbody>
 					<c:forEach var="tmp" items="${list }">
 						<tr>
@@ -140,7 +142,7 @@
 			<div class="form-group">
 				<form action="list.do" method="get" class="search-form">				
 					<select id="font_1" name="condition" id="condition">
-						<option value="title_content_category" ${condition eq 'title_content_category' ? 'selected' : '' }>제목+내용+카테고리</option>
+						<option value="title_content_category" ${condition eq 'title_content_category' ? 'selected' : '' }>제목+작성자+카테고리</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
 						<option value="category" ${condition eq 'category' ? 'selected' : '' }>카테고리</option>

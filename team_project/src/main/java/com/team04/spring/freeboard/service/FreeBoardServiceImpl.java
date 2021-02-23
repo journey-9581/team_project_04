@@ -14,16 +14,16 @@ import com.team04.spring.freeboard.dto.FreeBoardDto;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService{
-	
+	//의존 객체 DI
 	@Autowired
-	private FreeBoardDao freeBoardDao;
-	
+	private FreeBoardDao freeBoardDao;	
+	//글 저장
 	@Override
 	public void saveContent(FreeBoardDto dto) {
 		freeBoardDao.insert(dto);
 		
 	}
-
+	//글 목록 (페이징처리)
 	@Override
 	public void getList(ModelAndView mView, HttpServletRequest request) {
 		//한 페이지에 몇개씩 표시할 것인지
@@ -118,5 +118,14 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		mView.addObject("totalRow", totalRow);
 		
 	}
+		//디테일페이지
+		@Override
+		public void getDetail(int num, ModelAndView mView) {
+		FreeBoardDto dto=freeBoardDao.getData(num);
+		mView.addObject("dto",dto);
+		//조회수
+		
+	}
+	
 
 }

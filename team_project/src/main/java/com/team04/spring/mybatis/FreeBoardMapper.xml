@@ -12,7 +12,8 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,writer,title,category,content,viewCount,regdate
+				(SELECT num,writer,title,category,content,viewCount,
+					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM board_free
 				<choose>
 					<when test="title != null and content != null and category != null">
@@ -52,5 +53,11 @@
 				WHERE category LIKE '%'||#{category}||'%'
 			</when>
 		</choose>		
+	</select>
+	<select id="getData" parameterType="int" resultType="freeBoardDto">
+		SELECT num,category,writer,title,content,viewCount,
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
+		FROM board_free
+		WHERE num=#{num}
 	</select>
 </mapper>
