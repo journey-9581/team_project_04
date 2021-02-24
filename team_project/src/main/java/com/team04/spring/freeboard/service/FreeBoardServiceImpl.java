@@ -10,13 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team04.spring.freeboard.dao.FreeBoardDao;
+import com.team04.spring.freeboard.dao.FreeCommentDao;
 import com.team04.spring.freeboard.dto.FreeBoardDto;
+import com.team04.spring.freeboard.dto.FreeCommentDto;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService{
 	//의존 객체 DI
 	@Autowired
 	private FreeBoardDao freeBoardDao;	
+	
+	@Autowired
+	private FreeCommentDao freeCommentDao;
+	
+	
 	//글 저장
 	@Override
 	public void saveContent(FreeBoardDto dto) {
@@ -103,7 +110,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		//끝 페이지 번호가 이미 전체 페이지 갯수보다 크게 계산되었다면 잘못된 값이다.
 		if(endPageNum > totalPageCount){
-			endPageNum=totalPageCount; //보정해 준다. 
+			endPageNum=totalPageCount; //보정. 
 		}
 		
 		//view page 에서 필요한 내용을 ModelAndView 객체에 담아준다
@@ -118,25 +125,131 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		mView.addObject("totalRow", totalRow);
 		
 	}
-		//디테일페이지
-		@Override
-		public void getDetail(int num, ModelAndView mView) {
+	//디테일 페이지
+	@Override
+	public void getDetail(int num, ModelAndView mView) {
 		FreeBoardDto dto=freeBoardDao.getData(num);
 		mView.addObject("dto",dto);
 		//조회수
 		freeBoardDao.addViewCount(num);
 		
+		/* 아래는 댓글 페이징 처리 관련 비즈니스 로직 입니다.*/
+		final int PAGE_ROW_COUNT=5;
+
+		//보여줄 페이지의 번호
+		int pageNum=1;
+
+		//보여줄 페이지 데이터의 시작 ResultSet row 번호
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		//보여줄 페이지 데이터의 끝 ResultSet row 번호
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+
+		//전체 row 의 갯수를 읽어온다.
+		//자세히 보여줄 글의 번호가 ref_group  번호 이다. 
+		int totalRow=freeCommentDao.getCount(num);
+		//전체 페이지의 갯수 구하기
+		int totalPageCount=
+			(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+
+		// FreeCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
+		FreeCommentDto commentDto=new FreeCommentDto();
+		commentDto.setStartRowNum(startRowNum);
+		commentDto.setEndRowNum(endRowNum);
+		//ref_group 번호도 담는다.
+		commentDto.setRef_group(num);
+
+		//DB 에서 댓글 목록을 얻어온다.
+		List<FreeCommentDto> commentList=freeCommentDao.getList(commentDto);
+		//ModelAndView 객체에 댓글 목록도 담아준다.
+		mView.addObject("commentList", commentList);
+		mView.addObject("totalPageCount", totalPageCount);
 	}
-		@Override
-		public void updateContent(FreeBoardDto dto) {
-			freeBoardDao.update(dto);
-			
+	@Override
+	public void updateContent(FreeBoardDto dto) {
+		freeBoardDao.update(dto);
+		
+	}
+	@Override
+	public void deleteContent(int num) {
+		freeBoardDao.delete(num);
+		
+	}
+	@Override
+	public void saveComment(HttpServletRequest request) {
+		//댓글 작성자
+		String writer=(String)request.getSession().getAttribute("id");
+		int ref_group=Integer.parseInt(request.getParameter("ref_group"));
+		String target_id=request.getParameter("target_id");
+		String content=request.getParameter("content");
+		
+		String comment_group=request.getParameter("comment_group");
+		int seq=freeCommentDao.getSequence();
+		FreeCommentDto dto=new FreeCommentDto();
+		dto.setNum(seq);
+		dto.setWriter(writer);
+		dto.setTarget_id(target_id);
+		dto.setContent(content);
+		dto.setRef_group(ref_group);
+		if(comment_group==null) {
+			dto.setComment_group(seq);
+		}else {
+			dto.setComment_group(Integer.parseInt(comment_group));				
 		}
-		@Override
-		public void deleteContent(int num) {
-			freeBoardDao.delete(num);
-			
-		}
+		freeCommentDao.insert(dto);
+	}
+	@Override
+	public void deleteComment(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=freeCommentDao.getData(num).getWriter();
+//			if(!writer.equals(id)) {
+//				throw new DBFailException("남의 댓글을 삭제 할수 없습니다.");
+//			}
+		freeCommentDao.delete(num);
+	}
+	@Override
+	public void updateComment(FreeCommentDto dto) {
+		freeCommentDao.update(dto);
+		
+	}
+	@Override
+	public void moreCommentList(HttpServletRequest request) {
+		//파라미터로 전달된 pageNum 과 ref_group 번호를 읽어온다. 
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		int ref_group=Integer.parseInt(request.getParameter("ref_group"));
+
+		FreeBoardDto dto=freeBoardDao.getData(ref_group);
+		request.setAttribute("dto", dto);
+
+		/* 아래는 댓글 페이징 처리 관련 비즈니스 로직 입니다.*/
+		final int PAGE_ROW_COUNT=5;
+
+		//보여줄 페이지 데이터의 시작 ResultSet row 번호
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		//보여줄 페이지 데이터의 끝 ResultSet row 번호
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+
+		//전체 row 의 갯수를 읽어온다.
+		//자세히 보여줄 글의 번호가 ref_group  번호 이다. 
+		int totalRow=freeCommentDao.getCount(ref_group);
+		//전체 페이지의 갯수 구하기
+		int totalPageCount=
+				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+
+		// FreeCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
+		FreeCommentDto commentDto=new FreeCommentDto();
+		commentDto.setStartRowNum(startRowNum);
+		commentDto.setEndRowNum(endRowNum);
+		//ref_group 번호도 담는다.
+		commentDto.setRef_group(ref_group);
+
+		//DB 에서 댓글 목록을 얻어온다.
+		List<FreeCommentDto> commentList=freeCommentDao.getList(commentDto);
+		//request 에 담아준다.
+		request.setAttribute("commentList", commentList);
+		request.setAttribute("totalPageCount", totalPageCount);		
+		
+	}
 	
 
 }
