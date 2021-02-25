@@ -9,6 +9,7 @@
 <title>FreeBoard Detail</title>
 <!------------- css 영역------------->  
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
 <!-- css  -->
 
 <style>	
