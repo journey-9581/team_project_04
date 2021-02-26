@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
 <!-------------타이틀 (페이지 제목)------------->
-<title>FreeBoard</title>
+<title>withBoard</title>
 <!------------- css 영역------------->  
 <jsp:include page="../include/resource.jsp"></jsp:include>
 
@@ -31,11 +31,11 @@
 					<!--대분류-->
 					<span class="subheading">contents</span>
 					<!--소분류 영어-->
-					<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
+					<h2 class="mb-4"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></h2>
 					<!--소분류 한글 -->
-					<p id="font_1">자유게시판</p>
+					<p id="font_1">동행게시판</p>
 					<!-- 버튼 -->						
-					<a id="font_1" href="${pageContext.request.contextPath }/freeboard/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>				
+					<a id="font_1" href="${pageContext.request.contextPath }/withboard/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>				
 				</div>
 			</div>	
 										
@@ -45,9 +45,14 @@
 				<h3 class="heading-sidebar">Select Category</h3>
 				<div class="tagcloud">
 					<a id="font_1" href="list.do" class="tag-cloud-link">전체</a>
-					<a id="font_1" href="#" class="tag-cloud-link">잡담</a>
-					<a id="font_1" href="#" class="tag-cloud-link">정보</a>
-					<a id="font_1" href="#" class="tag-cloud-link">나눔</a>
+					<a id="font_1" href="#" class="tag-cloud-link">서울</a>
+					<a id="font_1" href="#" class="tag-cloud-link">경기</a>
+					<a id="font_1" href="#" class="tag-cloud-link">강원</a>
+					<a id="font_1" href="#" class="tag-cloud-link">충청</a>
+					<a id="font_1" href="#" class="tag-cloud-link">전라</a>
+					<a id="font_1" href="#" class="tag-cloud-link">경상</a>
+					<a id="font_1" href="#" class="tag-cloud-link">제주</a>
+					
 				</div>
 				<!-- 테이블 -->
 				<table class="board_list">

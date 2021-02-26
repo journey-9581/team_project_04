@@ -39,12 +39,12 @@
 				<!--대분류-->
 				<span class="subheading">contents</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4">Gallery</h2>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></h2>
 				<!--소분류 한글 -->
 				<p id="font_1">갤러리</p>
 				<!-- 버튼 -->
-				<a id="font_1" href="${pageContext.request.contextPath }/gallery/private/upload_form.do" class="btn btn-primary px-5 py-8 mt-1"> Image upload</a>
-				<a id="font_1" href="${pageContext.request.contextPath }/gallery/private/ajax_form.do" class="btn btn-primary px-5 py-8 mt-1"> Image upload2</a>				
+				
+				<a id="font_1" href="${pageContext.request.contextPath }/gallery/private/ajax_form.do" class="btn btn-primary px-5 py-8 mt-1"> Image upload</a>				
 			</div>
 		</div>	
 		<div class="row">	

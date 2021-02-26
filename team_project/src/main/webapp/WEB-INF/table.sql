@@ -1,3 +1,4 @@
+CREATE SEQUENCE board_gallery_seq;
 CREATE TABLE board_gallery(
 	num NUMBER PRIMARY KEY, 
 	writer VARCHAR2(100),
@@ -6,8 +7,7 @@ CREATE TABLE board_gallery(
 	regdate DATE
 );
 
-CREATE SEQUENCE board_gallery_seq;
-
+CREATE SEQUENCE board_free_seq;
 CREATE TABLE board_free(
 	num NUMBER PRIMARY KEY, 
 	writer VARCHAR2(100) NOT NULL, 
@@ -18,8 +18,7 @@ CREATE TABLE board_free(
 	regdate DATE 
 );
 
-CREATE SEQUENCE board_free_seq;
-
+CREATE SEQUENCE board_free_comment_seq;
 CREATE TABLE board_free_comment(
 	num NUMBER PRIMARY KEY, 
 	writer VARCHAR2(100),

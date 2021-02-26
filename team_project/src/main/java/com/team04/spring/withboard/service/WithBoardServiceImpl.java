@@ -1,4 +1,4 @@
-package com.team04.spring.freeboard.service;
+package com.team04.spring.withboard.service;
 
 import java.net.URLEncoder;
 import java.util.List;
@@ -9,25 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team04.spring.freeboard.dao.FreeBoardDao;
-import com.team04.spring.freeboard.dao.FreeCommentDao;
-import com.team04.spring.freeboard.dto.FreeBoardDto;
-import com.team04.spring.freeboard.dto.FreeCommentDto;
+import com.team04.spring.withboard.dao.WithBoardDao;
+import com.team04.spring.withboard.dao.WithCommentDao;
+import com.team04.spring.withboard.dto.WithBoardDto;
+import com.team04.spring.withboard.dto.WithCommentDto;
 
 @Service
-public class FreeBoardServiceImpl implements FreeBoardService{
+public class WithBoardServiceImpl implements WithBoardService{
 	//의존 객체 DI
 	@Autowired
-	private FreeBoardDao freeBoardDao;	
+	private WithBoardDao WithBoardDao;	
 	
 	@Autowired
-	private FreeCommentDao freeCommentDao;
+	private WithCommentDao WithCommentDao;
 	
 	
 	//글 저장
 	@Override
-	public void saveContent(FreeBoardDto dto) {
-		freeBoardDao.insert(dto);
+	public void saveContent(WithBoardDto dto) {
+		WithBoardDao.insert(dto);
 		
 	}
 	//글 목록 (페이징처리)
@@ -70,20 +70,20 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		//특수기호를 인코딩한 키워드를 미리 준비한다. 
 		String encodedK=URLEncoder.encode(keyword);
 		
-		//startRowNum 과 endRowNum  을 FreeBoardDto 객체에 담고
-		FreeBoardDto dto=new FreeBoardDto();
+		//startRowNum 과 endRowNum  을 WithBoardDto 객체에 담고
+		WithBoardDto dto=new WithBoardDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
 		
 		//ArrayList 객체의 참조값을 담을 지역변수를 미리 만든다.
-		List<FreeBoardDto> list=null;
+		List<WithBoardDto> list=null;
 		//전체 row 의 갯수를 담을 지역변수를 미리 만든다.
 		int totalRow=0;
 		//만일 검색 키워드가 넘어온다면 
 		if(!keyword.equals("")){
 			//검색 조건이 무엇이냐에 따라 분기 하기
 			if(condition.equals("title_content_category")){//제목 +내용+카테고리 검색인 경우
-				//검색 키워드를 FreeBoardDto 에 담아서 전달한다.
+				//검색 키워드를 WithBoardDto 에 담아서 전달한다.
 				dto.setTitle(keyword);
 				dto.setContent(keyword);	
 				dto.setCategory(keyword);
@@ -97,9 +97,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			}
 		}
 		//글목록 얻어오기
-		list=freeBoardDao.getlist(dto);
+		list=WithBoardDao.getlist(dto);
 		//글의 갯수
-		totalRow=freeBoardDao.getCount(dto);
+		totalRow=WithBoardDao.getCount(dto);
 		
 		//하단 시작 페이지 번호 
 		int startPageNum = 1 + ((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
@@ -128,10 +128,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	//디테일 페이지
 	@Override
 	public void getDetail(int num, ModelAndView mView) {
-		FreeBoardDto dto=freeBoardDao.getData(num);
+		WithBoardDto dto=WithBoardDao.getData(num);
 		mView.addObject("dto",dto);
 		//조회수
-		freeBoardDao.addViewCount(num);
+		WithBoardDao.addViewCount(num);
 		
 		/* 아래는 댓글 페이징 처리 관련 비즈니스 로직 입니다.*/
 		final int PAGE_ROW_COUNT=5;
@@ -146,32 +146,32 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 		//전체 row 의 갯수를 읽어온다.
 		//자세히 보여줄 글의 번호가 ref_group  번호 이다. 
-		int totalRow=freeCommentDao.getCount(num);
+		int totalRow=WithCommentDao.getCount(num);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 			(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 
-		// FreeCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
-		FreeCommentDto commentDto=new FreeCommentDto();
+		// WithCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
+		WithCommentDto commentDto=new WithCommentDto();
 		commentDto.setStartRowNum(startRowNum);
 		commentDto.setEndRowNum(endRowNum);
 		//ref_group 번호도 담는다.
 		commentDto.setRef_group(num);
 
 		//DB 에서 댓글 목록을 얻어온다.
-		List<FreeCommentDto> commentList=freeCommentDao.getList(commentDto);
+		List<WithCommentDto> commentList=WithCommentDao.getList(commentDto);
 		//ModelAndView 객체에 댓글 목록도 담아준다.
 		mView.addObject("commentList", commentList);
 		mView.addObject("totalPageCount", totalPageCount);
 	}
 	@Override
-	public void updateContent(FreeBoardDto dto) {
-		freeBoardDao.update(dto);
+	public void updateContent(WithBoardDto dto) {
+		WithBoardDao.update(dto);
 		
 	}
 	@Override
 	public void deleteContent(int num) {
-		freeBoardDao.delete(num);
+		WithBoardDao.delete(num);
 		
 	}
 	@Override
@@ -183,8 +183,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		String content=request.getParameter("content");
 		
 		String comment_group=request.getParameter("comment_group");
-		int seq=freeCommentDao.getSequence();
-		FreeCommentDto dto=new FreeCommentDto();
+		int seq=WithCommentDao.getSequence();
+		WithCommentDto dto=new WithCommentDto();
 		dto.setNum(seq);
 		dto.setWriter(writer);
 		dto.setTarget_id(target_id);
@@ -195,21 +195,21 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}else {
 			dto.setComment_group(Integer.parseInt(comment_group));				
 		}
-		freeCommentDao.insert(dto);
+		WithCommentDao.insert(dto);
 	}
 	@Override
 	public void deleteComment(HttpServletRequest request) {
 		int num=Integer.parseInt(request.getParameter("num"));
 		String id=(String)request.getSession().getAttribute("id");
-		String writer=freeCommentDao.getData(num).getWriter();
-//			if(!writer.equals(id)) {
-//				throw new DBFailException("남의 댓글을 삭제 할수 없습니다.");
-//			}
-		freeCommentDao.delete(num);
+		String writer=WithCommentDao.getData(num).getWriter();
+//				if(!writer.equals(id)) {
+//					throw new DBFailException("남의 댓글을 삭제 할수 없습니다.");
+//				}
+		WithCommentDao.delete(num);
 	}
 	@Override
-	public void updateComment(FreeCommentDto dto) {
-		freeCommentDao.update(dto);
+	public void updateComment(WithCommentDto dto) {
+		WithCommentDao.update(dto);
 		
 	}
 	@Override
@@ -218,7 +218,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
 		int ref_group=Integer.parseInt(request.getParameter("ref_group"));
 
-		FreeBoardDto dto=freeBoardDao.getData(ref_group);
+		WithBoardDto dto=WithBoardDao.getData(ref_group);
 		request.setAttribute("dto", dto);
 
 		/* 아래는 댓글 페이징 처리 관련 비즈니스 로직 입니다.*/
@@ -231,25 +231,23 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 		//전체 row 의 갯수를 읽어온다.
 		//자세히 보여줄 글의 번호가 ref_group  번호 이다. 
-		int totalRow=freeCommentDao.getCount(ref_group);
+		int totalRow=WithCommentDao.getCount(ref_group);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 
-		// FreeCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
-		FreeCommentDto commentDto=new FreeCommentDto();
+		// WithCommentDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
+		WithCommentDto commentDto=new WithCommentDto();
 		commentDto.setStartRowNum(startRowNum);
 		commentDto.setEndRowNum(endRowNum);
 		//ref_group 번호도 담는다.
 		commentDto.setRef_group(ref_group);
 
 		//DB 에서 댓글 목록을 얻어온다.
-		List<FreeCommentDto> commentList=freeCommentDao.getList(commentDto);
+		List<WithCommentDto> commentList=WithCommentDao.getList(commentDto);
 		//request 에 담아준다.
 		request.setAttribute("commentList", commentList);
 		request.setAttribute("totalPageCount", totalPageCount);		
 		
 	}
-	
-
 }

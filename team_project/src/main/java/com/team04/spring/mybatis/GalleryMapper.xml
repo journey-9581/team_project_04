@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gallery">
+	<delete id="delete" parameterType="int">
+		DELETE board_gallery
+		WHERE num=#{num}
+	</delete>
 	<insert id="insert" parameterType="galleryDto">
 		INSERT INTO board_gallery
 		(num, writer, caption, imagePath, regdate)
@@ -9,7 +13,8 @@
 	<select id="getData" parameterType="int" resultType="galleryDto">
 		SELECT * 
 		FROM
-			(SELECT num, writer, caption, imagePath, regdate,
+			(SELECT num, writer, caption, imagePath, 
+				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum, 
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum 
 			FROM board_gallery 
@@ -22,7 +27,8 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,writer,caption,imagePath,regdate
+				(SELECT num,writer,caption,imagePath,
+					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM board_gallery
 				ORDER BY num DESC) result1) 
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}

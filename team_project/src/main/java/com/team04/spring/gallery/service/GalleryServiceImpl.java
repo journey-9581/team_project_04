@@ -17,7 +17,7 @@ import com.team04.spring.gallery.dto.GalleryDto;
 @Service
 public class GalleryServiceImpl implements GalleryService{
 	@Autowired
-	private GalleryDao dao;
+	private GalleryDao galleryDao;
 
 	@Override
 	public void getList(ModelAndView mView, HttpServletRequest request) {
@@ -47,7 +47,7 @@ public class GalleryServiceImpl implements GalleryService{
 		dto.setEndRowNum(endRowNum);
 		
 		//GalleryDao 객체를 이용해서 목록을 얻어온다.
-		List<GalleryDto> list=dao.getList(dto);
+		List<GalleryDto> list=galleryDao.getList(dto);
 		
 		//하단 시작 페이지 번호 
 		int startPageNum = 1 + ((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
@@ -55,7 +55,7 @@ public class GalleryServiceImpl implements GalleryService{
 		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
 		
 		//전체 row 의 갯수
-		int totalRow=dao.getCount();
+		int totalRow=galleryDao.getCount();
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		//끝 페이지 번호가 이미 전체 페이지 갯수보다 크게 계산되었다면 잘못된 값이다.
@@ -69,40 +69,6 @@ public class GalleryServiceImpl implements GalleryService{
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalRow", totalRow);
-	}
-
-	@Override
-	public void saveContent(GalleryDto dto, HttpServletRequest request) {
-		//업로드된 파일의 정보를 가지고 있는 MultipartFile 객체의 참조값 얻어오기 
-		MultipartFile myFile=dto.getImage();
-		//원본 파일명
-		String orgFileName=myFile.getOriginalFilename();
-		
-		// webapp/upload 폴더 까지의 실제 경로(서버의 파일시스템 상에서의 경로)
-		String realPath=request.getServletContext().getRealPath("/upload");
-		//저장할 파일의 상세 경로
-		String filePath=realPath+File.separator;
-		//디렉토리를 만들 파일 객체 생성
-		File upload=new File(filePath);
-		if(!upload.exists()) {//만일 디렉토리가 존재하지 않으면 
-			upload.mkdir(); //만들어 준다.
-		}
-		//저장할 파일 명을 구성한다.
-		String saveFileName=
-				System.currentTimeMillis()+orgFileName;
-		try {
-			//upload 폴더에 파일을 저장한다.
-			myFile.transferTo(new File(filePath+saveFileName));
-			System.out.println(filePath+saveFileName);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		//dto 에 업로드된 파일의 정보를 담는다.
-		//String id=(String)request.getSession().getAttribute("id");
-		//dto.setWriter(id); //세션에서 읽어낸 파일 업로더의 아이디 
-		dto.setImagePath("/upload/"+saveFileName);
-		//GalleryDao 를 이용해서 DB 에 저장하기;
-		dao.insert(dto);		
 	}
 
 	@Override
@@ -136,13 +102,19 @@ public class GalleryServiceImpl implements GalleryService{
 	public void addContent(GalleryDto dto, HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		dto.setWriter(id);
-		dao.insert(dto);
+		galleryDao.insert(dto);
 	}
 	
 	@Override
 	public void getDetail(int num, ModelAndView mView) {
-		GalleryDto dto=dao.getData(num);
+		GalleryDto dto=galleryDao.getData(num);
 		mView.addObject("dto", dto);
+	}
+
+	@Override
+	public void deleteContent(int num) {
+		galleryDao.delete(num);
+		
 	}
 	
 }

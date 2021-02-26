@@ -15,6 +15,9 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	.img-wrapper{
+		height: 800px;
+	}
 </style>
 </head>
 <body>
@@ -27,7 +30,7 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--소제목-->
-					<span class="subheading">Gallery</span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></span>
 					<!--제목-->
 					<h2 class="mb-4">Image Upload</h2>			
 				</div>

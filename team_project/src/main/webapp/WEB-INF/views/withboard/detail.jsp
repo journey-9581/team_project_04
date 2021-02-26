@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+    pageEncoding="UTF-8"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>FreeBoard Detail</title>
-<!------------- css 영역------------->  
+<title>WithBoard Post</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
-<!-- css  -->
-
 <style>	
 	/*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
@@ -111,10 +107,7 @@
 <!-------------body 바디 영역 ------------->
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
-<!-------------navbar 네비바------------->
 <jsp:include page="../include/navbar.jsp"></jsp:include>
-
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
@@ -124,9 +117,9 @@
 				<!--대분류-->
 				<span class="subheading">contents</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/withboard/list.do">withboard</a></h2>
 				<!--소분류 한글 -->
-				<p id="font_1">자유게시판</p>
+				<p id="font_1">동행게시판</p>
 				<!--수정,삭제 버튼  -->
 				<!-- 아이디가 같으면 수정or삭제 -->
 				<c:if test="${dto.writer eq id }">
@@ -144,8 +137,8 @@
 					<h3 class="heading-sidebar">Contents Categories</h3>
 					<ul class="categories">
 						<li><a href="#">Review</a></li>
-						<li><a href="#">With Us</a></li>
-						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></li>
+						<li><a href="${pageContext.request.contextPath }/withboard/list.do">With Us</a></li>
+						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">withboard</a></li>
 						<li><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></li>
 					</ul>
 				</div>
@@ -158,7 +151,7 @@
 					<table id="font_1" class="board_list">
 						<thead>
 							<tr>
-								<th style="font-weight:bold; color: black;">${dto.category}</th>
+								<th>${dto.category }</th>
 								<th>ID: ${dto.writer }</th>
 								<th>${dto.regdate }</th>
 								<th>VEIW: ${dto.viewCount }</th>
@@ -178,8 +171,7 @@
 			<input type="hidden" name="target_id" value="${dto.writer }"/>
 			<textarea name="content"><c:if test="${empty id }">로그인이 필요합니다</c:if></textarea>
 			<button class="btn btn-primary" type="submit">등록</button>
-		</form>	
-		
+		</form>		
 		<!-- 댓글 목록 -->
 		<div class="comments" style="border-bottom: 1px solid #f2f2f2;">
 			<ul>
@@ -253,16 +245,13 @@
 </section><!-- contents1 섹션-->
 <div class="loader">
 	<img src="${pageContext.request.contextPath }/resources/images/ajax-loader.gif"/>
-</div>   			
+</div>
 <!------------- footer ------------->    
 <jsp:include page="../include/footer.jsp"></jsp:include>
-
-
-<!-------------script 스크립트------------->
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
-<jsp:include page="../include/resource_script.jsp"></jsp:include> 
+
 <script>
-//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
+	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(document).on("click",".comment-update-link", function(){
 		/*
 			click 이벤트가 일어난 댓글 수정 링크에 저장된 data-num 속성의 값을 
@@ -287,7 +276,6 @@
 			$(selector).find(".update-form").slideUp();
 			//pre 요소에 출력된 내용 수정하기
 			$(selector).find("pre").text(data.content);
-			
 		});
 		//폼 전송을 막아준다.
 		return false;
@@ -299,7 +287,7 @@
 		var isDelete=confirm("댓글을 삭제 하시겠습니까?");
 		if(isDelete){
 			location.href="${pageContext.request.contextPath }"+
-			"/freeboard/private/comment_delete.do?num="+num+"&ref_group=${dto.num}";
+			"/withboard/private/comment_delete.do?num="+num+"&ref_group=${dto.num}";
 		}
 	});
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
@@ -309,16 +297,18 @@
 		if(isLogin == false){
 			alert("로그인 페이지로 이동합니다.")
 			location.href="${pageContext.request.contextPath }/users/loginform.do?"+
-					"url=${pageContext.request.contextPath }/freeboard/detail.do?num=${dto.num}";
+					"url=${pageContext.request.contextPath }/withboard/detail.do?num=${dto.num}";
 		}
 		
 		var selector="#comment"+$(this).attr("data-num");
-		$(selector).find(".re-insert-form").slideToggle();
+		$(selector)
+		.find(".re-insert-form")
+		.slideToggle();
 		
-		if($(this).text()=="Reply"){//링크 text를 Reply일때 클릭하면 
-			$(this).text("Reset");//취소로 바꾸고 
+		if($(this).text()=="답글"){//링크 text를 답글일때 클릭하면 
+			$(this).text("취소");//취소로 바꾸고 
 		}else{//취소일때 크릭하면 
-			$(this).text("Reply");//답들로 바꾼다.
+			$(this).text("답글");//답들로 바꾼다.
 		}	
 	});
 	$(document).on("submit",".insert-form", function(){
@@ -327,14 +317,14 @@
 		if(isLogin == false){
 			alert("로그인 페이지로 이동합니다.")
 			location.href="${pageContext.request.contextPath }/users/loginform.do?"+
-					"url=${pageContext.request.contextPath }/freeboard/detail.do?num=${dto.num}";
+					"url=${pageContext.request.contextPath }/withboard/detail.do?num=${dto.num}";
 			return false; //폼 전송 막기 		
 		}
 	});
 	function deleteConfirm(){
 		var isDelete=confirm("이 글을 삭제 하시겠습니까?");
 		if(isDelete){
-			location.href="delete.do?num=${dto.num}";
+			location.href="${pageContext.request.contextPath }/withboard/private/delete.do?num=${dto.num}";
 		}
 	}
 	
@@ -412,5 +402,27 @@
 		}
 	});			
 </script>
+
+<script src="${pageContext.request.contextPath }/resources/js7/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/popper.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/aos.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

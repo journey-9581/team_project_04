@@ -33,9 +33,14 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--카테고리-->
-					<span class="subheading">Gallery</span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></span>
 					<!--내용-->
-					<h2 class="mb-4">${dto.caption }</h2>			
+					<h2 class="mb-4">${dto.caption }</h2>	
+					<!-- 이미지 삭제 버튼 -->		
+					<!-- 아이디가 같으면 삭제 -->
+					<c:if test="${dto.writer eq id }">
+						<a id="font_1" href="javascript:deleteConfirm()" class="btn btn-primary px-5 py-8 mt-1"> Delete Image</a>
+					</c:if>
 				</div>
 			</div>
 			<!--detail 이미지 출력 -->
@@ -73,5 +78,14 @@
   
 <!-------------script 스크립트------------->
 <jsp:include page="../include/resource_script.jsp"></jsp:include>
+<script>
+//글 삭제 
+function deleteConfirm(){
+	var isDelete=confirm("이 글을 삭제 하시겠습니까?");
+	if(isDelete){
+		location.href="${pageContext.request.contextPath }/gallery/private/delete.do?num=${dto.num}";
+	}
+}
+</script>
 </body>
 </html>

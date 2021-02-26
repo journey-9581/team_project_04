@@ -29,24 +29,19 @@ public class GalleryController {
 		mView.setViewName("gallery/list");
 		return mView;
 	}
-	/*
 	@RequestMapping("/gallery/ajax_page")
 	public ModelAndView ajaxPage(ModelAndView mView, HttpServletRequest request) {
 		service.getList(mView, request);
 		mView.setViewName("gallery/ajax_page");
 		return mView;
-	
 	}
-	*/
-	@RequestMapping("/gallery/private/upload_form")
-	public String uploadForm() {
-		return "gallery/private/upload_form";
+	//gallery post delete 요청 
+	@RequestMapping("/gallery/private/delete")
+	public String delete(@RequestParam int num) {
+		service.deleteContent(num);
+		return "gallery/private/delete";
 	}
-	@RequestMapping(value = "/gallery/private/upload", method = RequestMethod.POST)
-	public String upload(GalleryDto dto, HttpServletRequest request) {
-		service.saveContent(dto, request);
-		return "redirect:/gallery/list.do";
-	}
+	//gallery ajax 이미지 업로드 폼 요청
 	@RequestMapping("/gallery/private/ajax_form")
 	public String ajaxForm() {
 		
@@ -63,13 +58,11 @@ public class GalleryController {
 		//Map  을 리턴해서 JSON 문자열이 응답되도록 한다. {"imagePath":"/upload/xxx.jpg"} 형식
 		return map;
 	}
-	
 	@RequestMapping(value = "/gallery/private/insert", method=RequestMethod.POST)
 	public String insert(GalleryDto dto, HttpSession session) {
 		service.addContent(dto, session);
 		return "redirect:/gallery/list.do";
 	}
-	
 	@RequestMapping("/gallery/detail")
 	public ModelAndView detail(@RequestParam int num, ModelAndView mView) {
 		service.getDetail(num, mView);

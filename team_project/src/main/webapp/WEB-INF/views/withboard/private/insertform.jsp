@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
 <!-------------타이틀 (페이지 제목)------------->
-<title>Post Update </title>
+<title>Image upload</title>
 <!------------- css 영역------------->  
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 
@@ -29,33 +29,33 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--대분류-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></span>
 					<!--소분류 영어-->
 					<h2 class="mb-4">Post</h2>					
 				</div>
 			</div>	
-			<form action="update.do" method="post">				
+			<form action="insert.do" method="post">				
 				<div class="form-group">
 				<label for="category">Category</label>
 				<select class="form-control" id="font_1" name="category" id="category">
 						<option value="">선택</option>
-						<option value="잡담">잡담</option>
-						<option value="정보">정보</option>
-						<option value="나눔">나눔</option>
+						<option value="서울">서울</option>
+						<option value="경기">경기</option>
+						<option value="강원">강원</option>
+						<option value="충청">충청</option>
+						<option value="전라">전라</option>
+						<option value="경상">경상</option>
+						<option value="제주">제주</option>						
 				</select>
 				<br>
-				<input type="hidden" name="num" value="${dto.num }"/>
-				<label for="title">Writer</label>
-				<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>							
-				<br>
 				<label for="title">Title</label>
-				<input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
+				<input class="form-control" type="text" name="title" id="title"/>
 				<br>
-				<label for="content">Content</label>
-				<textarea class="form-control" name="content" id="content">${dto.content }</textarea>
+					<label for="content">Content</label>
+					<textarea class="form-control" name="content" id="content"></textarea>
 				</div>
 				<br>
-				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
+				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>
 				<button class="btn btn" type="reset">취소</button>
 			</form>							
 		</div>	
@@ -120,6 +120,6 @@
 		var nFontSize = 24;
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
-</script>
+</script>  
 </body>
 </html>

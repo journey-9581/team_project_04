@@ -10,7 +10,7 @@
 <body>	
 <script>
 	alert("삭제 했습니다.");
-	location.href="${pageContext.request.contextPath }/freeboard/list.do";
+	location.href="${pageContext.request.contextPath }/gallery/list.do";
 </script>
 </body>
 </html>

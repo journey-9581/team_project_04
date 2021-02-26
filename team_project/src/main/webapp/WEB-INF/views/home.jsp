@@ -325,7 +325,7 @@
 			<!---- 세번째 POST2 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_2.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -493,7 +493,7 @@
 			</div><!----Service 서비스 정보---->
       
 		</div><!-- row -->
-	</div><!--container -->
+	</div><!--container 컨테이너-->
 </section><!-- Service 섹션-->
 		
 <!------------- footer ------------->    
@@ -507,7 +507,7 @@
 	</svg>
 </div>
 
-<!-------------script 스크립트------------->
+<!-------------script 스크립트 ------------->
 <jsp:include page="include/resource_script.jsp"></jsp:include>
 </body>
 </html>
