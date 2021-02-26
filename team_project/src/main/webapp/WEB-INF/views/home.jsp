@@ -493,7 +493,7 @@
 			</div><!----Service 서비스 정보---->
       
 		</div><!-- row -->
-	</div><!--container -->
+	</div><!--container 컨테이너-->
 </section><!-- Service 섹션-->
 		
 <!------------- footer ------------->    
@@ -507,7 +507,7 @@
 	</svg>
 </div>
 
-<!-------------script 스크립트------------->
+<!-------------script 스크립트 ------------->
 <jsp:include page="include/resource_script.jsp"></jsp:include>
 </body>
 </html>
