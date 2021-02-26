@@ -82,7 +82,7 @@ public class UserController {
 		return "user/logout";
 	}
 	
-	//개인정보 보기 요청처리
+	//회원 정보 페이지 요청 처리
 	@RequestMapping("/user/private/info")
 	public ModelAndView info(ModelAndView mView, HttpSession session) {
 		service.getInfo(mView, session);
@@ -95,5 +95,19 @@ public class UserController {
 	public String delete(HttpSession session) {
 		service.deleteUser(session);
 		return "user/private/delete";
+	}
+	
+	//비밀번호 수정 폼 요청 처리
+	@RequestMapping("/user/private/pwd_updateform")
+	public String pwd_updateform() {
+		return "user/private/pwd_updateform";
+	}
+	
+	//비밀번호 수정 요청 처리
+	@RequestMapping("/user/private/pwd_update")
+	public ModelAndView pwd_update(ModelAndView mView, UserDto dto, HttpSession session) {
+		service.updateUserPwd(mView, dto, session);
+		mView.setViewName("user/private/pwd_update");
+		return mView;
 	}
 }
