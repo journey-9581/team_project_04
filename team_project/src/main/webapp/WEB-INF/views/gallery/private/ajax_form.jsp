@@ -15,6 +15,9 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	.img-wrapper{
+		height: 800px;
+	}
 </style>
 </head>
 <body>

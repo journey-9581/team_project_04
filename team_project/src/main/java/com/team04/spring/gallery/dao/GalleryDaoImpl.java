@@ -32,5 +32,11 @@ public class GalleryDaoImpl implements GalleryDao{
 	public int getCount() {
 		return session.selectOne("gallery.getCount");
 	}
+
+	@Override
+	public void delete(int num) {
+		session.delete("gallery.delete",num);
+		
+	}
 	
 }
