@@ -1,0 +1,9 @@
+CREATE TABLE users_team(
+	id VARCHAR2(100) PRIMARY KEY,
+	pwd VARCHAR2(100) NOT NULL,
+	email VARCHAR2(100),
+	proflie VARCHAR2(100),
+	pay CHAR(3) DEFAULT 'no',
+	regdate DATE,
+	newpwd VARCHAR2(100)
+);
