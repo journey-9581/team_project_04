@@ -455,9 +455,9 @@
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
-				<form action="#" class="bg-light p-4 p-md-5 contact-form">
+				<form action="/customer/service/list" class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Your Name">
+						<p class="mb-3">사용자 아이디()</p>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Your Email">
@@ -470,6 +470,8 @@
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+						<img src="resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">	
+						<input type="checkbox" style="margin-left: 5px"value="secretQnA">
 					</div>
 				</form>   
 			</div><!--Q&A form-->
