@@ -455,7 +455,7 @@
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
-				<form action="/customer/service/list" class="bg-light p-4 p-md-5 contact-form">
+				<form action="customer/service/list.do" class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<p class="mb-3">사용자 아이디()</p>
 					</div>
