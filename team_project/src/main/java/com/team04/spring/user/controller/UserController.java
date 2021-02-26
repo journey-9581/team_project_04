@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team04.spring.user.dto.UserDto;
@@ -108,6 +109,29 @@ public class UserController {
 	public ModelAndView pwd_update(ModelAndView mView, UserDto dto, HttpSession session) {
 		service.updateUserPwd(mView, dto, session);
 		mView.setViewName("user/private/pwd_update");
+		return mView;
+	}
+	
+	//프로필 이미지 업로드 요청 처리
+	@RequestMapping("/user/private/profile_upload")
+	public String profile_upload(MultipartFile image, HttpServletRequest request) {
+		service.saveProfileImage(image, request);
+		return "redirect:/user/private/updateform.do";
+	}
+	
+	//개인정보 수정 폼 요청 처리
+	@RequestMapping("/user/private/updateform")
+	public ModelAndView updateform(ModelAndView mView, HttpSession session) {
+		service.getInfo(mView, session);
+		mView.setViewName("user/private/updateform");
+		return mView;
+	}
+	
+	//개인정보 수정 요청 처리
+	@RequestMapping(value = "/user/private/update", method = RequestMethod.POST)
+	public ModelAndView update(UserDto dto, HttpSession session, ModelAndView mView) {
+		service.updateUser(dto, session);
+		mView.setViewName("user/private/update");
 		return mView;
 	}
 }
