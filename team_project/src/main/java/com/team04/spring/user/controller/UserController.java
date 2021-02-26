@@ -89,4 +89,11 @@ public class UserController {
 		mView.setViewName("user/private/info");
 		return mView;
 	}
+	
+	//회원 탈퇴 요청 처리
+	@RequestMapping("/user/private/delete")
+	public String delete(HttpSession session) {
+		service.deleteUser(session);
+		return "user/private/delete";
+	}
 }

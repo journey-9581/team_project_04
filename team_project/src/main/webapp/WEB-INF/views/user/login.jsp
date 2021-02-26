@@ -13,13 +13,13 @@
 	<c:choose>
 		<c:when test="${isValid }">
 			<p>
-				<strong>${sessionScope.id }</strong> 님 로그인 되었습니다.
+				<strong>${sessionScope.id }</strong> 님 로그인 되었습니다
 				<a href="${url }">확인</a>
 			</p>
 		</c:when>
 		<c:otherwise>
 			<p>
-				아이디 혹은 비밀번호가 틀려요!
+				아이디 혹은 비밀번호가 틀려요
 				<a href="loginform.do?url=${encodedUrl }">다시 시도</a>
 			</p>
 		</c:otherwise>

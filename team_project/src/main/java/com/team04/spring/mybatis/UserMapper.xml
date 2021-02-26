@@ -7,7 +7,7 @@
 		VALUES(#{id}, #{pwd}, #{email}, #{pay}, SYSDATE, #{manage}, #{phone})
 	</insert>
 	<select id="getData" parameterType="String" resultType="userDto">
-		SELECT pwd, email, pay, profile, TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate, manage, phone
+		SELECT pwd, email, pay, profile, TO_CHAR(regdate, 'YYYY.MM.DD HH24:MI') AS regdate, manage, phone
 		FROM user_team
 		WHERE id=#{id}
 	</select>

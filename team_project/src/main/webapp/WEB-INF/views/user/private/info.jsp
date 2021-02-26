@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/info.jsp</title>
+<title>TRIBUS</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
 	/* 프로필 이미지를 작은 원형으로 만든다 */
@@ -20,7 +20,6 @@
 <body>
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 	<div class="container">
-		<h1>가입 정보 입니다.</h1>
 		<table class="table table-striped">
 			<colgroup >
 				<col width="150"/>
@@ -54,6 +53,10 @@
 				<td>${dto.email }</td>
 			</tr>
 			<tr>
+				<th>휴대전화</th>
+				<td>${dto.phone }</td>
+			</tr>
+			<tr>
 				<th>가입일</th>
 				<td>${dto.regdate }</td>
 			</tr>
@@ -63,9 +66,9 @@
 	</div>
 	<script>
 		function deleteConfirm(){
-			let isDelete=confirm(" 회원님 탈퇴 하시겠습니까?");
+			let isDelete=confirm("탈퇴 하시겠습니까?");
 			if(isDelete){
-				location.href="${pageContext.request.contextPath }/users/private/delete.do";
+				location.href="${pageContext.request.contextPath }/user/private/delete.do";
 			}
 		}
 	</script>
