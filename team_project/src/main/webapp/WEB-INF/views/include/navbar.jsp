@@ -26,7 +26,9 @@
 						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/signupform_select.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Sign up</a></li>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath }/user/private/info.do">${id }</a>
+						<span class="navbar-text">
+							<a href="${pageContext.request.contextPath }/user/private/info.do">${id }</a>
+						</span>
 						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/logout.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Logout</a></li>
 					</c:otherwise>
 				</c:choose>
