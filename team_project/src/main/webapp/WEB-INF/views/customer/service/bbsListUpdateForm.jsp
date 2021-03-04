@@ -11,7 +11,10 @@
 
 	<c:forEach var="tmp" items="${list }">
 		<tr>
-			<td>${tmp.num }</td>
+			<td><c:if test="${tmp.secrete eq 1}">
+					<img src="/resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">
+				</c:if>
+			</td>
 			<td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
 			<td>${tmp.writerId }</td>
 			<td>${tmp.regDate }</td>

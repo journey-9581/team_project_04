@@ -23,41 +23,45 @@ public class FQnAServiceDao implements FQnAService{
 	@Autowired
 	private DataSource dataSource;
 	
-	public List<FQnA> getList(int page, String field, String query, int isQnA) throws ClassNotFoundException, SQLException{
-		int start = 1 + (page-1)*10;     // 1, 11, 21, 31, ..
-		int end = 10*page; // 10, 20, 30, 40...
-		
-		String sql = "SELECT * FROM NOTICE_VIEW WHERE "+field+" LIKE ? AND NUM BETWEEN ? AND ?";	
+	public List<FQnA> getList(int pageNum, int isQnA) throws ClassNotFoundException, SQLException{
+				
+		String sql = "SELECT * FROM"
+				+ "(SELECT rownum AS no, x.* FROM"
+				+ "(SELECT * FROM serviceBBS WHERE BBSTYPE=? ORDER BY ref DESC, num ASC)x ORDER BY no ASC)" + 
+				"WHERE no BETWEEN ? AND ?";	
 		
 		//Class.forName(driver);
 		//Connection con = DriverManager.getConnection(url,uid, pwd);
 
 		Connection con = dataSource.getConnection();
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, "%"+query+"%");
-		st.setInt(2, start);
-		st.setInt(3, end);
+		st.setInt(1, isQnA);
+		st.setInt(2, pageNum*10-10+1);
+		st.setInt(3, pageNum*10);
+		
 		ResultSet rs = st.executeQuery();
 		
 		List<FQnA> list = new ArrayList<FQnA>();
 		
 		while(rs.next()){
-		    int id = rs.getInt("ID");
+		    int num = rs.getInt("NUM");
 		    String title = rs.getString("TITLE");
-		    String writerId = rs.getString("WRITER_ID");
+		    String writerId = rs.getString("WRITERID");
 		    Date regDate = rs.getDate("REGDATE");
 		    String content = rs.getString("CONTENT");
-		    int hit = rs.getInt("hit");
-		    String files = rs.getString("FILES");
+		    int bbsType = rs.getInt("BBSTYPE");
+		    int ref = rs.getInt("REF");
+		    int secrete = rs.getInt("SECRETE");
 		    
 		    FQnA notice = new FQnA(
-		    					id,
+		    					num,
 		    					title,
+		    					content,
 		    					writerId,
 		    					regDate,
-		    					content,
-		    					hit,
-		    					files
+		    					bbsType,
+		    					ref,
+		    					secrete
 		    				);
 
 		    list.add(notice);
@@ -76,7 +80,7 @@ public class FQnAServiceDao implements FQnAService{
 	public int getCount() throws ClassNotFoundException, SQLException {
 		int count = 0;
 		
-		String sql = "SELECT COUNT(ID) COUNT FROM NOTICE";	
+		String sql = "SELECT COUNT(NUM) COUNT FROM serviceBBS";	
 		
 		//Class.forName(driver);
 		//Connection con = DriverManager.getConnection(url,uid, pwd);
@@ -95,40 +99,42 @@ public class FQnAServiceDao implements FQnAService{
 		return count;
 	}
 
-//	public int insert(Notice notice) throws SQLException, ClassNotFoundException {
-//		String title = notice.getTitle();
-//		String writerId = notice.getWriterId();
-//		String content = notice.getContent();
-//		String files = notice.getFiles();
-//		
-//		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-//		String sql = "INSERT INTO notice (    " + 
-//				"    title," + 
-//				"    writer_id," + 
-//				"    content," + 
-//				"    files" + 
-//				") VALUES (?,?,?,?)";	
-//		
-//		//Class.forName(driver);
-//		//Connection con = DriverManager.getConnection(url,uid, pwd);
-//		Connection con = dataSource.getConnection();
-//		//Statement st = con.createStatement();
-//		//st.ex....(sql)
-//		PreparedStatement st = con.prepareStatement(sql);
-//		st.setString(1, title);
-//		st.setString(2, writerId);
-//		st.setString(3, content);
-//		st.setString(4, files);
-//		
-//		int result = st.executeUpdate();
-//		
-//		
-//		st.close();
-//		con.close();
-//		
-//		return result;
-//	}
-//	
+
+	public void insert(FQnA dto) throws SQLException, ClassNotFoundException {
+		String title = dto.getTitle();
+		String content = dto.getContent();	
+		String writerId = dto.getWriterId();
+		int secrete = dto.getSecrete();
+		
+		String sql = "INSERT INTO serviceBBS VALUES (serBBS_SEQ.NEXTVAL," + 
+				"    ?," + //title
+				"    ?," + //content
+				"    ?," + //id
+				"    SYSDATE," + //regdate
+				"    0," +
+				"    serBBS_SEQ.CURRVAL," + //ref
+				"     ?)";	//secrete
+		
+		//Class.forName(driver);
+		//Connection con = DriverManager.getConnection(url,uid, pwd);
+		Connection con = dataSource.getConnection();
+		//Statement st = con.createStatement();
+		//st.ex....(sql)
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, title);
+		st.setString(2, content);
+		st.setString(3, writerId);
+		st.setInt(4, secrete);
+		
+		
+		st.executeUpdate();
+		
+		
+		st.close();
+		con.close();
+		
+	}
+	
 	public int update(FQnAService notice) throws SQLException, ClassNotFoundException {
 		return 1;
 	}
@@ -188,17 +194,6 @@ public class FQnAServiceDao implements FQnAService{
 //	}
 //
 //	
-
-	public int insert(FQnAService notice) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int insert(FQnA notice) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	public int update(FQnA notice) throws SQLException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		return 0;

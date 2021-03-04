@@ -455,26 +455,38 @@
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
-				<form action="customer/service/list.do" class="bg-light p-4 p-md-5 contact-form">
+			
+				<form action="/customer/service/insert.do" id="sermyForm"
+					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
+						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
 						<p class="mb-3">사용자 아이디()</p>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Your Email">
+						<p class="mb-3">사용자 이메일()</p>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Subject">
+						<input type="text" class="form-control" placeholder="Subject"
+							name="title" id="sertitle">
+						<div class="invalid-feedback">제목을 입력해주세요.</div>
 					</div>
 					<div class="form-group">
-						<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+						<textarea cols="30" rows="7" class="form-control"
+							placeholder="Message" name="content" id="sercontent"></textarea>
+						<div class="invalid-feedback">내용을 입력해주세요.</div>
+						
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-						<img src="resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">	
-						<input type="checkbox" style="margin-left: 5px"value="secretQnA">
+						<!-- 로그인 상태일 때만 보이게 하기 -->
+						<input type="submit" value="Send Message"
+							class="btn btn-primary py-3 px-5"> <img
+							src="/resources/images/OIP.jpg" style="margin-left: 10px"
+							alt="lockQnAimg"> <input type="checkbox"
+							style="margin-left: 5px" name="secrete">
 					</div>
-				</form>   
-			</div><!--Q&A form-->
+				</form>
+			</div>
+			<!--Q&A form-->
 			
 			<!----Service 서비스 정보---->
 			<div class="col-md-5 d-flex">
@@ -632,6 +644,60 @@
 <script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
+
+<script>
+		//아이디 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+		//let isIdValid=false;
+		//비밀번호 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+		//let isPwdValid=false;
+		//이메일 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+		let isTitleValid=false;
+		let isContentValid=false;
+		//폼 전체의 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+		let isFormValid=false;
+		
+		//폼에 submit 이벤트가 일어 났을때 jquery 를 활용해서 폼에 입력한 내용 검증하기
+		// id 가 myForm 인 요소에 submit 이벤트가 일어 났을때 실행할 함수 등록 
+		$("#sermyForm").on("submit", function(){
+			//폼 전체의 유효성 여부를 얻어낸다.
+			isFormValid = isContentValid && isTitleValid;
+			//만일 폼이 유효하지 않는다면
+			console.log(isFormValid);
+			if(!isFormValid){
+				if(!isContentValid){
+					$("#sercontent").addClass("is-invalid");
+				}
+				if(!isTitleValid){
+					$("#sertitle").addClass("is-invalid");
+				}
+				return false; ///폼 전송 막기 
+			}
+		});
+		
+		//이메일을 입력했을때 실행할 함수 등록
+		$("#sertitle").on("input", function(){
+			let inputTitle=$("#sertitle").val();
+			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			if(!inputTitle){
+				isTitleValid=false;
+			}else{
+				isTitleValid=true;
+				$("#sertitle").addClass("is-valid");
+			}
+			console.log(isTitleValid);
+		});
+		$("#sercontent").on("input", function(){
+			let inputContent=$("#sercontent").val();
+			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			if(!inputContent){
+				isContentValid=false;
+			}else{
+				isContentValid=true;
+				$("#sercontent").addClass("is-valid");
+			}
+			console.log(isContentValid);
+		});
+</script>
 
 </body>
 </html>

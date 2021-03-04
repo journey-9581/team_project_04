@@ -3,86 +3,79 @@ package com.team04.spring.service.entity;
 import java.util.*;
 
 public class FQnA {
-	private int id;
+	private int num;
 	private String title;
+	private String content;
 	private String writerId;
 	private Date regDate;
-	private String content;
-	private int hit;
-	private String files;
-	
-	public FQnA() {
-		
+	private int bbsType;
+	private int ref;
+	private int secrete;
+	public int getNum() {
+		return num;
 	}
-
-	public FQnA(int id, String title, String writerId, Date regDate, String content, int hit, String files) {
+	
+	public FQnA(int num, String title, String content, String writerId, Date regDate, int bbsType, int ref,
+			int secrete) {
 		super();
-		this.id = id;
+		this.num = num;
 		this.title = title;
+		this.content = content;
 		this.writerId = writerId;
 		this.regDate = regDate;
-		this.content = content;
-		this.hit = hit;
-		this.files = files;
+		this.bbsType = bbsType;
+		this.ref = ref;
+		this.secrete = secrete;
 	}
 
-	public int getId() {
-		return id;
+	public FQnA() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNum(int num) {
+		this.num = num;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public String getWriterId() {
-		return writerId;
-	}
-
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	public int getHit() {
-		return hit;
+	public String getWriterId() {
+		return writerId;
 	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
 	}
-
-	public String getFiles() {
-		return files;
+	public Date getRegDate() {
+		return regDate;
 	}
-
-	public void setFiles(String files) {
-		this.files = files;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
-
-	
-	
+	public int getBbsType() {
+		return bbsType;
+	}
+	public void setBbsType(int bbsType) {
+		this.bbsType = bbsType;
+	}
+	public int getRef() {
+		return ref;
+	}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+	public int getSecrete() {
+		return secrete;
+	}
+	public void setSecrete(int secrete) {
+		this.secrete = secrete;
+	}
 	
 }
