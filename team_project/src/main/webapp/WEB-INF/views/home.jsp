@@ -446,7 +446,9 @@
 				<!-- 소제목 -->
 				<span class="subheading">소제목</span>    
 				<!-- 제목 -->     
-				<h2 class="mb-4">Service</h2>
+				<a href="/customer/service/list.do">
+					<h2 class="mb-4">Service</h2>
+				</a>
 				<!-- 내용 -->
 				<p id="font_1">서비스 내용 어쩌구 저쩌구 블라블라 아무말 아무말 대잔치</p>
 			</div>

@@ -16,7 +16,6 @@ import com.team04.spring.service.entity.*;
 
 
 @Controller
-
 @RequestMapping("/customer/service/")
 public class FQnAController {
 
@@ -75,8 +74,10 @@ public class FQnAController {
 	}
 	
 	@RequestMapping("detail")
-	String detail() {
-		
+	String detail(@RequestParam int num, Model model) throws SQLException {
+		FQnA dto = null;
+		dto = fqnaService.detail(num);
+		model.addAttribute("dto", dto);
 		return "customer/service/detail";
 	}
 

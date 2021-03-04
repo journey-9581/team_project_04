@@ -14,4 +14,5 @@ public List<FQnA> getList(int page, int isQnA) throws ClassNotFoundException, SQ
 	public void insert(FQnA dto) throws SQLException, ClassNotFoundException;
 	public int update(FQnA dto) throws SQLException, ClassNotFoundException;
 	public int delete(int id) throws ClassNotFoundException, SQLException;
+	public FQnA detail(int num) throws SQLException;
 }

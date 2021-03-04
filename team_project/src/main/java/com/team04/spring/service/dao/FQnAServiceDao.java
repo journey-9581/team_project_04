@@ -53,7 +53,7 @@ public class FQnAServiceDao implements FQnAService{
 		    int ref = rs.getInt("REF");
 		    int secrete = rs.getInt("SECRETE");
 		    
-		    FQnA notice = new FQnA(
+		    FQnA dto = new FQnA(
 		    					num,
 		    					title,
 		    					content,
@@ -64,7 +64,7 @@ public class FQnAServiceDao implements FQnAService{
 		    					secrete
 		    				);
 
-		    list.add(notice);
+		    list.add(dto);
 		    
 		}
 
@@ -135,6 +135,50 @@ public class FQnAServiceDao implements FQnAService{
 		
 	}
 	
+	public FQnA detail(int pnum) throws SQLException {
+		String sql = "SELECT * from serviceBBS where num=?";	
+		
+		//Class.forName(driver);
+		//Connection con = DriverManager.getConnection(url,uid, pwd);
+
+		Connection con = dataSource.getConnection();
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, pnum);
+		
+		ResultSet rs = st.executeQuery();
+		
+		FQnA dto = new FQnA();
+		
+		while(rs.next()){
+		    int num = rs.getInt("NUM");
+		    String title = rs.getString("TITLE");
+		    String writerId = rs.getString("WRITERID");
+		    Date regDate = rs.getDate("REGDATE");
+		    String content = rs.getString("CONTENT");
+		    int bbsType = rs.getInt("BBSTYPE");
+		    int ref = rs.getInt("REF");
+		    int secrete = rs.getInt("SECRETE");
+		    
+		    dto = new FQnA(
+    					num,
+    					title,
+    					content,
+    					writerId,
+    					regDate,
+    					bbsType,
+    					ref,
+    					secrete
+    				);		    
+		}
+
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+		return dto;
+	}
+	
 	public int update(FQnAService notice) throws SQLException, ClassNotFoundException {
 		return 1;
 	}
@@ -198,4 +242,5 @@ public class FQnAServiceDao implements FQnAService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }
