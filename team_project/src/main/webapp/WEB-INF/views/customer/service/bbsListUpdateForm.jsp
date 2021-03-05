@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- (7) 게시글 리스트를 따로 view로 만든다. -->
 	<c:forEach var="tmp" items="${list }">
 		<tr>
 			<td><c:if test="${tmp.secrete eq 1}">

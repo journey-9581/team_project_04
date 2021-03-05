@@ -36,33 +36,41 @@
 	    return sval;
 	}
 	
-	//말머리 구분 함수
+	// (2) 말머리 구분 함수 (말머리 버튼을 누르면 실행되게 onclick을 넣어줬습니다.)
 	function searchFunction(a){
-
+		
+		/* a의 널체크 */
 		if (a != '0' && a != '1'){
 			console.log(a);
 			a = 0;
 		}
+		
+		/* url에 있는 parameter PageNum을 가져옵니다. */
 		var pageNum = getParam("pageNum")
+		// 널체크
 		if(pageNum == null || pageNum == ""){
-			pageNum = 1;
+			pageNum = 1; //기본 페이지 1
 		}
 		console.log(a);
+		
+		// (3) servlet단(FQnAController)의 practice.do로 post 방식으로 data 값을 넘깁니다.
 		$.ajax({
 			url:"/customer/service/practice.do",
 			data: { "isQnA": a, "pageNum": pageNum },
 			type:"post",
 			success:function(result){/* result는 정상적으로 .ajax가 완료 됐을 때 return value*/
-				$("#ajaxTable").html(result);
+				//(8) result는 (7)의 view 전체 값
+				$("#ajaxTable").html(result); //id가 ajaxTable인 곳에 결과값 result를 넣어줍니다.
 			}
 		})
 	}
+	
+	/* (1) 페이지가 업로드 될 때 실행되는 함수 QnA의 말머리를 담당하는 0을 파라미터로 넣어줍니다. */
 	$(window).bind("pageshow", function (event) {
 		if (event.originalEvent.persisted) {
 			searchFunction(0);
 		}
 		else {
-			
 			searchFunction(0);
 		}
 		

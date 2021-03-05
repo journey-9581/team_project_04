@@ -33,19 +33,21 @@ public class FQnAController {
 		return "customer/service/list";
 	}
 	
-	//어떤 말머리 게시글 받아올 건지 정하기
+	//(4) 어떤 말머리 게시글 받아올 건지 정하기
 	@RequestMapping("practice")
 	String practice(Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException{
 		request.setCharacterEncoding("UTF-8");
-		int isQnA = Integer.parseInt(request.getParameter("isQnA"));
+		int isQnA = Integer.parseInt(request.getParameter("isQnA")); //(3)에서 넘긴 a값
 		
 		//js로 null check 해줬으니 java에선 가져와 사용한다.
-		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int pageNum = Integer.parseInt(request.getParameter("pageNum")); //(3)에서 넘긴 pageNum값
 		
+		//(5) 페이지에 보여줄 게시글 리스트 데이터를 오라클에서 가져온다.
 		List<FQnA> list = null;
 		list = fqnaService.getList(pageNum,  isQnA);
 		model.addAttribute("list", list);
 		
+		//(6) 아래 주소로 넘긴다.
 		return "customer/service/bbsListUpdateForm";
 	}
 	
