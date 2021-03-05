@@ -22,7 +22,6 @@ public class FQnAController {
 	@Autowired
 	FQnAService fqnaService;
 	
-	int pageNum;
 	
 
 	@RequestMapping("list")
@@ -30,15 +29,6 @@ public class FQnAController {
 		//폼 전송하면 게시글 작성해야함.
 		int count = fqnaService.getCount();
 		
-		//보여줄 페이지의 번호를 일단 1이라고 초기값 지정
-		pageNum=1;
-		//페이지 번호가 파라미터로 전달되는지 읽어와 본다.
-		String tPageNum=request.getParameter("pageNum");
-		//만일 페이지 번호가 파라미터로 넘어 온다면
-		if(tPageNum != null){
-			//숫자로 바꿔서 보여줄 페이지 번호로 지정한다.
-			pageNum=Integer.parseInt(tPageNum);
-		}
 		model.addAttribute("count", count);
 		return "customer/service/list";
 	}
@@ -48,6 +38,10 @@ public class FQnAController {
 	String practice(Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException{
 		request.setCharacterEncoding("UTF-8");
 		int isQnA = Integer.parseInt(request.getParameter("isQnA"));
+		
+		//js로 null check 해줬으니 java에선 가져와 사용한다.
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		
 		List<FQnA> list = null;
 		list = fqnaService.getList(pageNum,  isQnA);
 		model.addAttribute("list", list);
@@ -79,6 +73,31 @@ public class FQnAController {
 		dto = fqnaService.detail(num);
 		model.addAttribute("dto", dto);
 		return "customer/service/detail";
+	}
+	
+	
+	@RequestMapping("reply")
+	String reply(HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		int num = Integer.parseInt(request.getParameter("num"));
+		int secrete = 0; //0 공개글, 1비밀글
+		if (request.getParameter("secrete") != null)
+			secrete=1;
+		
+		FQnA dto = new FQnA();
+		dto.setTitle(request.getParameter("title"));
+		dto.setWriterId("관리자");
+		dto.setContent(request.getParameter("content"));
+		dto.setSecrete(secrete);
+		
+		fqnaService.reply(num, dto);
+		
+		return "redirect:list.do";
+	}
+	@RequestMapping("delete")
+	String delete(@RequestParam int num) throws SQLException, ClassNotFoundException {
+		System.out.println("?");
+		fqnaService.delete(num);
+		return "redirect:list.do";
 	}
 
 }

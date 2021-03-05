@@ -52,7 +52,6 @@ public class FQnAServiceDao implements FQnAService{
 		    int bbsType = rs.getInt("BBSTYPE");
 		    int ref = rs.getInt("REF");
 		    int secrete = rs.getInt("SECRETE");
-		    
 		    FQnA dto = new FQnA(
 		    					num,
 		    					title,
@@ -179,6 +178,42 @@ public class FQnAServiceDao implements FQnAService{
 		return dto;
 	}
 	
+	public void reply(int num, FQnA dto) throws SQLException, ClassNotFoundException {
+		String title = dto.getTitle();
+		String content = dto.getContent();	
+		String writerId = dto.getWriterId();
+		int secrete = dto.getSecrete();
+		
+		String sql = "INSERT INTO serviceBBS VALUES (serBBS_SEQ.NEXTVAL," + 
+				"    ?," + //title
+				"    ?," + //content
+				"    ?," + //id
+				"    SYSDATE," + //regdate
+				"    0," +
+				"    ?," + //ref
+				"     ?)";	//secrete
+		
+		//Class.forName(driver);
+		//Connection con = DriverManager.getConnection(url,uid, pwd);
+		Connection con = dataSource.getConnection();
+		//Statement st = con.createStatement();
+		//st.ex....(sql)
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, title);
+		st.setString(2, content);
+		st.setString(3, writerId);
+		st.setInt(4, num);
+		st.setInt(5, secrete);
+		
+		
+		st.executeUpdate();
+		
+		
+		st.close();
+		con.close();
+		
+	}
+	
 	public int update(FQnAService notice) throws SQLException, ClassNotFoundException {
 		return 1;
 	}
@@ -214,30 +249,21 @@ public class FQnAServiceDao implements FQnAService{
 //		return result;
 //	}
 //	
-	public int delete(int id) throws ClassNotFoundException, SQLException {
-		return 0;
-	}
-//	
-//		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-//		String sql = "DELETE NOTICE WHERE ID=?";
-//		
-//		//Class.forName(driver);
-//		//Connection con = DriverManager.getConnection(url,uid, pwd);                  
-//		Connection con = dataSource.getConnection();
-//		//Statement st = con.createStatement();
-//		//st.ex....(sql)
-//		PreparedStatement st = con.prepareStatement(sql);		
-//		st.setInt(1, id);
-//		
-//		int result = st.executeUpdate();
-//				
-//		st.close();
-//		con.close();
-//		
-//		return result;
-//	}
-//
-//	
+	public void delete(int id) throws ClassNotFoundException, SQLException {
+
+		String sql = "DELETE serviceBBS WHERE NUM=?";
+		
+		Connection con = dataSource.getConnection();
+		PreparedStatement st = con.prepareStatement(sql);		
+		st.setInt(1, id);
+		
+		st.executeUpdate();
+				
+		st.close();
+		con.close();
+}
+
+	
 	public int update(FQnA notice) throws SQLException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		return 0;

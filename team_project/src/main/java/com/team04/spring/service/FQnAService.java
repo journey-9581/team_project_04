@@ -13,6 +13,7 @@ public List<FQnA> getList(int page, int isQnA) throws ClassNotFoundException, SQ
 	public int getCount() throws ClassNotFoundException, SQLException;
 	public void insert(FQnA dto) throws SQLException, ClassNotFoundException;
 	public int update(FQnA dto) throws SQLException, ClassNotFoundException;
-	public int delete(int id) throws ClassNotFoundException, SQLException;
+	public void delete(int id) throws ClassNotFoundException, SQLException;
 	public FQnA detail(int num) throws SQLException;
+	public void reply(int num, FQnA dto) throws SQLException, ClassNotFoundException;
 }

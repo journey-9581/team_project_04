@@ -1,3 +1,4 @@
+<%@page import="com.team04.spring.service.entity.FQnA"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
@@ -106,7 +107,7 @@
 		z-index: 1000;
 		display: none; /* 일단 숨겨 놓기 */
 	}	
-</style>	
+</style>
 </head>
 <!-------------body 바디 영역 ------------->
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -130,9 +131,9 @@
 				<!--수정,삭제 버튼  -->
 				<!-- 관리자 아이디면 삭제 or 수정 -->
 				<%-- <c:if test="${dto.writerId eq id }"></c:if> --%>
-					<a id="font_1" href="private/updateform.do?num=${dto.num}" class="btn btn-primary px-5 py-8 mt-1"> Reply Post</a>	
-					<a id="font_1" href="javascript:deleteConfirm()" class="btn btn px-5 py-8 mt-1"> Delete Post</a>							
-				
+					<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
+							data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>	
+					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete Post</button>
 			</div>
 		</div>	
 
@@ -258,6 +259,101 @@
 
 	</div><!--container -->	  	
 </section><!-- contents1 섹션-->
+
+<!-- reply modal 부분 -->
+	<div class="modal fade" id="replymodal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<!-- <form action="customer/service/list.do"
+						class="bg-light p-4 p-md-5 contact-form">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Recipient:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">Message:</label>
+							<textarea class="form-control" id="message-text"></textarea>
+						</div>
+						<div class="form-group">
+							로그인 상태일 때만 보이게 하기
+							<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+							<img src="resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">
+							<input type="checkbox" style="margin-left: 5px" value="secretQnA">
+						</div>
+					</form> -->
+				</div>
+				<!-- d -->
+				<form action="/customer/service/reply.do" id="sermyForm"
+					class="bg-light p-4 p-md-5 contact-form">
+					<div class="form-group">
+						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
+						<p class="mb-3">사용자 아이디()</p>
+					</div>
+					<div class="form-group">
+						<p class="mb-3">사용자 이메일()</p>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Subject"
+							name="title" id="sertitle">
+						<div class="invalid-feedback">제목을 입력해주세요.</div>
+					</div>
+					<div class="form-group">
+						<textarea cols="30" rows="7" class="form-control"
+							placeholder="Message" name="content" id="sercontent"></textarea>
+						<div class="invalid-feedback">내용을 입력해주세요.</div>
+						
+					</div>
+					<div><input style="display:none;" name="num" id="num" value="${dto.num }"></input></div>
+					<div class="form-group">
+						<!-- 로그인 상태일 때만 보이게 하기 -->
+						<input type="submit" value="Send Message"
+							class="btn btn-primary py-3 px-5"> <img
+							src="/resources/images/OIP.jpg" style="margin-left: 10px"
+							alt="lockQnAimg"> <input type="checkbox"
+							style="margin-left: 5px" name="secrete">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button> -->
+			</div>
+		</div>
+	</div>
+	
+	<!-- delete Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        	정말 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" onclick="location.href='delete.do?num=${dto.num }'">확인</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	
+	
 <div class="loader">
 	<img src="${pageContext.request.contextPath }/resources/images/ajax-loader.gif"/>
 </div>   			
@@ -269,155 +365,60 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 <jsp:include page="../include/resource_script.jsp"></jsp:include> 
 <script>
-//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
-	$(document).on("click",".comment-update-link", function(){
-		/*
-			click 이벤트가 일어난 댓글 수정 링크에 저장된 data-num 속성의 값을 
-			읽어와서 id 선택자를 구성한다.
-		*/
-		var selector="#comment"+$(this).attr("data-num");
-		//구성된 id  선택자를 이용해서 원하는 li 요소에서 .update-form 을 찾아서 동작하기
-		$(selector)
-		.find(".update-form")
-		.slideToggle();
-	});
-	//로딩한 jquery.form.min.js jquery플러그인의 기능을 이용해서 댓글 수정폼을 
-	//ajax 요청을 통해 전송하고 응답받기
-	$(document).on("submit", ".update-form", function(){
-		//이벤트가 일어난 폼을 ajax로 전송되도록 하고 
-		$(this).ajaxSubmit(function(data){
-			//console.log(data);
-			//수정이 일어난 댓글의 li 요소를 선택해서 원하는 작업을 한다.
-			var selector="#comment"+data.num; //"#comment6" 형식의 선택자 구성
-			
-			//댓글 수정 폼을 안보이게 한다. 
-			$(selector).find(".update-form").slideUp();
-			//pre 요소에 출력된 내용 수정하기
-			$(selector).find("pre").text(data.content);
-			
-		});
-		//폼 전송을 막아준다.
-		return false;
-	});
 	
-	$(document).on("click",".comment-delete-link", function(){
-		//삭제할 글번호 
-		var num=$(this).attr("data-num");
-		var isDelete=confirm("댓글을 삭제 하시겠습니까?");
-		if(isDelete){
-			location.href="${pageContext.request.contextPath }"+
-			"/freeboard/private/comment_delete.do?num="+num+"&ref_group=${dto.num}";
-		}
-	});
-	//답글 달기 링크를 클릭했을때 실행할 함수 등록
-	$(document).on("click",".reply-link", function(){
-		//로그인 여부
-		var isLogin=${not empty id};
-		if(isLogin == false){
-			alert("로그인 페이지로 이동합니다.")
-			location.href="${pageContext.request.contextPath }/users/loginform.do?"+
-					"url=${pageContext.request.contextPath }/freeboard/detail.do?num=${dto.num}";
-		}
-		
-		var selector="#comment"+$(this).attr("data-num");
-		$(selector).find(".re-insert-form").slideToggle();
-		
-		if($(this).text()=="Reply"){//링크 text를 Reply일때 클릭하면 
-			$(this).text("Reset");//취소로 바꾸고 
-		}else{//취소일때 크릭하면 
-			$(this).text("Reply");//답들로 바꾼다.
-		}	
-	});
-	$(document).on("submit",".insert-form", function(){
-		//로그인 여부
-		var isLogin=${not empty id};
-		if(isLogin == false){
-			alert("로그인 페이지로 이동합니다.")
-			location.href="${pageContext.request.contextPath }/users/loginform.do?"+
-					"url=${pageContext.request.contextPath }/freeboard/detail.do?num=${dto.num}";
-			return false; //폼 전송 막기 		
-		}
-	});
-	function deleteConfirm(){
-		var isDelete=confirm("이 글을 삭제 하시겠습니까?");
-		if(isDelete){
-			location.href="delete.do?num=${dto.num}";
-		}
-	}
+	//아이디 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+	//let isIdValid=false;
+	//비밀번호 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+	//let isPwdValid=false;
+	//이메일 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+	let isTitleValid=false;
+	let isContentValid=false;
+	//폼 전체의 유효성 여부를 관리할 변수 만들고 초기값 부여하기
+	let isFormValid=false;
 	
-	//페이지가 처음 로딩될때 1page 를 보여준다고 가정
-	var currentPage=1;
-	//전체 페이지의 수를 javascript 변수에 담아준다.
-	var totalPageCount=${totalPageCount};
-	//현재 로딩중인지 여부
-	var isLoading=false;
-	
-	/*
-	페이지 로딩 시점에 document 의 높이가 window 의 실제 높이 보다 작고
-	전체 페이지의 갯수가(totalPageCount) 현재페이지(currentPage)
-	보다 크면 추가로 댓글을 받아오는 ajax 요청을 해야한다.
-	*/
-	var dH=$(document).height();//문서의 높이
-	var wH=window.screen.height;//window 의 높이
-	
-	if(dH < wH && totalPageCount > currentPage){
-		//로딩 이미지 띄우기
-		$(".loader").show();
-		
-		currentPage++; //페이지를 1 증가 시키고 
-		//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
-		$.ajax({
-			url:"ajax_comment_list.do",
-			method:"get",
-			data:{pageNum:currentPage, ref_group:${dto.num}},
-			success:function(data){
-				console.log(data);
-				//data 가 html 마크업 형태의 문자열 
-				$(".comments ul").append(data);
-				//로딩 이미지를 숨긴다. 
-				$(".loader").hide();
+	//폼에 submit 이벤트가 일어 났을때 jquery 를 활용해서 폼에 입력한 내용 검증하기
+	// id 가 myForm 인 요소에 submit 이벤트가 일어 났을때 실행할 함수 등록 
+	$("#sermyForm").on("submit", function(){
+		//폼 전체의 유효성 여부를 얻어낸다.
+		isFormValid = isContentValid && isTitleValid;
+		//만일 폼이 유효하지 않는다면
+		console.log(isFormValid);
+		if(!isFormValid){
+			if(!isContentValid){
+				$("#sercontent").addClass("is-invalid");
 			}
-		});		
-	}	
-	
-	//웹브라우저에 scoll 이벤트가 일어 났을때 실행할 함수 등록 
-	$(window).on("scroll", function(){
-		
-		//위쪽으로 스크롤된 길이 구하기
-		var scrollTop=$(window).scrollTop();
-		//window 의 높이
-		var windowHeight=$(window).height();
-		//document(문서)의 높이
-		var documentHeight=$(document).height();
-		//바닥까지 스크롤 되었는지 여부
-		var isBottom = scrollTop+windowHeight + 10 >= documentHeight;
-		if(isBottom){//만일 바닥까지 스크롤 했다면...
-			if(currentPage == totalPageCount || isLoading){//만일 마지막 페이지 이면 
-				return; //함수를 여기서 종료한다. 
+			if(!isTitleValid){
+				$("#sertitle").addClass("is-invalid");
 			}
-			//현재 로딩 중이라고 표시한다. 
-			isLoading=true;
-			//로딩 이미지 띄우기
-			$(".loader").show();
-			
-			currentPage++; //페이지를 1 증가 시키고 
-			//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
-			$.ajax({
-				url:"ajax_comment_list.do",
-				method:"get",
-				data:{pageNum:currentPage, ref_group:${dto.num}},
-				success:function(data){
-					console.log(data);
-					//data 가 html 마크업 형태의 문자열 
-					$(".comments ul").append(data);
-					//로딩 이미지를 숨긴다. 
-					$(".loader").hide();
-					//로딩중이 아니라고 표시한다.
-					isLoading=false;
-				}
-			});
+			return false; ///폼 전송 막기 
 		}
-	});			
+	});
+	
+	//이메일을 입력했을때 실행할 함수 등록
+	$("#sertitle").on("input", function(){
+		let inputTitle=$("#sertitle").val();
+		//만일 이메일이 정규표현식에 매칭되지 않는다면		
+		if(!inputTitle){
+			isTitleValid=false;
+		}else{
+			isTitleValid=true;
+			$("#sertitle").addClass("is-valid");
+		}
+		console.log(isTitleValid);
+	});
+	$("#sercontent").on("input", function(){
+		let inputContent=$("#sercontent").val();
+		//만일 이메일이 정규표현식에 매칭되지 않는다면		
+		if(!inputContent){
+			isContentValid=false;
+		}else{
+			isContentValid=true;
+			$("#sercontent").addClass("is-valid");
+		}
+		console.log(isContentValid);
+	});
+
+
 </script>
 </body>
 </html>

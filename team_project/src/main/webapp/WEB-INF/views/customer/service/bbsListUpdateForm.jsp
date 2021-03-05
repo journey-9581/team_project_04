@@ -8,14 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<c:forEach var="tmp" items="${list }">
 		<tr>
 			<td><c:if test="${tmp.secrete eq 1}">
 					<img src="/resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">
 				</c:if>
 			</td>
-			<td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
+			<td>
+				<c:if test="${tmp.ref ne tmp.num}">
+						<span>└ </span>
+				</c:if>
+				<a href="detail.do?num=${tmp.num }">${tmp.title }</a>
+			</td>
 			<td>${tmp.writerId }</td>
 			<td>${tmp.regDate }</td>
 		</tr>

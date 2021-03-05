@@ -24,26 +24,49 @@
 }
 </style>
 <script type="text/javascript">
-	var request = new XMLHttpRequest();
+	//url에서 parameter 가져오는 함수
+	function getParam(sname) {
+	    var params = location.search.substr(location.search.indexOf("?") + 1);
+	    var sval = "";
+	    params = params.split("&");
+	    for (var i = 0; i < params.length; i++) {
+	        temp = params[i].split("=");
+	        if ([temp[0]] == sname) { sval = temp[1]; }
+	    }
+	    return sval;
+	}
+	
+	//말머리 구분 함수
 	function searchFunction(a){
 
 		if (a != '0' && a != '1'){
 			console.log(a);
 			a = 0;
 		}
+		var pageNum = getParam("pageNum")
+		if(pageNum == null || pageNum == ""){
+			pageNum = 1;
+		}
 		console.log(a);
 		$.ajax({
 			url:"/customer/service/practice.do",
-			data: {'isQnA': a},
+			data: { "isQnA": a, "pageNum": pageNum },
 			type:"post",
 			success:function(result){/* result는 정상적으로 .ajax가 완료 됐을 때 return value*/
 				$("#ajaxTable").html(result);
 			}
 		})
 	}
-	window.onload = function(){
-		searchFunction(0);
-	}
+	$(window).bind("pageshow", function (event) {
+		if (event.originalEvent.persisted) {
+			searchFunction(0);
+		}
+		else {
+			
+			searchFunction(0);
+		}
+		
+	});
 </script>
 </head>
 <body>
