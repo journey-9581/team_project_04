@@ -4,20 +4,23 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<head><!-- 헤드 -->
-<!-------------타이틀 (페이지 제목)------------->
-<title>TRIBUS</title>
-
+  
 <!-------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
+
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
 </style>
+<head><!-- 헤드 -->
+<!-------------타이틀 (페이지 제목)------------->
+<title>TRIBUS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!------------- css 영역------------->  
 <!-- 
 	CSS ,js,image 링크 주소	
 	${pageContext.request.contextPath }/resources/css7/
@@ -26,13 +29,52 @@
 	${pageContext.request.contextPath }/resources/image_p/
 	
  -->
+<!--한글 폰트 -->  
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+<!--한글 폰트 -->  
+<!-- 기타 css  -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/animate.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/magnific-popup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/aos.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/ionicons.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/icomoon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/style.css">
 </head><!-- 헤드 -->
 
 <!-------------body 바디 영역 ------------->
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 <!-------------navbar 네비바------------->
-<jsp:include page="include/navbar.jsp"></jsp:include>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	<div class="container">
+		<!-- 상단 왼쪽 로고 타이틀 -->
+		<a class="navbar-brand" href="home7.do">TRIBUS</a>
+			<!-- menu(메뉴) 버튼 상단 -->
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" 
+				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				 <span class="oi oi-menu"></span>Menu
+			</button>
+		
+		<!-- 네비바 메뉴 -->
+		<div class="collapse navbar-collapse" id="ftco-nav">
+			<ul class="navbar-nav nav ml-auto">
+				<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+				<li class="nav-item"><a href="#about-section" class="nav-link"><span>about</span></a></li>
+				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>contents</span></a></li>
+				<li class="nav-item"><a href="#Reservation-section" class="nav-link"><span>Reservation</span></a></li>
+				<li class="nav-item"><a href="#service-section" class="nav-link"><span>service</span></a></li>
+				<li class="nav-item"><a href="#" class="btn btn-primary px-5 py-8 mt-1">Login</a></li>
+			</ul>
+		</div>
+	</div><!-- div container -->
+</nav><!-- navbar -->
 
 <!-------------Home 홈 섹션  ------------->	  
 <section id="home-section" class="hero">
@@ -163,7 +205,7 @@
 			<!--내용 -->
 			<p id="font_1">광고 광고중 대놓고 광고중</p>
 			<!-- 버튼 -->
-			<a id="font_1" href="${pageContext.request.contextPath }/board_premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
+			<a id="font_1 href="#" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
 		</div>
 		</div>
 	
@@ -325,7 +367,7 @@
 			<!---- 세번째 POST2 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
+					<a href="#" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_2.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -343,7 +385,7 @@
 			<!---- 세번째 POST3 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="${pageContext.request.contextPath }/freeboard/list.do" class="block-20" 
+					<a href="#" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_3.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -361,7 +403,7 @@
 			<!---- 세번째 POST4 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="gallery/list.do" class="block-20" 
+					<a href="#" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -497,8 +539,78 @@
 </section><!-- Service 섹션-->
 		
 <!------------- footer ------------->    
-<jsp:include page="include/footer.jsp"></jsp:include>
+<footer class="ftco-footer ftco-section">
+	<div class="container">
+		<div class="row mb-5">
+			<!--  -->
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+					<h2 class="ftco-heading-2">About <span><a href="index.html">Ecoland</a></span></h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+						<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!--  -->
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4 ml-md-4">
+					<h2 class="ftco-heading-2">Information</h2>
+					<ul class="list-unstyled">
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Online Enquiry</a></li>
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>General Enquiry</a></li>
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Booking</a></li>
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Privacy</a></li>
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Refund Policy</a></li>
+						<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Call Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--  -->
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+				<h2 class="ftco-heading-2">Experience</h2>
+				<ul class="list-unstyled">
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Adventure</a></li>
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Hotel and Restaurant</a></li>
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Beach</a></li>
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Nature</a></li>
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Camping</a></li>
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Party</a></li>
+				</ul>
+				</div>
+			</div>
+      		<!--  -->
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+					<h2 class="ftco-heading-2">Have a Questions?</h2>
+					<div class="block-23 mb-3">
+						<ul>
+							<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+							<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+							<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- row -->
+		<!-- Copyright-->
+		<div class="row">
+      		<div class="col-md-12 text-center">
+				<p>
+					<!-- Copyright-->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Copyright-->
+				</p>
+			</div>
+		</div><!-- copyright -->
+	</div><!-- contaimer -->
+</footer><!-- footer -->
     
+  
+
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
 	<svg class="circular" width="48px" height="48px">
@@ -507,7 +619,20 @@
 	</svg>
 </div>
 
-<!-------------script 스크립트 ------------->
-<jsp:include page="include/resource_script.jsp"></jsp:include>
+<!-------------script 스크립트------------->
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/popper.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/aos.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
+
 </body>
 </html>
