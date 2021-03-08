@@ -1,3 +1,4 @@
+
 create sequence premium_seq;
 
 CREATE TABLE premium(
@@ -17,4 +18,5 @@ CREATE TABLE premium(
 	caption VARCHAR2(100), 
 	content CLOB,
 	regdate DATE
+
 );

@@ -4,11 +4,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head><!-- 헤드 -->
 <!-------------타이틀 (페이지 제목)------------->
 <title>TRIBUS</title>
+
 <!------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
 
@@ -44,6 +46,9 @@
  -->
 
 </head><!-- 헤드 -->
+
+
+</head><!-- 헤드 -->
 <!-------------body 바디 영역 ------------->
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="z-index: 1">
 <!-- floting bar -->
@@ -56,6 +61,7 @@
 </div>
 <!-------------navbar 네비바------------->
 <jsp:include page="include/navbar.jsp"></jsp:include>
+
 <!-------------Home 홈 섹션  ------------->	  
 <section id="home-section" class="hero">
 	<!--회색 배경 그림 -->
@@ -184,7 +190,13 @@
 			<!--제목-->
 			<h2 class="mb-4">Premium contents</h2>
 			<!--내용 -->
+
 			<p id="font_1">당신을 위한 추천 !</p>			
+
+			<p id="font_1">광고 광고중 대놓고 광고중</p>
+			<!-- 버튼 -->
+			<a id="font_1" href="${pageContext.request.contextPath }/board_premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
+
 		</div>
 		</div>
 	
@@ -363,7 +375,7 @@
 			<!---- 세번째 POST2 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_2.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -504,10 +516,18 @@
 				</div><!-- row -->
 			</div><!----Service 서비스 정보---->      
 		</div><!-- row -->
+
 	</div><!--container -->
 </section><!-- Service 섹션-->		
 <!------------- footer ------------->    
 <jsp:include page="include/footer.jsp"></jsp:include>    
+
+	</div><!--container 컨테이너-->
+</section><!-- Service 섹션-->
+		
+<!------------- footer ------------->    
+<jsp:include page="include/footer.jsp"></jsp:include>
+
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
 	<svg class="circular" width="48px" height="48px">
@@ -542,5 +562,7 @@ $(document).ready(function() {
 
 });
 </script>
+<!-------------script 스크립트 ------------->
+<jsp:include page="include/resource_script.jsp"></jsp:include>
 </body>
 </html>
