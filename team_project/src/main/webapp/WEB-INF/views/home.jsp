@@ -4,7 +4,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- css  -->
+  
+<!-------------- css 영역------------->  
+<jsp:include page="include/resource.jsp"></jsp:include>
+
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
@@ -532,7 +535,7 @@
 			</div><!----Service 서비스 정보---->
       
 		</div><!-- row -->
-	</div><!--container -->
+	</div><!--container 컨테이너-->
 </section><!-- Service 섹션-->
 		
 <!------------- footer ------------->    
