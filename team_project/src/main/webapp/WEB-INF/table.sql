@@ -10,8 +10,7 @@ CREATE TABLE premium(
 	imagePath VARCHAR2(100),
 	regdate DATE
 );
-drop
- 
+
 CREATE TABLE premium(
 	num NUMBER PRIMARY KEY, 
 	writer VARCHAR2(100),

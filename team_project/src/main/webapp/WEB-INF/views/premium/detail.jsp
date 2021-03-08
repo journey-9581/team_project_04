@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>FreeBoard Detail</title>
+<title>Premium Detail</title>
 <!------------- css 영역------------->  
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
@@ -124,7 +124,7 @@
 				<!--대분류-->
 				<span class="subheading">contents</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/premium/list.do">Premium</a></h2>
 				<!--소분류 한글 -->
 				<p id="font_1">자유게시판</p>
 				<!--수정,삭제 버튼  -->
