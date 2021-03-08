@@ -134,4 +134,6 @@ public class UserController {
 		mView.setViewName("user/private/update");
 		return mView;
 	}
+	
+	//
 }

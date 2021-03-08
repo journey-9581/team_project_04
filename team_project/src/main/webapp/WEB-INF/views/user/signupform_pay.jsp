@@ -8,6 +8,8 @@
 	}
 </style>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <head>
 <title>TRIBUS</title>
 <meta charset="UTF-8">
@@ -49,6 +51,8 @@
 				<small class="form-text text-muted">000-0000-0000의 형식으로 작성해주세요</small>
 				<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
 			</div>
+			<p>아임포트 결제 모듈 테스트</p>
+			<button id="check_module" type="button">아임포트 결제 모듈 테스트</button>
 			<button class="btn btn-outline-primary" type="submit">가입</button>
 		</form>
 	</div>
@@ -142,6 +146,36 @@
 					isIdValid=true;
 				}
 			}
+		});
+	});
+	$("#check_module").click(function(){
+		var IMP = window.IMP;
+		IMP.init('imp13797853');
+		IMP.request_pay({
+			pg: 'html5_inicis',
+			pay_method: 'card',
+			merchant_uid: 'merchant_'+new Date().getTime(),
+			name: '유료 회원 가입',
+			amount: '10000',
+			buyer_email: 'iamport@siot.do',
+			buyer_name: '구매자이름',
+			buyer_tel: '010-1234-5678',
+			buyer_addr: '서울특별시 강남구 삼성동',
+			buyer_postcode: '12345',
+			m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+		}, function (rsp) {
+			console.log(rsp);
+			if(rsp.success){
+				var msg='결제가 완료되었습니다';
+				msg += '고유 ID : ' + rsp.imp_uid;
+				msg += '상점 거래 ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 ' + rsp.apply_num;
+			} else {
+				var msg = '결제에 실패하였습니다';
+				msg += '에러내용 : ' + rsp.error_msg;
+			}
+			alert(msg);
 		});
 	});
 	</script>
