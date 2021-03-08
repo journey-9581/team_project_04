@@ -10,7 +10,7 @@
 <!-------------타이틀 (페이지 제목)------------->
 <title>TRIBUS</title>
 
-<!------------- css 영역------------->  
+<!-------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
