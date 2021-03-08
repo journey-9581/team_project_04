@@ -5,6 +5,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head><!-- 헤드 -->
+<!-------------타이틀 (페이지 제목)------------->
+<title>TRIBUS</title>
+
 <!------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
 
@@ -13,6 +19,22 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+/* floting bar를 위한 css style 
+	#floatwrap {margin:0 auto;text-align:center;}
+	#quick_bg {margin:0 auto;text-align:center;width:300px;position:relative;}
+	#quick {position:absolute;z-index:2;top:0px;width:10px;right:0px;}
+	#floatcontainer {position:relative;}*/
+	
+/* floating bar */
+	#floatMenu {
+	position: absolute;
+	width: 100px;
+	height: 200px;
+	left: 95.7%;
+	top: 650px;
+	z-index: 5;
+	text-align: center;
+}
 </style>
 <!-- 
 	CSS ,js,image 링크 주소	
@@ -22,11 +44,21 @@
 	${pageContext.request.contextPath }/resources/image_p/
 	
  -->
+
 </head><!-- 헤드 -->
 
-<!-------------body 바디 영역 ------------->
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
+</head><!-- 헤드 -->
+<!-------------body 바디 영역 ------------->
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="z-index: 1">
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="height: auto; width: auto; color: white;">
+	<div>
+		<a href="#home-section">
+			<img src="${pageContext.request.contextPath }/resources/images7/chevron-up-solid.svg" style="width: 50px; height: 50px;"/>
+		</a>
+	</div>	
+</div>
 <!-------------navbar 네비바------------->
 <jsp:include page="include/navbar.jsp"></jsp:include>
 
@@ -112,6 +144,7 @@
 
 <!-------------about 소개글------------->
 <section class="ftco-counter img ftco-section" id="about-section">
+
 	<div class="container">
 		<div class="row no-gutters d-flex">
 			<!--소개글 이미지 -->
@@ -145,21 +178,25 @@
 		</div>
 	</div>
 </section><!-- about 소개글 섹션 -->
-    
+
 <!-------------contents1 컨텐츠 유료 ------------->
-<section class="ftco-section" id="contents-section">
+<section class="ftco-section" id="premium-section1">
   	<div class="container">
 		<!---- 제목 부분 ---->
 		<div class="row justify-content-center pb-5">
 		<div class="col-md-12 heading-section text-center ftco-animate">
 			<!--소제목-->
-			<span id="font_1" class="subheading"> 유료광고</span>
+			<span id="font_1" class="subheading"> premium</span>
 			<!--제목-->
-			<h2 class="mb-4">Premium Contents1 </h2>
+			<h2 class="mb-4">Premium contents</h2>
 			<!--내용 -->
+
+			<p id="font_1">당신을 위한 추천 !</p>			
+
 			<p id="font_1">광고 광고중 대놓고 광고중</p>
 			<!-- 버튼 -->
 			<a id="font_1" href="${pageContext.request.contextPath }/board_premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
+
 		</div>
 		</div>
 	
@@ -243,7 +280,7 @@
 					</a>
 				</div><!--project2 -->
 			</div><!-- 두번째 POST2 -->
-	
+
 			<!---- 세번째 POST3 ---->
 			<div class="col-md-6 col-lg-4 ftco-animate">
 				<div class="project">
@@ -283,9 +320,26 @@
 		</div><!--row -->
 	</div><!--container -->
 </section><!-- contents1 섹션-->
-    
+<!--  reservation part 를 premium part 로 병합 -->
+<section class="ftco-intro img" id="premium-section2" style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_3.jpg)"><!--이미지 -->
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-9 text-center">
+				<!-- 제목 -->
+				<h2>Premium</h2>
+				<!-- 내용 -->
+				<p id="font_1">프리미엄 업체 더보기 </p>
+				<!-- 버튼 -->
+				<p id="font_1" class="mb-0">
+					<a href="${pageContext.request.contextPath }/premium/list.do" class="btn btn-white px-4 py-3">More Detail</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section><!-- premium --> 섹션-->        
 <!-------------contents2 컨텐츠------------->
-<section class="ftco-section bg-light" id="blog-section">
+<section class="ftco-section bg-light" id="blog-section" style="z-index: 1">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-5">
 			<div class="col-md-7 heading-section text-center ftco-animate">
@@ -303,7 +357,7 @@
 			<!---- 세번째 POST1 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/contents1/review.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -374,27 +428,6 @@
 		</div><!-- row -->
 	</div><!-- container -->
 </section><!-- contents2 섹션 -->
-		
-<!-------------Reservation 예약 섹션 ------------->
-<section class="ftco-intro img" id="Reservation-section" 
-	style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_3.jpg);"><!--이미지 -->
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-9 text-center">
-				<!-- 제목 -->
-				<h2>Reservation</h2>
-				<!-- 내용 -->
-				<p id="font_1">내용 예약 발권 여기로!! </p>
-				<!-- 버튼 -->
-				<p id="font_1" class="mb-0">
-					<a href="#" class="btn btn-white px-4 py-3">자세히 보기</a>
-				</p>
-			</div>
-		</div>
-	</div>
-</section><!--Reservation 섹션-->
-  
 <!-------------Service 서비스 섹션 ------------->
 <section class="ftco-section contact-section ftco-no-pb" id="service-section">
 	<div class="container">
@@ -407,8 +440,7 @@
 				<!-- 내용 -->
 				<p id="font_1">서비스 내용 어쩌구 저쩌구 블라블라 아무말 아무말 대잔치</p>
 			</div>
-		</div>
-		
+		</div>		
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
@@ -429,8 +461,7 @@
 						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
 					</div>
 				</form>   
-			</div><!--Q&A form-->
-			
+			</div><!--Q&A form-->			
 			<!----Service 서비스 정보---->
 			<div class="col-md-5 d-flex">
 				<div class="row d-flex contact-info mb-5">
@@ -445,8 +476,7 @@
 								<p>198 West 21th Street, Suite 721 New York NY 10016</p>
 							</div>
 						</div>					
-					</div>
-					
+					</div>					
 					<div class="col-md-12 ftco-animate">
 						<div class="box p-2 px-3 bg-light d-flex">
 							<div class="icon mr-3">
@@ -458,8 +488,7 @@
 								<p><a href="tel://1234567920">+ 1235 2355 98</a></p>
 							</div>
 						</div>
-					</div>
-					
+					</div>					
 					<div class="col-md-12 ftco-animate">
 						<div class="box p-2 px-3 bg-light d-flex">
 							<div class="icon mr-3">
@@ -471,8 +500,7 @@
 								<p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
 							</div>
 						</div>
-					</div>
-					
+					</div>					
 					<div class="col-md-12 ftco-animate">
 						<div class="box p-2 px-3 bg-light d-flex">
 							<div class="icon mr-3">
@@ -486,15 +514,20 @@
 						</div>
 					</div>
 				</div><!-- row -->
-			</div><!----Service 서비스 정보---->
-      
+			</div><!----Service 서비스 정보---->      
 		</div><!-- row -->
+
+	</div><!--container -->
+</section><!-- Service 섹션-->		
+<!------------- footer ------------->    
+<jsp:include page="include/footer.jsp"></jsp:include>    
+
 	</div><!--container 컨테이너-->
 </section><!-- Service 섹션-->
 		
 <!------------- footer ------------->    
 <jsp:include page="include/footer.jsp"></jsp:include>
-    
+
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
 	<svg class="circular" width="48px" height="48px">
@@ -502,6 +535,33 @@
 		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
 	</svg>
 </div>
+
+<!-------------script 스크립트------------->
+<jsp:include page="include/resource_script.jsp"></jsp:include>
+<script>
+$(document).ready(function() {
+
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition;
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
+</script>
 <!-------------script 스크립트 ------------->
 <jsp:include page="include/resource_script.jsp"></jsp:include>
 </body>

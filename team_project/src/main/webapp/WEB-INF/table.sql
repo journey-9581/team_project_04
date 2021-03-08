@@ -1,9 +1,22 @@
-CREATE TABLE users_team(
-	id VARCHAR2(100) PRIMARY KEY,
-	pwd VARCHAR2(100) NOT NULL,
-	email VARCHAR2(100),
-	proflie VARCHAR2(100),
-	pay CHAR(3) DEFAULT 'no',
-	regdate DATE,
-	newpwd VARCHAR2(100)
+
+create sequence premium_seq;
+
+CREATE TABLE premium(
+	num NUMBER PRIMARY KEY, 
+	writer VARCHAR2(100),
+	caption VARCHAR2(100), 
+	imagePath VARCHAR2(100), 
+	content CLOB,
+	viewCount NUMBER,
+	imagePath VARCHAR2(100),
+	regdate DATE
+);
+
+CREATE TABLE premium(
+	num NUMBER PRIMARY KEY, 
+	writer VARCHAR2(100),
+	caption VARCHAR2(100), 
+	content CLOB,
+	regdate DATE
+
 );
