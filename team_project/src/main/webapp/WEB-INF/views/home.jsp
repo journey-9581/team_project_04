@@ -178,9 +178,9 @@
 		</div>
 	</div>
 </section><!-- about 소개글 섹션 -->
-
-<!-------------contents1 컨텐츠 유료 ------------->
-<section class="ftco-section" id="premium-section1">
+    
+<!------------contents1 컨텐츠 유료 ------------->
+<section class="ftco-section" id="contents-section">
   	<div class="container">
 		<!---- 제목 부분 ---->
 		<div class="row justify-content-center pb-5">
