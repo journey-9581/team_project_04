@@ -51,8 +51,8 @@
 				<small class="form-text text-muted">000-0000-0000의 형식으로 작성해주세요</small>
 				<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
 			</div>
-			<p>아임포트 결제 모듈 테스트</p>
-			<button id="check_module" type="button">아임포트 결제 모듈 테스트</button>
+			<p>유료회원 결제</p>
+			<button id="check_module" type="button">유료회원 결제</button>
 			<button class="btn btn-outline-primary" type="submit">가입</button>
 		</form>
 	</div>
