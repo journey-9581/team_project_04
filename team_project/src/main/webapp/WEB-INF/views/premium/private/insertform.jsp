@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
 <!-------------타이틀 (페이지 제목)------------->
-<title>Image upload</title>
+<title>Premium</title>
 <!------------- css 영역------------->  
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 
@@ -29,7 +29,7 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--대분류-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/premium/list.do">FreeBoard</a></span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/premium/list.do">Premium</a></span>
 					<!--소분류 영어-->
 					<h2 class="mb-4">Post</h2>					
 				</div>
@@ -104,7 +104,7 @@
 			//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 		},
 		fCreator: "createSEditor2"
-	});
+	});	
 	
 	function pasteHTML() {
 		var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";

@@ -9,7 +9,6 @@
 <head><!-- 헤드 -->
 <!-------------타이틀 (페이지 제목)------------->
 <title>TRIBUS</title>
-
 <!------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
 
