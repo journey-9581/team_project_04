@@ -4,14 +4,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<head><!-- 헤드 -->
-<!-------------타이틀 (페이지 제목)------------->
-<title>TRIBUS</title>
 
 <!------------- css 영역------------->  
 <jsp:include page="include/resource.jsp"></jsp:include>
+
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
 	#font_1{
