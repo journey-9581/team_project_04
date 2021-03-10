@@ -5,12 +5,23 @@
 <configuration>
 	<!-- Mapper xml 에서 자주 사용하는 type에 별칭 부여 -->
 	<typeAliases>		
-		<typeAlias type="com.team04.spring.premium.dto.PremiumDto"
-		alias="premiumDto"/>		
+		<typeAlias type="com.team04.spring.premium.dto.PremiumDto" alias="premiumDto"/>		
+		<typeAlias type="com.team04.spring.user.dto.UserDto" alias="userDto"/>
+		<typeAlias type="com.team04.spring.gallery.dto.GalleryDto" alias="galleryDto"/>
+		<typeAlias type="com.team04.spring.freeboard.dto.FreeBoardDto" alias="freeBoardDto"/>
+		<typeAlias type="com.team04.spring.freeboard.dto.FreeCommentDto" alias="freeCommentDto"/>
+		<typeAlias type="com.team04.spring.withboard.dto.WithBoardDto" alias="withBoardDto"/>
+		<typeAlias type="com.team04.spring.withboard.dto.WithCommentDto" alias="withCommentDto"/>
 	</typeAliases>
 
 	<!-- Mapper xml 문서 위치 설정 -->
 	<mappers>
 		<mapper resource="com/team04/spring/mybatis/PremiumMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/UserMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/GalleryMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/FreeBoardMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/FreeCommentMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/WithBoardMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/WithCommentMapper.xml"/>
 	</mappers>
 </configuration>
