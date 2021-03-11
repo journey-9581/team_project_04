@@ -7,10 +7,10 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, writer, content, target_id, ref_group,
-					comment_group, deleted, TO_CHAR(board_free_comment.regdate, 'YY.MM.DD HH24:MI') AS regdate, profile
+					comment_group, deleted, TO_CHAR(board_free_comment.regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM board_free_comment
-				INNER JOIN users
-				ON board_free_comment.writer=users.id
+				INNER JOIN user_team
+				ON board_free_comment.writer=user_team.id
 				WHERE ref_group=#{ref_group}
 				ORDER BY comment_group DESC, num ASC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}		

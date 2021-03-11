@@ -26,10 +26,10 @@
 						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/signupform_select.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Sign up</a></li>
 					</c:when>
 					<c:otherwise>
-						<span class="navbar-text-black">
-							<a href="${pageContext.request.contextPath }/user/private/info.do">${id }</a>
-						</span>
-						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/logout.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Logout</a></li>
+							<!-- by도영 로그인info 디자인 수정 #e2c0bb 	#FFB6C1-->
+							<li class="nav-item"><a class="nav-link" style="width:160px; height: 40px; text-align: center; color:#e2c0bb; font-weight: bold;"  
+								href="${pageContext.request.contextPath }/user/private/info.do">${id }</a></li>					
+							<li class="nav-item"><a href="${pageContext.request.contextPath }/user/logout.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Logout</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
