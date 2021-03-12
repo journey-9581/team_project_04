@@ -43,11 +43,11 @@
 			<div class="board_list_wrap">			
 				<!-- category 카테고리 -->	
 				<h3 class="heading-sidebar">Select Category</h3>
-				<div class="tagcloud">
-					<a id="font_1" href="list.do" class="tag-cloud-link">전체</a>
-					<a id="font_1" href="#" class="tag-cloud-link">잡담</a>
-					<a id="font_1" href="#" class="tag-cloud-link">정보</a>
-					<a id="font_1" href="#" class="tag-cloud-link">나눔</a>
+				<div id="font_1" class="tagcloud">
+					<a href="list.do" class="tag-cloud-link">전체</a>
+					<a href="list.do?category=잡담" class="tag-cloud-link">잡담</a>
+					<a href="list.do?category=정보" class="tag-cloud-link">정보</a>
+					<a href="list.do?category=나눔" class="tag-cloud-link">나눔</a>
 				</div>
 				<!-- 테이블 -->
 				<table class="board_list">
@@ -66,7 +66,7 @@
 						<tr>
 							<td style="color: purple;">Notice</td>
 							<td>공지</td>
-							<td><a href="#">공지제목</a></td>
+							<td><a href="${pageContext.request.contextPath }/freeboard/notice.do">공지</a></td>
 							<td>admin</td>
 							<td>날짜</td>
 							<td>조회</td>
@@ -96,7 +96,7 @@
 							<c:choose>
 								<c:when test="${startPageNum ne 1 }">
 									<li>
-										<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }">&lt;</a>
+										<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&lt;</a>
 									</li>
 								</c:when>
 							<c:otherwise>
@@ -110,12 +110,12 @@
 								<c:choose>
 									<c:when test="${i eq pageNum }">
 										<li class="active">
-											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
 										</li>
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }">${i }</a>
+											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -124,7 +124,7 @@
 							<c:choose>
 								<c:when test="${endPageNum lt totalPageCount }">						
 									<li>
-										<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }">&gt;</a>
+										<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&gt;</a>
 									</li>
 								</c:when>
 								<c:otherwise>
@@ -142,10 +142,9 @@
 			<div class="form-group">
 				<form action="list.do" method="get" class="search-form">				
 					<select id="font_1" name="condition" id="condition">
-						<option value="title_content_category" ${condition eq 'title_content_category' ? 'selected' : '' }>제목+작성자+카테고리</option>
+						<option value="title_writer" ${condition eq 'title_writer' ? 'selected' : '' }>제목+작성자</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-						<option value="category" ${condition eq 'category' ? 'selected' : '' }>카테고리</option>
 					</select>		
 					<input id="font_1" class="form-control" type="text" name="keyword" placeholder="검색어..." value="${keyword }"/>
 					<button class="btn btn-primary px-5 py-8 mt-1" type="submit">Search</button>		

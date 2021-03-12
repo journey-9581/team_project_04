@@ -144,7 +144,7 @@
 					<h3 class="heading-sidebar">Contents Categories</h3>
 					<ul class="categories">
 						<li><a href="#">Review</a></li>
-						<li><a href="#">With Us</a></li>
+						<li><a href="${pageContext.request.contextPath }/withboard/list.do">With Us</a></li>
 						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></li>
 						<li><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></li>
 					</ul>
@@ -260,7 +260,7 @@
 
 <!-------------script 스크립트------------->
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
-<jsp:include page="../include/resource_script.jsp"></jsp:include> 
+
 <script>
 //댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(document).on("click",".comment-update-link", function(){
@@ -412,5 +412,17 @@
 		}
 	});			
 </script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/popper.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/aos.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
 </body>
 </html>
