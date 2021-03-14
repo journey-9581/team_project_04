@@ -1,4 +1,4 @@
-package com.team04.spring.controller.fqn;
+package com.team04.spring.service.controller;
 
 import java.io.*;
 import java.sql.*;

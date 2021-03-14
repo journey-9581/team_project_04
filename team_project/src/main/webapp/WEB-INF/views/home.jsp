@@ -439,11 +439,25 @@
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
-					</div>
+				<%-- 	<div class="form-group">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">이메일</p>
+							</c:otherwise>
+						</c:choose>
+					</div> --%>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
 							name="title" id="sertitle">
@@ -582,28 +596,26 @@ $(document).ready(function() {
 			}
 		});
 		
-		//이메일을 입력했을때 실행할 함수 등록
+		
 		$("#sertitle").on("input", function(){
 			let inputTitle=$("#sertitle").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sertitle").removeClass("is-valid is-invalid");
 			if(!inputTitle){
 				isTitleValid=false;
 			}else{
 				isTitleValid=true;
 				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isTitleValid);
 		});
 		$("#sercontent").on("input", function(){
 			let inputContent=$("#sercontent").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sercontent").removeClass("is-valid is-invalid");
 			if(!inputContent){
 				isContentValid=false;
 			}else{
 				isContentValid=true;
-				$("#sercontent").addClass("is-valid");
+				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isContentValid);
 		});
 });
 </script>

@@ -1,23 +1,16 @@
 package com.team04.spring.freeboard;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
 
-import com.team04.spring.freeboard.dto.FreeBoardDto;
-import com.team04.spring.freeboard.dto.FreeCommentDto;
-import com.team04.spring.freeboard.service.FreeBoardService;
+import com.team04.spring.freeboard.dto.*;
+import com.team04.spring.freeboard.service.*;
 
 
 
@@ -99,13 +92,14 @@ public class FreeBoardController {
 		return mView;
 	}
 	
-	//freeboard 글 목록 요청처리
-	@RequestMapping("/freeboard/list")
-	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
-		service.getList(mView, request);
-		mView.setViewName("freeboard/list");
-		return mView;
-	}
+   //freeboard 글 목록 요청처리
+   @RequestMapping("/freeboard/list")
+   public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
+      service.getList(mView, request);      
+      mView.setViewName("freeboard/list");
+      return mView;
+   }
+
 	
 	//freeboard 새글 추가 폼 요청처리
 	@RequestMapping("/freeboard/private/insertform")
