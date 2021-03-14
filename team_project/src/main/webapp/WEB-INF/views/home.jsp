@@ -470,12 +470,18 @@
 						
 					</div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</form>
 			</div>
