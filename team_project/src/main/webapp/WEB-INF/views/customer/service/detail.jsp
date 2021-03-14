@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>FreeBoard Detail</title>
 <!------------- css 영역------------->  
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
 <!-- css  -->
 
@@ -114,7 +114,7 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar.jsp"></jsp:include>
 
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
@@ -297,10 +297,14 @@
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
-					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
@@ -358,12 +362,12 @@
 	<img src="${pageContext.request.contextPath }/resources/images/ajax-loader.gif"/>
 </div>   			
 <!------------- footer ------------->    
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 
 <!-------------script 스크립트------------->
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
-<jsp:include page="../include/resource_script.jsp"></jsp:include> 
+<jsp:include page="../../include/resource_script.jsp"></jsp:include> 
 <script>
 	
 	//아이디 유효성 여부를 관리할 변수 만들고 초기값 부여하기

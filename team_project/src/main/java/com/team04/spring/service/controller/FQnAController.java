@@ -55,14 +55,22 @@ public class FQnAController {
 	@RequestMapping("insert")
 	String insert(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("ㅎㅇ");
 		int secrete = 0; //0 공개글, 1비밀글
 		if (request.getParameter("secrete") != null)
 			secrete=1;
 		
+		HttpSession session = request.getSession();
+		
+		String userID = null;
+		if (session.getAttribute("id") != null){
+			userID = (String) session.getAttribute("id");
+		} else {
+			return "redirect:list.do";
+		}
+		
 		FQnA dto = new FQnA();
 		dto.setTitle(request.getParameter("title"));
-		dto.setWriterId("wockd9600");
+		dto.setWriterId(userID);
 		dto.setContent(request.getParameter("content"));
 		dto.setSecrete(secrete);
 		fqnaService.insert(dto);

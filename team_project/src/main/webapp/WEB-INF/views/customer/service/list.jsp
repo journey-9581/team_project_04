@@ -16,7 +16,7 @@
 <!-------------타이틀 (페이지 제목)------------->
 <title>FreeBoard</title>
 <!------------- css 영역------------->
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
 /*한글 폰트 적용 (사용법 id="font_1")*/
 #font_1 {
@@ -79,7 +79,7 @@
 </head>
 <body>
 	<!-------------navbar 네비바------------->
-	<jsp:include page="../include/navbar.jsp"></jsp:include>
+	<jsp:include page="../../include/navbar.jsp"></jsp:include>
 
 	<section class="ftco-section" id="contents-section">
 		<div class="container">
@@ -230,11 +230,25 @@
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
-					</div>
+				<%-- 	<div class="form-group">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">이메일</p>
+							</c:otherwise>
+						</c:choose>
+					</div> --%>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
 							name="title" id="sertitle">
@@ -247,12 +261,18 @@
 						
 					</div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</form>
 			</div>
@@ -319,9 +339,9 @@
 		});
 	</script>
 	<!------------- footer ------------->
-	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 	<!-------------script 스크립트------------->
-	<jsp:include page="../include/resource_script.jsp"></jsp:include>
+	<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 </body>
 </html>
