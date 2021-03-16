@@ -138,7 +138,7 @@
 					<ul class="categories">
 						<li><a href="#">Review</a></li>
 						<li><a href="${pageContext.request.contextPath }/withboard/list.do">With Us</a></li>
-						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">withboard</a></li>
+						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></li>
 						<li><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></li>
 					</ul>
 				</div>

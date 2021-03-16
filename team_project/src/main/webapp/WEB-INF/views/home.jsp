@@ -325,7 +325,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="#" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/food2.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -343,7 +343,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_2.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/with.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -361,7 +361,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="${pageContext.request.contextPath }/freeboard/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_3.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/light.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -379,7 +379,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="gallery/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/kbg.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">

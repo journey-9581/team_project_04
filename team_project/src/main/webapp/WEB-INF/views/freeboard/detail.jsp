@@ -334,7 +334,7 @@
 	function deleteConfirm(){
 		var isDelete=confirm("이 글을 삭제 하시겠습니까?");
 		if(isDelete){
-			location.href="delete.do?num=${dto.num}";
+			location.href="${pageContext.request.contextPath }/freeboard/private/delete.do?num=${dto.num}";
 		}
 	}
 	
