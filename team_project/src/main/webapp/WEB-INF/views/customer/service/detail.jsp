@@ -130,10 +130,10 @@
 				<p id="font_1">자유게시판</p>
 				<!--수정,삭제 버튼  -->
 				<!-- 관리자 아이디면 삭제 or 수정 -->
-				<%-- <c:if test="${dto.writerId eq id }"></c:if> --%>
+				<%-- <c:if test="${manage}='yes"></c:if> --%>
 					<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
 							data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>	
-					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete Post</button>
+					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletemodal">Delete Post</button>
 			</div>
 		</div>	
 
@@ -260,6 +260,28 @@
 	</div><!--container -->	  	
 </section><!-- contents1 섹션-->
 
+
+<!-- delete Modal -->
+		<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        	정말 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" onclick="location.href='delete.do?num=${dto.num }'">확인</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 <!-- reply modal 부분 -->
 	<div class="modal fade" id="replymodal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -319,13 +341,17 @@
 					</div>
 					<div><input style="display:none;" name="num" id="num" value="${dto.num }"></input></div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
-					</div>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -336,26 +362,8 @@
 		</div>
 	</div>
 	
-	<!-- delete Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		        	정말 삭제하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" onclick="location.href='delete.do?num=${dto.num }'">확인</button>
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+	
+		
 	
 	
 <div class="loader">

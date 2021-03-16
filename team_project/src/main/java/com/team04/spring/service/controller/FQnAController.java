@@ -79,11 +79,32 @@ public class FQnAController {
 	}
 	
 	@RequestMapping("detail")
-	String detail(@RequestParam int num, Model model) throws SQLException {
+	String detail(@RequestParam int num, Model model, HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		
+		
+		HttpSession session = request.getSession();
+		String userID = "";
+		if (session.getAttribute("id") != null){
+			userID = (String) session.getAttribute("id");
+		}
+		String manage = "";
+		if (session.getAttribute("manage") != null){
+			manage = (String) session.getAttribute("manage");
+			model.addAttribute("manage", manage);
+		}
+		
+		
+		
 		FQnA dto = null;
 		dto = fqnaService.detail(num);
-		model.addAttribute("dto", dto);
-		return "customer/service/detail";
+		
+		if (userID.equals(dto.getWriterId()) || dto.getSecrete() == 0 || manage.equals("yes")) {
+			model.addAttribute("dto", dto);
+			return "customer/service/detail";
+		}
+		else {
+			return "customer/service/permission";
+		}
 	}
 	
 	
@@ -106,7 +127,6 @@ public class FQnAController {
 	}
 	@RequestMapping("delete")
 	String delete(@RequestParam int num) throws SQLException, ClassNotFoundException {
-		System.out.println("?");
 		fqnaService.delete(num);
 		return "redirect:list.do";
 	}
