@@ -315,9 +315,7 @@
 				<!-- 제목 -->
 				<h2 class="mb-4">Contents2</h2>
 				<!-- 내용 -->
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-				<!-- 버튼 -->
-				<a id="font_1 href="#" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
+				<p>Eat,Talking,Share</p>							
 			</div>
 		</div>
 	<div class="row d-flex">
