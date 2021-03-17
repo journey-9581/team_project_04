@@ -76,17 +76,19 @@ public class FQnAServiceDao implements FQnAService{
 	}
 	
 	// Scalar 
-	public int getCount() throws ClassNotFoundException, SQLException {
+	public int getCount(int isQnA) throws ClassNotFoundException, SQLException {
 		int count = 0;
 		
-		String sql = "SELECT COUNT(NUM) COUNT FROM serviceBBS";	
+		String sql = "SELECT COUNT(NUM) COUNT FROM serviceBBS WHERE BBSTYPE=?";	
 		
 		//Class.forName(driver);
 		//Connection con = DriverManager.getConnection(url,uid, pwd);
 		Connection con = dataSource.getConnection();
-		Statement st = con.createStatement();
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, isQnA);
 		
-		ResultSet rs = st.executeQuery(sql);
+		ResultSet rs = st.executeQuery();
+		
 		
 		if(rs.next())
 			count = rs.getInt("COUNT");		
@@ -104,13 +106,14 @@ public class FQnAServiceDao implements FQnAService{
 		String content = dto.getContent();	
 		String writerId = dto.getWriterId();
 		int secrete = dto.getSecrete();
+		int bbsType = dto.getBbsType();
 		
 		String sql = "INSERT INTO serviceBBS VALUES (serBBS_SEQ.NEXTVAL," + 
 				"    ?," + //title
 				"    ?," + //content
 				"    ?," + //id
 				"    SYSDATE," + //regdate
-				"    0," +
+				"    ?," +
 				"    serBBS_SEQ.CURRVAL," + //ref
 				"     ?)";	//secrete
 		
@@ -123,7 +126,8 @@ public class FQnAServiceDao implements FQnAService{
 		st.setString(1, title);
 		st.setString(2, content);
 		st.setString(3, writerId);
-		st.setInt(4, secrete);
+		st.setInt(4, bbsType);
+		st.setInt(5, secrete);
 		
 		
 		st.executeUpdate();
