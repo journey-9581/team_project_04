@@ -81,7 +81,7 @@ public class FQnAController {
 		dto.setSecrete(secrete);
 		dto.setBbsType(bbsType);
 		fqnaService.insert(dto);
-
+		
 		return "redirect:list.do";
 	}
 	
@@ -95,15 +95,15 @@ public class FQnAController {
 			userID = (String) session.getAttribute("id");
 		}
 		String manage = "";
+		manage.toCharArray();
 		if (session.getAttribute("manage") != null){
 			manage = (String) session.getAttribute("manage");
 			model.addAttribute("manage", manage);
 		}
 		
-		
-		
 		FQnA dto = null;
 		dto = fqnaService.detail(num);
+
 		
 		if (userID.equals(dto.getWriterId()) || dto.getSecrete() == 0 || manage.equals("yes")) {
 			model.addAttribute("dto", dto);
@@ -119,6 +119,27 @@ public class FQnAController {
 	String insertf() {
 		return "customer/service/insertfna";
 	}
+	
+	
+	//F&A updatef
+	@RequestMapping("updatef")
+	String updatef(HttpServletRequest request, Model model) throws SQLException {
+		int num = Integer.parseInt(request.getParameter("num"));
+		FQnA dto = null;
+		dto = fqnaService.detail(num);
+		model.addAttribute("dto", dto);
+		return "customer/service/update";
+	}
+	
+	//F&A update
+		@RequestMapping("update")
+		String update(HttpServletRequest request) throws SQLException, ClassNotFoundException {
+			fqnaService.update(request);
+			request.setAttribute("num", request.getParameter("num"));
+			System.out.println(request.getParameter("num"));
+			return "forward:detail.do";
+		}
+		
 	
 	
 	@RequestMapping("reply")

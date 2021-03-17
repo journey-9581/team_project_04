@@ -129,10 +129,14 @@
 				<!--소분류 한글 -->
 				<p id="font_1">자유게시판</p>
 				<!--수정,삭제 버튼  -->
-				<!-- 관리자 아이디면 삭제 or 수정 -->
-				<%-- <c:if test="${manage}='yes"></c:if> --%>
+				<!-- 관리자 아이디면 수정 "${manage}='yes" -->
+				<c:if test="${dto.bbsType == 0}">
 					<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
 							data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>	
+				</c:if>
+					<c:if test="${dto.bbsType == 1}">
+						<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" onclick="location.href='updatef.do?num=${dto.num }'">Update Post</button>
+					</c:if>
 					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletemodal">Delete Post</button>
 			</div>
 		</div>	

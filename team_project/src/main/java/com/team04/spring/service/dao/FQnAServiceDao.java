@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
+import javax.servlet.http.*;
 import javax.sql.*;
 
 import org.springframework.beans.factory.annotation.*;
@@ -218,41 +219,36 @@ public class FQnAServiceDao implements FQnAService{
 		
 	}
 	
-	public int update(FQnAService notice) throws SQLException, ClassNotFoundException {
-		return 1;
+	public int update(HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		int num = Integer.parseInt(request.getParameter("num"));
+
+		String sql = "UPDATE serviceBBS " + 
+				"SET" + 
+				"    TITLE=?," + 
+				"    CONTENT=?" + 
+				"WHERE NUM=?";
+		
+		//Class.forName(driver);
+		//Connection con = DriverManager.getConnection(url,uid, pwd);                   
+		Connection con = dataSource.getConnection();
+		//Statement st = con.createStatement();
+		//st.ex....(sql)
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, title);
+		st.setString(2, content);
+		st.setInt(3, num);
+		
+		int result = st.executeUpdate();
+				
+		st.close();
+		con.close();
+		
+		return result;
 	}
-//		String title = notice.getTitle();
-//		String content = notice.getContent();
-//		String files = notice.getFiles();
-//		int id = notice.getId();
-//		
-//		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-//		String sql = "UPDATE NOTICE " + 
-//				"SET" + 
-//				"    TITLE=?," + 
-//				"    CONTENT=?," + 
-//				"    FILES=?" + 
-//				"WHERE ID=?";
-//		
-//		//Class.forName(driver);
-//		//Connection con = DriverManager.getConnection(url,uid, pwd);                   
-//		Connection con = dataSource.getConnection();
-//		//Statement st = con.createStatement();
-//		//st.ex....(sql)
-//		PreparedStatement st = con.prepareStatement(sql);
-//		st.setString(1, title);
-//		st.setString(2, content);
-//		st.setString(3, files);
-//		st.setInt(4, id);
-//		
-//		int result = st.executeUpdate();
-//				
-//		st.close();
-//		con.close();
-//		
-//		return result;
-//	}
-//	
+	
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 
 		String sql = "DELETE serviceBBS WHERE NUM=?";
@@ -266,11 +262,4 @@ public class FQnAServiceDao implements FQnAService{
 		st.close();
 		con.close();
 }
-
-	
-	public int update(FQnA notice) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

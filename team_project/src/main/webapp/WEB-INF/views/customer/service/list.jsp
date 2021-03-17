@@ -25,7 +25,7 @@
 </style>
 <script type="text/javascript">
 	//url에서 parameter 가져오는 함수
-	function getParam(sname) {
+	/* function getParam(sname) {
 	    var params = location.search.substr(location.search.indexOf("?") + 1);
 	    var sval = "";
 	    params = params.split("&");
@@ -34,7 +34,7 @@
 	        if ([temp[0]] == sname) { sval = temp[1]; }
 	    }
 	    return sval;
-	}
+	} */
 	
 	// (2) 말머리 구분 함수 (말머리 버튼을 누르면 실행되게 onclick을 넣어줬습니다.)
 	function searchFunction(a){
@@ -66,15 +66,15 @@
 	}
 	
 	/* (1) 페이지가 업로드 될 때 실행되는 함수 QnA의 말머리를 담당하는 0을 파라미터로 넣어줍니다. */
-	$(window).bind("pageshow", function (event) {
+	/* $(window).bind("pageshow", function (event) {
 		if (event.originalEvent.persisted) {
-			searchFunction(0);
+			searchFunction(1);
 		}
 		else {
-			searchFunction(0);
+			searchFunction(1);
 		}
 		
-	});
+	}); */
 </script>
 </head>
 <body>
