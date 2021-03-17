@@ -25,7 +25,30 @@ public class FQnAController {
 	
 
 	@RequestMapping("list")
-	String list() throws ClassNotFoundException, SQLException{
+	String list(Model model, HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException{
+		request.setCharacterEncoding("UTF-8");
+		int isQnA = 0;
+		if (request.getParameter("isQnA") != null) {
+			isQnA = Integer.parseInt(request.getParameter("isQnA")); //(3)에서 넘긴 a값
+		}
+		model.addAttribute("isQnA", isQnA);
+		
+		//js로 null check 해줬으니 java에선 가져와 사용한다.
+		int pageNum = 1;
+		if(request.getParameter("pageNum") != null) {
+			Integer.parseInt(request.getParameter("pageNum")); //(3)에서 넘긴 pageNum값
+		}
+		model.addAttribute("pageNum", pageNum);
+		
+		//폼 전송하면 게시글 작성해야함.
+		int count = fqnaService.getCount(isQnA);
+				
+		model.addAttribute("count", count);
+		
+		//(5) 페이지에 보여줄 게시글 리스트 데이터를 오라클에서 가져온다.
+		List<FQnA> list = null;
+		list = fqnaService.getList(pageNum,  isQnA);
+		model.addAttribute("list", list);
 		
 		return "customer/service/list";
 	}
