@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="place">
+	<update id="addViewCount" parameterType="int">
+		UPDATE board_place
+		SET viewCount=viewCount+1
+		WHERE num=#{num}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE board_place
+		WHERE num=#{num}
+	</delete>
+	<insert id="insert" parameterType="placeDto">
+		INSERT INTO board_place
+		(num,writer,title,category,content,viewCount,regdate)
+		VALUES(board_place_seq.NEXTVAL,#{writer},
+				#{title},#{category},#{content},0,SYSDATE)
+	</insert>
+	<update id="update" parameterType="placeDto">
+		UPDATE board_place
+		SET title=#{title}, content=#{content},category=#{category}
+		WHERE num=#{num}
+	</update>
+	<select id="getList" parameterType="placeDto" resultType="placeDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num,writer,title,category,content,viewCount,
+					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
+				FROM board_place
+				<choose>
+					<when test="title == null and writer == null">
+						WHERE category LIKE '%'||#{category}||'%'
+					</when>
+					<when test="title != null and writer != null">
+						WHERE category LIKE '%'||#{category}||'%' AND (
+						title LIKE '%'||#{title}||'%' 
+						OR writer LIKE '%'||#{writer}||'%')
+					</when>
+					<when test="title != null">
+						WHERE category LIKE '%'||#{category}||'%' AND (
+						title LIKE '%'||#{title}||'%')
+					</when>
+					<when test="writer != null">
+						WHERE category LIKE '%'||#{category}||'%' AND (
+						writer LIKE '%'||#{writer}||'%')
+					</when>
+				</choose>
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getCount" parameterType="placeDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_place
+		<choose>
+			<when test="title != null and writer != null">
+				WHERE category LIKE '%'||#{category}||'%' AND (
+				title LIKE '%'||#{title}||'%' 
+				OR writer LIKE '%'||#{writer}||'%')
+			</when>
+			<when test="title != null">
+				WHERE category LIKE '%'||#{category}||'%' AND (
+				title LIKE '%'||#{title}||'%')
+			</when>
+			<when test="writer != null">
+				WHERE category LIKE '%'||#{category}||'%' AND (
+				writer LIKE '%'||#{writer}||'%')
+			</when>
+		</choose>	
+	</select>
+	<select id="getData" parameterType="int" resultType="placeDto">
+		SELECT * 
+		FROM
+			(SELECT num,category,writer,title,content,viewCount,
+				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum, 
+				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum 
+			FROM board_place 
+			ORDER BY num DESC)
+		WHERE num=#{num}
+	</select>
+</mapper>

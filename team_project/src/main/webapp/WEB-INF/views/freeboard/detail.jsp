@@ -138,20 +138,7 @@
 
 		<!-- Post 메인 -->		
 		<div id="font_1" class="row">			
-			<!-- 사이드 컨텐츠 메뉴바 Side bar Contents Categories  -->
-			<div class="col-lg-3 sidebar ftco-animate">
-				<div class="sidebar-box ftco-animate">
-					<h3 class="heading-sidebar">Contents Categories</h3>
-					<ul class="categories">
-						<li><a href="#">Review</a></li>
-						<li><a href="${pageContext.request.contextPath }/withboard/list.do">With Us</a></li>
-						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></li>
-						<li><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></li>
-					</ul>
-				</div>
-			</div>	
-
-			<div class="col-lg-8 ftco-animate">
+			<div class="col-lg-12 ftco-animate">
 			<!-- 글 제목 -->
 			<h2 id="font_1" class="mb-3" style="text-align: center;">${dto.title }</h2>			            
 				<div class="about-author d-flex p-6 bg-light">
