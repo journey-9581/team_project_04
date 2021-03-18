@@ -55,6 +55,7 @@ public class FQnAController {
 	@RequestMapping("insert")
 	String insert(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		System.out.println("ㅎㅇ");
 		int secrete = 0; //0 공개글, 1비밀글
 		if (request.getParameter("secrete") != null)
 			secrete=1;

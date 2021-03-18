@@ -17,13 +17,6 @@
 			<ul class="navbar-nav nav ml-auto">
 				<li class="nav-item"><a href="${pageContext.request.contextPath }/" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>about</span></a></li>
-
-				<li class="nav-item"><a href="#premium-section1" class="nav-link"><span>Premium</span></a></li>
-				<li class="nav-item"><a href="#" class="nav-link"><span>contents</span></a></li>				
-				<li class="nav-item"><a href="#service-section" class="nav-link"><span>service</span></a></li>
-				<li class="nav-item"><a href="users/loginform.do" class="btn btn-primary px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;" >Login</a></li>
-				<li class="nav-item"><a href="users/signup_form.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Sign up</a></li>
-
 				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>contents</span></a></li>
 				<li class="nav-item"><a href="#Reservation-section" class="nav-link"><span>Reservation</span></a></li>
 				<li class="nav-item"><a href="#service-section" class="nav-link"><span>service</span></a></li>
@@ -33,13 +26,12 @@
 						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/signupform_select.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Sign up</a></li>
 					</c:when>
 					<c:otherwise>
-						<span class="navbar-text">
-							<a href="${pageContext.request.contextPath }/user/private/info.do">${id }</a>
-						</span>
-						<li class="nav-item"><a href="${pageContext.request.contextPath }/user/logout.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Logout</a></li>
+							<!-- by도영 로그인info 디자인 수정 #e2c0bb 	#FFB6C1-->
+							<li class="nav-item"><a class="nav-link" style="width:160px; height: 40px; text-align: center; color:#e2c0bb; font-weight: bold;"  
+								href="${pageContext.request.contextPath }/user/private/info.do">${id }</a></li>					
+							<li class="nav-item"><a href="${pageContext.request.contextPath }/user/logout.do" class="btn btn-white px-5 py-8 mt-1" style="width:160px; height: 40px; text-align: center;">Logout</a></li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
 		</div>
 	</div><!-- div container -->
