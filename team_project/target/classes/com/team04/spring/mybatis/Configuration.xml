@@ -12,6 +12,7 @@
 		<typeAlias type="com.team04.spring.freeboard.dto.FreeCommentDto" alias="freeCommentDto"/>
 		<typeAlias type="com.team04.spring.withboard.dto.WithBoardDto" alias="withBoardDto"/>
 		<typeAlias type="com.team04.spring.withboard.dto.WithCommentDto" alias="withCommentDto"/>
+		<typeAlias type="com.team04.spring.pay.dto.PayDto" alias="payDto"/>
 	</typeAliases>
 
 	<!-- Mapper xml 문서 위치 설정 -->
@@ -23,5 +24,6 @@
 		<mapper resource="com/team04/spring/mybatis/FreeCommentMapper.xml"/>
 		<mapper resource="com/team04/spring/mybatis/WithBoardMapper.xml"/>
 		<mapper resource="com/team04/spring/mybatis/WithCommentMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/PayMapper.xml"/>
 	</mappers>
 </configuration>

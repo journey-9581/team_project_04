@@ -16,7 +16,7 @@
 <title>Join us</title>
 </head>
 <jsp:include page="../include/resource.jsp"></jsp:include>
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body class="pt-5" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<div class="container">
 		<form action="signup.do" method="post" id="myForm" novalidate>
 			<input type="hidden" name="pay" id="pay" value="no"/>

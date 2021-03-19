@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team04.spring.pay.dto.PayDto;
+import com.team04.spring.pay.service.PayService;
 import com.team04.spring.user.dto.UserDto;
 import com.team04.spring.user.service.UserService;
 
@@ -25,6 +27,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	@Autowired
+	private PayService paySerivce;
 	
 	//회원 가입 선택
 	@RequestMapping("/user/signupform_select")
@@ -51,13 +55,27 @@ public class UserController {
 		return "user/signup";
 	}
 	
-	//ajax 요청 처리
+	//id 확인 ajax 요청 처리
 	@RequestMapping("/user/checkid")
 	@ResponseBody
 	public Map<String, Object> checkid(@RequestParam String inputId, ModelAndView mView) {
 		boolean isExist=service.isExistId(inputId);
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("isExist", isExist);
+		return map;
+	}
+	
+	//pay 정보 ajax 요청 처리
+	@RequestMapping(value = "/user/checkpay", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, Object> checkpay(HttpServletRequest request, PayDto dto) {
+		dto.setAmount(request.getParameter("amount"));
+		dto.setBuyer_name(request.getParameter("buyer_name"));
+		dto.setBuyer_email(request.getParameter("buyer_email"));
+		paySerivce.addPayInfo(dto);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("isSuccess", "isSuccess");
 		return map;
 	}
 	
@@ -71,8 +89,8 @@ public class UserController {
 	
 	//로그인 요청 처리
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String login(HttpServletRequest request, HttpServletResponse response) {
-		service.loginLogic(request, response);
+	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		service.loginLogic(request, response, session);
 		return "user/login";
 	}
 	
@@ -134,6 +152,4 @@ public class UserController {
 		mView.setViewName("user/private/update");
 		return mView;
 	}
-	
-	//
 }

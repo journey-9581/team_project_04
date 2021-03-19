@@ -19,4 +19,6 @@ public interface UserDao {
 	public boolean isExist(String id);
 	//프로필 이미지 경로 수정
 	public void updateProfile(UserDto dto);
+	//매니저 확인
+	public String getManage(String id);
 }
