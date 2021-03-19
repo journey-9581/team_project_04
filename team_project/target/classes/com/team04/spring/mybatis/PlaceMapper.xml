@@ -12,13 +12,13 @@
 	</delete>
 	<insert id="insert" parameterType="placeDto">
 		INSERT INTO board_place
-		(num,writer,title,category,content,viewCount,regdate)
+		(num,writer,title,category,content,imagePath,viewCount,regdate)
 		VALUES(board_place_seq.NEXTVAL,#{writer},
-				#{title},#{category},#{content},0,SYSDATE)
+				#{title},#{category},#{content},#{imagePath},0,SYSDATE)
 	</insert>
 	<update id="update" parameterType="placeDto">
 		UPDATE board_place
-		SET title=#{title}, content=#{content},category=#{category}
+		SET title=#{title}, content=#{content},category=#{category},imagePath=#{imagePath}
 		WHERE num=#{num}
 	</update>
 	<select id="getList" parameterType="placeDto" resultType="placeDto">
@@ -26,7 +26,7 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,writer,title,category,content,viewCount,
+				(SELECT num,writer,title,category,content,imagePath,viewCount,
 					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM board_place
 				<choose>
@@ -72,7 +72,7 @@
 	<select id="getData" parameterType="int" resultType="placeDto">
 		SELECT * 
 		FROM
-			(SELECT num,category,writer,title,content,viewCount,
+			(SELECT num,category,writer,title,content,viewCount,imagePath,
 				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum, 
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum 

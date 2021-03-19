@@ -70,7 +70,7 @@
 						<!-- 이미지1 -->
 						<div class="img">
 							<a href="detail.do?num=${tmp.num }">
-								<img src="${tmp.content}" 
+								<img src="${pageContext.request.contextPath }${tmp.imagePath}" 
 									class="img-fluid" alt="Colorlib Template">
 							</a>
 						</div>
@@ -92,7 +92,7 @@
 	
 						</div>
 						<!-- 이미지1-1 -->
-						<a href="${tmp.content}" 
+						<a href="${pageContext.request.contextPath }${tmp.imagePath}" 
 							class="icon image-popup d-flex justify-content-center align-items-center">
 							<!--이미지 오른쪽 상단 확대 아이콘2-->
 							<span class="icon-expand"></span>

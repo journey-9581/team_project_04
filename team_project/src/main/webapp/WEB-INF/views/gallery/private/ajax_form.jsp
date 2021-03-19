@@ -53,7 +53,9 @@
 		</form>
 		<button class="btn py-3 px-4 btn-primary" id="submitBtn">Upload</button>
 		<div class="img-wrapper">
-			<img />
+			<br/>
+			<label>Preview image</label>
+			<img style="height: auto !important; max-width: 100%;"/>
 		</div>
 	</div><!-- container -->
 </section>

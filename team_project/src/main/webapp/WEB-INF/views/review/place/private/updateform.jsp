@@ -16,6 +16,7 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	
 </style>
 </head>
 <body>
@@ -34,8 +35,15 @@
 					<h2 class="mb-4">Post</h2>					
 				</div>
 			</div>	
-			<form action="update.do" method="post">				
+			<!-- updateform  -->
+			<form action="update.do" method="post" id="insertForm">		
+			<input type="hidden" name="num" value="${dto.num }"/>
+			<input type="hidden" name="imagePath" id="imagePath" value="${dto.imagePath }"/>
+			<label for="title">Writer</label>
+			<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>	
+				<br/>	
 				<div class="form-group">
+				<!-- 카테고리 -->
 				<label for="category">Category</label>
 				<select class="form-control" id="font_1" name="category" id="category">
 						<option value="">선택</option>
@@ -48,20 +56,32 @@
 						<option value="제주">제주</option>	
 				</select>
 				<br>
-				<input type="hidden" name="num" value="${dto.num }"/>
-				<label for="title">Writer</label>
-				<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>							
-				<br>
+				<!-- 제목 -->
 				<label for="title">Title</label>
 				<input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
 				<br>
-				<label for="content">Content</label>
-				<textarea class="form-control" name="content" id="content">${dto.content }</textarea>
+					<!-- 내용 -->
+					<label for="content">Content</label>
+					<textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'>${dto.content }</textarea>
+				</div>								
+			</form>	
+			<!-- 버튼 -->
+			<button id="submitBtn" class="btn btn-primary" onclick="submitContents(this);">저장</button>
+			<button class="btn btn" type="reset">취소</button>
+			<br/>
+			<!-- 썸네일 이미지 업로드 폼 -->										
+			<form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
+				<br/>
+				<div class="form-group">
+					<label for="image">Thumnail Image</label>
+					<input class="form-control" type="file" name="image" id="image"  
+						accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
 				</div>
-				<br>
-				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
-				<button class="btn btn" type="reset">취소</button>
-			</form>							
+			</form>			
+			<!-- 썸네일 미리보기 -->			
+			<div class="img-wrapper">			
+				<img height="250" width="auto"/> <!-- 이미지 사이즈 -->
+			</div>		
 		</div>	
 	</div><!-- container -->
 </section>
@@ -72,6 +92,8 @@
 <jsp:include page="../../../include/resource_script.jsp"></jsp:include>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 <script>
 	var oEditors = [];
 	
@@ -125,6 +147,30 @@
 		var nFontSize = 24;
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
+</script>
+<script>
+	//form 플러그인을 이용해서 form 이 ajax 전송(페이지 전환없이) 되도록 한다.
+	$("#ajaxForm").ajaxForm(function(data){
+		// data 는 {imagePath:"업로드된 이미지경로"} 형태의 object 이다.
+		console.log(data);
+		//로딩할 이미지의 경로 구성
+		let src="${pageContext.request.contextPath}"+data.imagePath;
+		// img 요소의 src 속성으로 지정을 해서 이미지를 표시한다.
+		$(".img-wrapper img").attr("src", src);
+		// 업로드 경로를 insertForm 에 input type="hidden" 에 value 로 넣어준다.
+		$("#imagePath").val(data.imagePath);
+	});
+	
+	//이미지를 선택하면 강제로 폼 전송 시키기
+	$("#image").on("change", function(){
+		// id 가 ajaxForm  인 form 을 강제 submit 시키기
+		$("#ajaxForm").submit();
+	});
+	
+	//버튼을 누르면 insertForm 강제 제출해서 이미지 정보가 저장되도록 한다.
+	$("#submitBtn").on("click", function(){
+		$("#insertForm").submit();
+	});
 </script>
 </body>
 </html>
