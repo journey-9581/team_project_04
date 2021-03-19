@@ -60,7 +60,7 @@
 					<a href="list.do?category=경상" class="tag-cloud-link">경상</a>
 					<a href="list.do?category=제주" class="tag-cloud-link">제주</a>
 				</div>
-			
+			<br/>
 			<!-- 반복문 돌면서 사진 목록 출력 -->
 			<div class="row">
 			<c:forEach var="tmp" items="${list }">
@@ -81,12 +81,12 @@
 							<!-- 날짜 -->
 							<span>${tmp.regdate }</span>
 							<!-- 타이틀 -->
-							<h3><a href="detail.do?num=${tmp.num }">${tmp.title }</a></h3>
+							<h3 id="font_1"><a href="detail.do?num=${tmp.num }">${tmp.title }</a></h3>
 							<!-- 작성자 -->
 							<span style="color: purple">${tmp.writer }</span>
 							<!-- 조회수 -->
 							<div class="float-right">
-								<span class="rate">(${tmp.viewCount})</span>								
+								<span style="color: #e2c0bb" class="rate">(${tmp.viewCount})</span>								
 							</div>
 							
 	
