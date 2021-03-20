@@ -156,10 +156,10 @@
 			<div class="form-group">
 				<form action="list.do" method="get" class="search-form">				
 					<select id="font_1" name="condition" id="condition">
-						<option value="title_writer" ${condition eq 'title_writer' ? 'selected' : '' }>제목+작성자</option>
+						<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-					</select>		
+					</select>			
 					<input id="font_1" class="form-control" type="text" name="keyword" placeholder="검색어..." value="${keyword }"/>
 					<button class="btn btn-primary px-5 py-8 mt-1" type="submit">Search</button>		
 				</form>
