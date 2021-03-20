@@ -91,7 +91,7 @@ public class UserController {
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		service.loginLogic(request, response, session);
-		return "user/login";
+		return "redirect:/";
 	}
 	
 	//로그아웃 요청 처리

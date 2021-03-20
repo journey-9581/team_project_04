@@ -60,6 +60,7 @@
 	$("#profileLink").on("click", function(){
 		$("#image").click();
 	});
+	
 	$("#image").on("change", function(){
 		$("#profileForm").submit();
 	});
