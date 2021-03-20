@@ -62,7 +62,7 @@
 			<!---- POST2 ---->
 			<div class="col-md-4 col-lg-4 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/review/food/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/food3.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -79,7 +79,7 @@
 			<!---- POST3 ---->
 			<div class="col-md-4 col-lg-4 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/review/secret/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/ff.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -96,7 +96,7 @@
 		<!---- POST4 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
+					<a href="${pageContext.request.contextPath }/review/month/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/flower.jpg');">
 					</a>
 					<div class="text float-right d-block">
@@ -113,7 +113,7 @@
 		<!---- POST5 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
+					<a href="${pageContext.request.contextPath }/review/lantour/list.do" class="block-20" 
 						style="background-image: url('${pageContext.request.contextPath }/resources/images7/sea.jpg');">
 					</a>
 					<div class="text float-right d-block">

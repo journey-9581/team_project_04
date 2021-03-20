@@ -20,7 +20,8 @@
 	.img{
 		height: 250px;
 		text-align: center;
-	}			
+	}
+        			
 </style>
 </head>
 <!-------------body 바디 영역 ------------->
@@ -57,7 +58,7 @@
 						<div class="img">
 							<a href="detail.do?num=${tmp.num }">
 								<img src="${pageContext.request.contextPath }${tmp.imagePath}" 
-									class="img-fluid" alt="Colorlib Template">
+									class="img-fluid" alt="No Image">
 							</a>
 						</div>
 						<!-- 텍스트 -->

@@ -35,19 +35,8 @@ CREATE TABLE board_secret(
 	viewCount NUMBER, 
 	regdate DATE 
 );
-/* by도영 review 게시판 4 lantour */
-CREATE SEQUENCE board_lantour_seq;
-CREATE TABLE board_lantour(
-	num NUMBER PRIMARY KEY, 
-	writer VARCHAR2(100) NOT NULL, 
-	title VARCHAR2(100) NOT NULL, 
-	category VARCHAR2(100) NOT NULL, 
-	imagePath VARCHAR2(100),
-	content CLOB, 
-	viewCount NUMBER, 
-	regdate DATE 
-);
-/* by도영 review 게시판 5 month */
+
+/* by도영 review 게시판 4 month */
 CREATE SEQUENCE board_month_seq;
 CREATE TABLE board_month(
 	num NUMBER PRIMARY KEY, 
@@ -60,6 +49,18 @@ CREATE TABLE board_month(
 	regdate DATE 
 );
 
+/* by도영 review 게시판 5 lantour */
+CREATE SEQUENCE board_lantour_seq;
+CREATE TABLE board_lantour(
+	num NUMBER PRIMARY KEY, 
+	writer VARCHAR2(100) NOT NULL, 
+	title VARCHAR2(100) NOT NULL, 
+	category VARCHAR2(100) NOT NULL, 
+	imagePath VARCHAR2(100),
+	content CLOB, 
+	viewCount NUMBER, 
+	regdate DATE 
+);
 
 /* by도영 freeboard 자유게시판 테이블 */
 CREATE SEQUENCE board_free_seq;
