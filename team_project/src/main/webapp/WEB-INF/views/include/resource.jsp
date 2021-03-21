@@ -18,6 +18,3 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css7/style.css"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" />
-<!-- js -->
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>

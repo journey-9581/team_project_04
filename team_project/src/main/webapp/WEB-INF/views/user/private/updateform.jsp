@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>TRIBUS</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 <style>
 	#profileImage{
 		width: 50px;
