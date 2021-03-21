@@ -1,13 +1,11 @@
-package com.team04.spring.service.entity;
+package com.team04.spring.service.dto;
 
-import java.util.*;
-
-public class FQnA {
+public class FQnADto {
 	private int num;
 	private String title;
 	private String content;
 	private String writerId;
-	private Date regDate;
+	private String regDate;
 	private int bbsType;
 	private int ref;
 	private int secrete;
@@ -15,7 +13,7 @@ public class FQnA {
 		return num;
 	}
 	
-	public FQnA(int num, String title, String content, String writerId, Date regDate, int bbsType, int ref,
+	public FQnADto(int num, String title, String content, String writerId, String regDate, int bbsType, int ref,
 			int secrete) {
 		super();
 		this.num = num;
@@ -28,7 +26,7 @@ public class FQnA {
 		this.secrete = secrete;
 	}
 
-	public FQnA() {
+	public FQnADto() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,10 +51,10 @@ public class FQnA {
 	public void setWriterId(String writerId) {
 		this.writerId = writerId;
 	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	public int getBbsType() {

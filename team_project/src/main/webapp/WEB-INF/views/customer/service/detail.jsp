@@ -1,4 +1,4 @@
-<%@page import="com.team04.spring.service.entity.FQnA"%>
+<%@page import="com.team04.spring.service.dto.FQnADto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
@@ -334,12 +334,12 @@
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
-							name="title" id="sertitle">
+							name="title" id="title">
 						<div class="invalid-feedback">제목을 입력해주세요.</div>
 					</div>
 					<div class="form-group">
 						<textarea cols="30" rows="7" class="form-control"
-							placeholder="Message" name="content" id="sercontent"></textarea>
+							placeholder="Message" name="content" id="content"></textarea>
 						<div class="invalid-feedback">내용을 입력해주세요.</div>
 						
 					</div>
@@ -401,35 +401,35 @@
 		console.log(isFormValid);
 		if(!isFormValid){
 			if(!isContentValid){
-				$("#sercontent").addClass("is-invalid");
+				$("#content").addClass("is-invalid");
 			}
 			if(!isTitleValid){
-				$("#sertitle").addClass("is-invalid");
+				$("#title").addClass("is-invalid");
 			}
 			return false; ///폼 전송 막기 
 		}
 	});
 	
 	//이메일을 입력했을때 실행할 함수 등록
-	$("#sertitle").on("input", function(){
-		let inputTitle=$("#sertitle").val();
+	$("#title").on("input", function(){
+		let inputTitle=$("#title").val();
 		//만일 이메일이 정규표현식에 매칭되지 않는다면		
 		if(!inputTitle){
 			isTitleValid=false;
 		}else{
 			isTitleValid=true;
-			$("#sertitle").addClass("is-valid");
+			$("#title").addClass("is-valid");
 		}
 		console.log(isTitleValid);
 	});
-	$("#sercontent").on("input", function(){
-		let inputContent=$("#sercontent").val();
+	$("#content").on("input", function(){
+		let inputContent=$("#content").val();
 		//만일 이메일이 정규표현식에 매칭되지 않는다면		
 		if(!inputContent){
 			isContentValid=false;
 		}else{
 			isContentValid=true;
-			$("#sercontent").addClass("is-valid");
+			$("#content").addClass("is-valid");
 		}
 		console.log(isContentValid);
 	});
