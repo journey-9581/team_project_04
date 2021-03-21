@@ -21,4 +21,6 @@ public interface UserDao {
 	public void updateProfile(UserDto dto);
 	//매니저 확인
 	public String getManage(String id);
+	//유료회원 확인
+	public String getPremium(String id);
 }

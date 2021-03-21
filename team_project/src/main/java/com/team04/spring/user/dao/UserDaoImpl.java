@@ -70,4 +70,10 @@ public class UserDaoImpl implements UserDao {
 		return manage;
 	}
 
+	@Override
+	public String getPremium(String id) {
+		String premium=session.selectOne("user_team.getPremium", id);
+		return premium;
+	}
+
 }

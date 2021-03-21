@@ -45,4 +45,9 @@
 		FROM user_team
 		WHERE id=#{id}
 	</select>
+	<select id="getPremium" parameterType="String" resultType="String">
+		SELECT pay
+		FROM user_team
+		WHERE id=#{id}
+	</select>
 </mapper>

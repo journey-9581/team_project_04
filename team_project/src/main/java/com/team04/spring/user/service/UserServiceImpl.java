@@ -86,6 +86,8 @@ public class UserServiceImpl implements UserService{
 			
 			String manage=dao.getManage(id);
 			session.setAttribute("manage", manage);
+			String premium=dao.getPremium(id);
+			session.setAttribute("premium", premium);
 		}
 		
 		String isSave=request.getParameter("isSave");
