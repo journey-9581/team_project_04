@@ -17,6 +17,8 @@
 		<typeAlias type="com.team04.spring.review.secret.dto.SecretDto" alias="secretDto"/>
 		<typeAlias type="com.team04.spring.review.month.dto.MonthDto" alias="monthDto"/>
 		<typeAlias type="com.team04.spring.review.lantour.dto.LantourDto" alias="lantourDto"/>
+		<typeAlias type="com.team04.spring.pay.dto.PayDto" alias="payDto"/>
+		<typeAlias type="com.team04.spring.service.dto.FQnADto" alias="fQnADto"/>
 	</typeAliases>
 
 	<!-- Mapper xml 문서 위치 설정 -->
@@ -33,5 +35,7 @@
 		<mapper resource="com/team04/spring/mybatis/SecretMapper.xml"/>
 		<mapper resource="com/team04/spring/mybatis/MonthMapper.xml"/>
 		<mapper resource="com/team04/spring/mybatis/LantourMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/PayMapper.xml"/>
+		<mapper resource="com/team04/spring/mybatis/ServiceBoardMapper.xml"/>
 	</mappers>
 </configuration>

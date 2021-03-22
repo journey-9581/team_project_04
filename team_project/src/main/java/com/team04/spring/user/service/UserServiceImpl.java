@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService{
 
 	//로그인 관련 처리 메소드
 	@Override
-	public void loginLogic(HttpServletRequest request, HttpServletResponse response) {
+	public void loginLogic(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String url=request.getParameter("url");
 		String encodedUrl=URLEncoder.encode(url);
 		String id=request.getParameter("id");
@@ -83,6 +83,11 @@ public class UserServiceImpl implements UserService{
 		
 		if(isValid) {
 			request.getSession().setAttribute("id", id);
+			
+			String manage=dao.getManage(id);
+			session.setAttribute("manage", manage);
+			String premium=dao.getPremium(id);
+			session.setAttribute("premium", premium);
 		}
 		
 		String isSave=request.getParameter("isSave");
@@ -104,6 +109,7 @@ public class UserServiceImpl implements UserService{
 			pwdCookie.setMaxAge(60*60*24);
 			response.addCookie(pwdCookie);
 		}
+		
 		request.setAttribute("encodedUrl", encodedUrl);
 		request.setAttribute("url", url);
 		request.setAttribute("isValid", isValid);

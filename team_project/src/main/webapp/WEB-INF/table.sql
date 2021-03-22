@@ -117,11 +117,20 @@ CREATE TABLE board_gallery(
 	num NUMBER PRIMARY KEY, 
 	writer VARCHAR2(100),
 	caption VARCHAR2(100), 
+<<<<<<< HEAD
 	imagePath VARCHAR2(100), 
+=======
+	content CLOB,
+	imagePath VARCHAR2(100),
+>>>>>>> refs/remotes/origin/master
 	regdate DATE
+<<<<<<< HEAD
 );
 
 /*
 DROP TABLE 
 DROP SEQUENCE 
 */
+=======
+);
+>>>>>>> refs/remotes/origin/master

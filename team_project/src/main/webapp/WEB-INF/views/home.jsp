@@ -26,7 +26,8 @@
     top: 650px;
     z-index: 5;
     text-align: center;
-}
+    border-radius: 1em;
+	}
 </style>
 <!-- 
 	CSS ,js,image 링크 주소	
@@ -167,18 +168,17 @@
 	</div>
 </section><!-- about 소개글 섹션 -->
     
-<!------------contents1 컨텐츠 유료 ------------->
+<!------------ Special part ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
 		<!---- 제목 부분 ---->
 		<div class="row justify-content-center pb-5">
 		<div class="col-md-12 heading-section text-center ftco-animate">
-			<!--소제목-->
-			<span id="font_1" class="subheading"> 유료광고</span>
+			
 			<!--제목-->
-			<h2 class="mb-4">Premium Contents1 </h2>
+			<h2 class="mb-4">Special Pick </h2>
 			<!--내용 -->
-			<p id="font_1">광고 광고중 대놓고 광고중</p>
+			<p id="font_1">특별한 여행을 원하시면,</p>
 			<!-- 버튼 -->
 			<a id="font_1" href="${pageContext.request.contextPath }/premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
 		</div>
@@ -192,17 +192,17 @@
 					<div class="img">
 						<!-- 세일표시 -->
 						<div class="vr"><span>Sale</span></div>				
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-1.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=36">				
+							<img src="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>					
 					<!-- 텍스트1 -->
 					<div class="text">
 						<!-- 가격 -->
-						<h4 class="price"><span class="old-price mr-2">$500,000</span>$130,000</h4>
-						<span >1박2일</span>
-						<h3 id="font_1"><a href="#">우리집 좋아요</a></h3>
+						<h4 class="price"><span class="old-price mr-2">$200,000</span>$130,000</h4>
+						<span >1박2일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=36">#파파홈 #글램핑 #캠핑</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!-- 별표-->
@@ -213,13 +213,13 @@
 								<span class="ion-ios-star"></span>
 							</div>
 							<div class="float-right">
-								<!-- 댓글수? -->
-								<span class="rate"><a href="#">(120)</a></span>
+								<!-- 댓글수? 
+								<span class="rate"><a href="#">(120)</a></span>-->
 							</div>
 						</div>
 					</div>	
 					<!-- 이미지1 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-1.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 						<!--이미지 오른쪽 상단 확대 아이콘1-->
 						<span class="icon-expand"></span>
@@ -232,19 +232,19 @@
 				<div class="project">
 					<!-- 이미지2 -->
 					<div class="img">
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-2.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=43">
+							<img src="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>
 					<!-- 텍스트2 -->
 					<div class="text">
 						<h4 class="price">₩400,000</h4>
-						<span id="font_1">3박 4일</span>
-						<h3 id="font_1"><a href="hotel.html">유료광고</a></h3>
+						<span id="font_1">3박 4일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=43">국내에서 프라이빗 비치 본적있어?</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
-								<!--  별표-->
+								<!--  별표 -->
 								<span class="ion-ios-star"></span>
 								<span class="ion-ios-star"></span>
 								<span class="ion-ios-star"></span>
@@ -252,12 +252,12 @@
 								<span class="ion-ios-star"></span>
 							</div>
 							<div class="float-right">
-								<span class="rate"><a href="#">(120)</a></span>
+								<!--  <span class="rate"><a href="#">(120)</a></span>-->
 							</div>
 						</div>
 					</div>
 					<!-- 이미지2-2 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-2.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/R0980826.jpg" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 						<!--이미지 오른쪽 상단 확대 아이콘2-->
 						<span class="icon-expand"></span>
@@ -270,16 +270,16 @@
 				<div class="project">
 					<!-- 이미지 3 -->
 					<div class="img">
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-3.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=41">
+							<img src="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>
 					<!-- 텍스트3 -->
 					<div class="text">
 						<h4 class="price">$400,000</h4>
-						<span id="font_1">3박 4일</span>
-						<h3 id="font_1"><a href="hotel.html">여기가 숙소맛집</a></h3>
+						<span id="font_1">2박 3일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=41">등산여행은 #산 새</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 							<!--별표-->
@@ -290,12 +290,12 @@
 								<span class="ion-ios-star"></span>		
 							</div>
 							<div class="float-right">
-								<span class="rate"><a href="#">(120)</a></span>
+								<!-- <span class="rate"><a href="#">(120)</a></span> -->
 							</div>
 						</div>
 					</div>
 					<!-- 이미지3-2 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-3.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 								<span class="icon-expand"></span>
 					</a>
@@ -393,7 +393,7 @@
 		</div><!-- row -->
 	</div><!-- container -->
 </section><!-- contents2 섹션 -->
-		
+
 <!-------------Reservation 예약 섹션 ------------->
 <section class="ftco-intro img" id="Reservation-section" 
 	style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_3.jpg);"><!--이미지 -->
@@ -420,28 +420,40 @@
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<!-- 소제목 -->
-				<span class="subheading">소제목</span>    
+				<span class="subheading">QnA</span>    
 				<!-- 제목 -->     
-				<a href="/customer/service/list.do">
-					<h2 class="mb-4">Service</h2>
-				</a>
+				<h2 class="mb-4">Service</h2>
 				<!-- 내용 -->
-				<p id="font_1">서비스 내용 어쩌구 저쩌구 블라블라 아무말 아무말 대잔치</p>
+				<a id="font_1" href="/customer/service/list.do" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
 			</div>
 		</div>		
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
 			
-				<form action="/customer/service/insert.do" id="sermyForm"
+				<form action="/customer/service/insert.do" id="sermyForm" method="post"
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
-					</div>
+				<%-- 	<div class="form-group">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">이메일</p>
+							</c:otherwise>
+						</c:choose>
+					</div> --%>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
 							name="title" id="sertitle">
@@ -454,12 +466,18 @@
 						
 					</div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</form>
 			</div>
@@ -580,28 +598,26 @@ $(document).ready(function() {
 			}
 		});
 		
-		//이메일을 입력했을때 실행할 함수 등록
+		
 		$("#sertitle").on("input", function(){
 			let inputTitle=$("#sertitle").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sertitle").removeClass("is-valid is-invalid");
 			if(!inputTitle){
 				isTitleValid=false;
 			}else{
 				isTitleValid=true;
 				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isTitleValid);
 		});
 		$("#sercontent").on("input", function(){
 			let inputContent=$("#sercontent").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sercontent").removeClass("is-valid is-invalid");
 			if(!inputContent){
 				isContentValid=false;
 			}else{
 				isContentValid=true;
-				$("#sercontent").addClass("is-valid");
+				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isContentValid);
 		});
 });
 </script>

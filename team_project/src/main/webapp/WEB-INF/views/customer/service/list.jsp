@@ -14,9 +14,9 @@
 
 <script src="/resources/js/jquery-3.5.1.js"></script>
 <!-------------타이틀 (페이지 제목)------------->
-<title>FreeBoard</title>
+<title>ServiceBoard</title>
 <!------------- css 영역------------->
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
 /*한글 폰트 적용 (사용법 id="font_1")*/
 #font_1 {
@@ -25,7 +25,7 @@
 </style>
 <script type="text/javascript">
 	//url에서 parameter 가져오는 함수
-	function getParam(sname) {
+	/* function getParam(sname) {
 	    var params = location.search.substr(location.search.indexOf("?") + 1);
 	    var sval = "";
 	    params = params.split("&");
@@ -34,7 +34,7 @@
 	        if ([temp[0]] == sname) { sval = temp[1]; }
 	    }
 	    return sval;
-	}
+	} */
 	
 	// (2) 말머리 구분 함수 (말머리 버튼을 누르면 실행되게 onclick을 넣어줬습니다.)
 	function searchFunction(a){
@@ -66,20 +66,20 @@
 	}
 	
 	/* (1) 페이지가 업로드 될 때 실행되는 함수 QnA의 말머리를 담당하는 0을 파라미터로 넣어줍니다. */
-	$(window).bind("pageshow", function (event) {
+	/* $(window).bind("pageshow", function (event) {
 		if (event.originalEvent.persisted) {
-			searchFunction(0);
+			searchFunction(1);
 		}
 		else {
-			searchFunction(0);
+			searchFunction(1);
 		}
 		
-	});
+	}); */
 </script>
 </head>
 <body>
 	<!-------------navbar 네비바------------->
-	<jsp:include page="../include/navbar.jsp"></jsp:include>
+	<jsp:include page="../../include/navbar.jsp"></jsp:include>
 
 	<section class="ftco-section" id="contents-section">
 		<div class="container">
@@ -88,24 +88,38 @@
 				<div class="row justify-content-center pb-5">
 					<div class="col-md-12 heading-section text-center ftco-animate">
 						<!--대분류-->
-						<span class="subheading">contents</span>
-						<!--소분류 영어-->
-						<h2 class="mb-4">FreeBoard</h2>
-						<!--소분류 한글 -->
-						<p id="font_1">자유게시판</p>
-						<!-- 버튼 -->
-						<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
-							data-target="#exampleModal" data-whatever="@getbootstrap">New Post</button>
+						<span class="subheading">service</span>
+						<c:choose>
+							<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+								<!--소분류 영어-->
+								<h2 class="mb-4">QnABoard</h2>
+								<!--소분류 한글 -->
+								<p id="font_1">질문답변</p>
+								<!-- 버튼 -->
+								<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
+								data-target="#exampleModal" data-whatever="@getbootstrap">New Post</button>
+							</c:when>
+							<c:otherwise>
+								<h2 class="mb-4">FAQBoard</h2>
+								<p id="font_1">자주 묻는 질문</p>
+								<!-- 관리자만 보이는 버튼 -->
+								<c:if test="${not(empty manage) }">
+									<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1"
+											onclick="location.href='insertf.do'">New Post</button>
+								</c:if>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 
-				<!-- 자유게시판 테이블-->
+				<div >
+					<!-- 자유게시판 테이블-->
 				<div class="board_list_wrap">
 					<!-- category 카테고리 -->
 					<h3 class="heading-sidebar">Select Category</h3>
 					<div class="tagcloud">
-						<a id="font_1" onclick="searchFunction(0);" class="tag-cloud-link">Q&A</a>
-						<a id="font_1" onclick="searchFunction(1);" class="tag-cloud-link">F&A</a>
+						<a id="font_1" href="list.do?isQnA=0" class="tag-cloud-link">QNA</a>
+						<a id="font_1" href="list.do?isQnA=1" class="tag-cloud-link">FAQ</a>
 					</div>
 					<!-- 테이블 -->
 					<table class="board_list">
@@ -126,7 +140,23 @@
 							</tr>
 						</tbody>
 						<tbody id="ajaxTable">
-
+							<!-- (7) 게시글 리스트를 따로 view로 만든다. -->
+							<c:forEach var="tmp" items="${list }">
+								<tr>
+									<td><c:if test="${tmp.secrete eq 1}">
+											<img src="/resources/images/OIP.jpg" style="margin-left: 10px" alt="lockQnAimg">
+										</c:if>
+									</td>
+									<td>
+										<c:if test="${tmp.ref ne tmp.num}">
+												<span>└ </span>
+										</c:if>
+										<a href="detail.do?isQnA=${isQnA }&num=${tmp.num }">${tmp.title }</a>
+									</td>
+									<td>${tmp.writerId }</td>
+									<td>${tmp.regDate }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -143,7 +173,7 @@
 								<c:choose>
 									<c:when test="${startNum ge 1 }">
 										<li><a
-											href="list.do?pageNum=${startNum-1 }">&lt;</a>
+											href="list.do?isQnA=${isQnA }&pageNum=${startNum-1 }">&lt;</a>
 										</li>
 									</c:when>
 									<c:otherwise>
@@ -153,8 +183,10 @@
 
 								<c:forEach var="i" begin="0" end="4">
 									<c:if test="${(startNum+i) <= lastNum}">									
-									<li class="${(page eq (startNum+i))?'active':''}"><a
-										href="list.do?pageNum=${startNum+i}">${startNum+i}</a>
+									<li class="${(page eq (startNum+i))?'active':''}">
+										<a
+											href="list.do?isQnA=${isQnA}&pageNum=${startNum+i}">${startNum+i}
+										</a>
 									</li>
 									</c:if>
 								</c:forEach>
@@ -162,7 +194,7 @@
 								<c:choose>
 									<c:when test="${startNum+5 lt lastNum }">
 										<li><a
-											href="list.do?pageNum=${startNum+5}">&gt;</a>
+											href="list.do?isQnA=${isQnA }&pageNum=${startNum+5}">&gt;</a>
 										</li>
 									</c:when>
 									<c:otherwise>
@@ -172,6 +204,7 @@
 							</ul>
 						</div>
 					</div>
+				</div>
 				</div>
 				<!-- 페이징처리 -->
 				<br>
@@ -226,33 +259,53 @@
 					</form> -->
 				</div>
 				<!-- d -->
-				<form action="/customer/service/insert.do" id="sermyForm"
+				<form action="insert.do" id="sermyForm" method="post""
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
-					</div>
+				<%-- 	<div class="form-group">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">이메일</p>
+							</c:otherwise>
+						</c:choose>
+					</div> --%>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
-							name="title" id="sertitle">
+							name="title" id="title"/>
 						<div class="invalid-feedback">제목을 입력해주세요.</div>
 					</div>
 					<div class="form-group">
 						<textarea cols="30" rows="7" class="form-control"
-							placeholder="Message" name="content" id="sercontent"></textarea>
+							placeholder="Message" name="content" id="content"></textarea>
 						<div class="invalid-feedback">내용을 입력해주세요.</div>
 						
 					</div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete" id="secrete">
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</form>
 			</div>
@@ -285,43 +338,43 @@
 			console.log(isFormValid);
 			if(!isFormValid){
 				if(!isContentValid){
-					$("#sercontent").addClass("is-invalid");
+					$("#content").addClass("is-invalid");
 				}
 				if(!isTitleValid){
-					$("#sertitle").addClass("is-invalid");
+					$("#title").addClass("is-invalid");
 				}
 				return false; ///폼 전송 막기 
 			}
 		});
 		
 		//이메일을 입력했을때 실행할 함수 등록
-		$("#sertitle").on("input", function(){
-			let inputTitle=$("#sertitle").val();
+		$("#title").on("input", function(){
+			let inputTitle=$("#title").val();
 			//만일 이메일이 정규표현식에 매칭되지 않는다면		
 			if(!inputTitle){
 				isTitleValid=false;
 			}else{
 				isTitleValid=true;
-				$("#sertitle").addClass("is-valid");
+				$("#title").addClass("is-valid");
 			}
 			console.log(isTitleValid);
 		});
-		$("#sercontent").on("input", function(){
-			let inputContent=$("#sercontent").val();
+		$("#content").on("input", function(){
+			let inputContent=$("#content").val();
 			//만일 이메일이 정규표현식에 매칭되지 않는다면		
 			if(!inputContent){
 				isContentValid=false;
 			}else{
 				isContentValid=true;
-				$("#sercontent").addClass("is-valid");
+				$("#content").addClass("is-valid");
 			}
 			console.log(isContentValid);
 		});
 	</script>
 	<!------------- footer ------------->
-	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 	<!-------------script 스크립트------------->
-	<jsp:include page="../include/resource_script.jsp"></jsp:include>
+	<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 </body>
 </html>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!-------------navbar 네비바------------->
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar" style="z-index: 100;">
 	<div class="container">
 		<!-- 상단 왼쪽 로고 타이틀 -->
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">TRIBUS</a>
@@ -17,7 +17,7 @@
 			<ul class="navbar-nav nav ml-auto">
 				<li class="nav-item"><a href="${pageContext.request.contextPath }/" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>about</span></a></li>
-				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>contents</span></a></li>
+				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>special</span></a></li>
 				<li class="nav-item"><a href="#Reservation-section" class="nav-link"><span>Reservation</span></a></li>
 				<li class="nav-item"><a href="#service-section" class="nav-link"><span>service</span></a></li>
 				<c:choose>
