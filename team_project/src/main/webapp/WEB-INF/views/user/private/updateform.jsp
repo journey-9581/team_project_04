@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>TRIBUS</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 <style>
 	#profileImage{
 		width: 50px;
@@ -19,7 +20,7 @@
 	}
 </style>
 </head>
-<body>
+<body class="pt-5">
 <div class="container">
 	<a id="profileLink" href="javascript:">
 		<c:choose>
@@ -46,8 +47,8 @@
 			<label for="phone">휴대전화</label>
 			<input type="text" id="phone" name="phone" value="${dto.phone }"/>
 		</div>
-		<button type="submit">수정확인</button>
-		<button type="reset">취소</button>
+		<button type="submit">수정</button>
+		<button type="reset">리셋</button>
 	</form>
 	<form action="profile_upload.do" method="post" 
 		enctype="multipart/form-data" id="profileForm">
@@ -60,6 +61,7 @@
 	$("#profileLink").on("click", function(){
 		$("#image").click();
 	});
+	
 	$("#image").on("change", function(){
 		$("#profileForm").submit();
 	});

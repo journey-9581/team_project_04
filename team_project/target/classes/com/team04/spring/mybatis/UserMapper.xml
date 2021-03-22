@@ -40,4 +40,14 @@
 		SET profile=#{profile}
 		where id=#{id}
 	</update>
+	<select id="getManage" parameterType="String" resultType="String">
+		SELECT manage
+		FROM user_team
+		WHERE id=#{id}
+	</select>
+	<select id="getPremium" parameterType="String" resultType="String">
+		SELECT pay
+		FROM user_team
+		WHERE id=#{id}
+	</select>
 </mapper>
