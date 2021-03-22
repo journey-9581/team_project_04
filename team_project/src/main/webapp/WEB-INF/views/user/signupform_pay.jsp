@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
 <style>
-	#font_1{
+	#myForm{
 		font-family: 'Noto Sans KR', sans-serif;
+	}
+	body{
+		padding-top: 68px;
 	}
 </style>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
@@ -18,7 +21,8 @@
 <title>Join us</title>
 </head>
 <jsp:include page="../include/resource.jsp"></jsp:include>
-<body class="pt-5" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<jsp:include page="../include/resource_script.jsp"></jsp:include>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<div class="container">
 		<form action="signup.do" method="post" id="myForm" novalidate>
 			<input type="hidden" name="pay" id="pay" value="yes"/>
@@ -52,12 +56,13 @@
 				<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
 			</div>
 			<div class="form-group">
-				<button id="check_module" type="button">유료회원 결제</button>
+				<label for="payBtn">유료 회원 결제</label>
+				<button class="btn btn-primary px-5 py-8 mt-1" style="width:200px; height: 40px; text-align: center;" id="check_module" type="button">유료 회원 결제</button>
+				<small class="form-text text-muted">결제 진행 후 유료 회원으로 가입이 가능합니다</small>
 			</div>
-			<button class="btn btn-outline-primary" type="submit">가입</button>
+			<button class="btn btn-primary px-5 py-8 mt-1" style="width:140px; height: 40px; text-align: center;" type="submit" id="submitBtn">가입</button>
 		</form>
 	</div>
-	<jsp:include page="../include/resource_script.jsp"></jsp:include>
 	<script>
 	let reg_id=/^[a-z].{4,9}$/;
 	let reg_pwd=/^[A-Za-z0-9]{6,12}$/;

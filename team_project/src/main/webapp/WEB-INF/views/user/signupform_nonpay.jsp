@@ -3,8 +3,14 @@
 <!DOCTYPE html>
 <html>
 <style>
-	#font_1{
+	#myForm{
 		font-family: 'Noto Sans KR', sans-serif;
+	}
+	#submitBtn{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	body{
+		padding-top: 68px;
 	}
 </style>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
@@ -16,6 +22,7 @@
 <title>Join us</title>
 </head>
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body class="pt-5" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<div class="container">
 		<form action="signup.do" method="post" id="myForm" novalidate>
@@ -49,10 +56,9 @@
 				<small class="form-text text-muted">000-0000-0000의 형식으로 작성해주세요</small>
 				<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
 			</div>
-			<button class="btn btn-outline-primary" type="submit">가입</button>
+			<button class="btn btn-primary px-5 py-8 mt-1" style="width:140px; height: 40px; text-align: center;" type="submit">가입</button>
 		</form>
 	</div>
-	<jsp:include page="../include/resource_script.jsp"></jsp:include>
 	<script>
 	let reg_id=/^[a-z].{4,9}$/;
 	let reg_pwd=/^[A-Za-z0-9]{6,12}$/;
