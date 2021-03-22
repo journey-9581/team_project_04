@@ -60,7 +60,7 @@
 					<a href="list.do?category=경상" class="tag-cloud-link">경상</a>
 					<a href="list.do?category=제주" class="tag-cloud-link">제주</a>
 				</div>
-			
+			<br/>
 			<!-- 반복문 돌면서 사진 목록 출력 -->
 			<div class="row">
 			<c:forEach var="tmp" items="${list }">
@@ -70,8 +70,8 @@
 						<!-- 이미지1 -->
 						<div class="img">
 							<a href="detail.do?num=${tmp.num }">
-								<img src="${tmp.content}" 
-									class="img-fluid" alt="Colorlib Template">
+								<img src="${pageContext.request.contextPath }${tmp.imagePath}" 
+									class="img-fluid" alt="No Image">
 							</a>
 						</div>
 						<!-- 텍스트 -->
@@ -81,18 +81,18 @@
 							<!-- 날짜 -->
 							<span>${tmp.regdate }</span>
 							<!-- 타이틀 -->
-							<h3><a href="detail.do?num=${tmp.num }">${tmp.title }</a></h3>
+							<h3 id="font_1"><a href="detail.do?num=${tmp.num }">${tmp.title }</a></h3>
 							<!-- 작성자 -->
 							<span style="color: purple">${tmp.writer }</span>
 							<!-- 조회수 -->
 							<div class="float-right">
-								<span class="rate">(${tmp.viewCount})</span>								
+								<span style="color: #e2c0bb" class="rate">(${tmp.viewCount})</span>								
 							</div>
 							
 	
 						</div>
 						<!-- 이미지1-1 -->
-						<a href="${tmp.content}" 
+						<a href="${pageContext.request.contextPath }${tmp.imagePath}" 
 							class="icon image-popup d-flex justify-content-center align-items-center">
 							<!--이미지 오른쪽 상단 확대 아이콘2-->
 							<span class="icon-expand"></span>
@@ -156,7 +156,7 @@
 			<div class="form-group">
 				<form action="list.do" method="get" class="search-form">				
 					<select id="font_1" name="condition" id="condition">
-						<option value="title_writer" ${condition eq 'title_writer' ? 'selected' : '' }>제목+작성자</option>
+						<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
 						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
 					</select>		

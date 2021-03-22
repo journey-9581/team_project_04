@@ -2,6 +2,9 @@ package com.team04.spring.review.place;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team04.spring.review.place.dto.PlaceDto;
@@ -72,7 +77,26 @@ public class PlaceController {
 	public String insert(PlaceDto dto,HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		dto.setWriter(id);
-		service.saveContent(dto);
-		return "review/place/private/insert";		
+		service.saveContent(dto, session);
+		return "review/place/private/insert";	/*확인필요*/	
+	}
+	
+	@RequestMapping("/review/place/ajax_page")
+	public ModelAndView ajaxPage(ModelAndView mView, HttpServletRequest request) {
+		service.getList(mView, request);
+		mView.setViewName("review/place/ajax_page");
+		return mView;
+	}
+	
+	@RequestMapping(value = "/review/place/private/ajax_upload", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> ajaxUpload(MultipartFile image, HttpServletRequest request){
+		//업로드된 이미지를 upload 폴더에 저장하고 경로를 리턴 받는다.
+		String imagePath=service.saveImage(image, request);
+		//저장된 경로를 JSON 문자열로 응답하기 위해 Map 에 담는다.
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("imagePath", imagePath);
+		//Map  을 리턴해서 JSON 문자열이 응답되도록 한다. {"imagePath":"/upload/xxx.jpg"} 형식
+		return map;
 	}
 }

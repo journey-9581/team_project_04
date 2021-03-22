@@ -1,33 +1,40 @@
 package com.team04.spring.review.place.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class PlaceDto {
 	private int num;
 	private String writer;
 	private String title;
 	private String category;
 	private String content;
+	private String imagePath;
 	private int viewCount;
-	private String regdate;
+	private String regdate;	
 	private int startRowNum;
 	private int endRowNum;
 	private int prevNum; //이전 글의 글 번호
 	private int nextNum; //다음 글의 글 번호
+	private MultipartFile image;
 	//디폴트 생성자
 	public PlaceDto() {}
-	public PlaceDto(int num, String writer, String title, String category, String content, int viewCount,
-			String regdate, int startRowNum, int endRowNum, int prevNum, int nextNum) {
+	public PlaceDto(int num, String writer, String title, String category, String content, String imagePath,
+			int viewCount, String regdate, int startRowNum, int endRowNum, int prevNum, int nextNum,
+			MultipartFile image) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.title = title;
 		this.category = category;
 		this.content = content;
+		this.imagePath = imagePath;
 		this.viewCount = viewCount;
 		this.regdate = regdate;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
+		this.image = image;
 	}
 	public int getNum() {
 		return num;
@@ -58,6 +65,12 @@ public class PlaceDto {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	public int getViewCount() {
 		return viewCount;
@@ -95,5 +108,12 @@ public class PlaceDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
 	
 }

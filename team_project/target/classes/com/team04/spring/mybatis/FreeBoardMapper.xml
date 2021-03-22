@@ -30,21 +30,21 @@
 					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM board_free
 				<choose>
-					<when test="title == null and writer == null">
-						WHERE category LIKE '%'||#{category}||'%'
+					<when test="title == null and content == null">
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%'
 					</when>
-					<when test="title != null and writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%' 
-						OR writer LIKE '%'||#{writer}||'%')
+					<when test="title != null and content != null">
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(title) LIKE '%'||UPPER(#{title})||'%' 
+						OR UPPER(content) LIKE '%'||UPPER(#{content})||'%')
 					</when>
 					<when test="title != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%')
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(title) LIKE '%'||UPPER(#{title})||'%')
 					</when>
 					<when test="writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						writer LIKE '%'||#{writer}||'%')
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
 					</when>
 				</choose>
 				ORDER BY num DESC) result1)
@@ -54,18 +54,18 @@
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM board_free
 		<choose>
-			<when test="title != null and writer != null">
-				WHERE category LIKE '%'||#{category}||'%' AND (
-				title LIKE '%'||#{title}||'%' 
-				OR writer LIKE '%'||#{writer}||'%')
+			<when test="title != null and content != null">
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(title) LIKE '%'||UPPER(#{title})||'%' 
+				OR UPPER(content) LIKE '%'||UPPER(#{content})||'%')
 			</when>
 			<when test="title != null">
-				WHERE category LIKE '%'||#{category}||'%' AND (
-				title LIKE '%'||#{title}||'%')
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(title) LIKE '%'||UPPER(#{title})||'%')
 			</when>
 			<when test="writer != null">
-				WHERE category LIKE '%'||#{category}||'%' AND (
-				writer LIKE '%'||#{writer}||'%')
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
 			</when>
 		</choose>	
 	</select>

@@ -90,7 +90,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		//만일 검색 키워드가 넘어온다면 
 		if(!keyword.equals("")){
 			//검색 조건이 무엇이냐에 따라 분기 하기
-			if(condition.equals("title_writer")){//제목 +작성자 검색인 경우
+			if(condition.equals("title_content")){//제목 +내용 검색인 경우
 				//검색 키워드를 FreeBoardDto 에 담아서 전달한다.
 				dto.setTitle(keyword);
 				dto.setContent(keyword);	
@@ -103,6 +103,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 		//글목록 얻어오기
 		list=freeBoardDao.getlist(dto);
+		
+		for (FreeBoardDto temp:list) {
+	         System.out.printf("제목 : %s, 작성자 : %s, 카테고리 : %s \n", temp.getTitle(), temp.getWriter(), temp.getCategory());
+	      }
+		
 		//글의 갯수
 		totalRow=freeBoardDao.getCount(dto);
 		

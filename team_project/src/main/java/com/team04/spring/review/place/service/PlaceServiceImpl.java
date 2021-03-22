@@ -1,13 +1,17 @@
 package com.team04.spring.review.place.service;
 
+import java.io.File;
 import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.team04.spring.review.place.dao.PlaceDao;
 import com.team04.spring.review.place.dto.PlaceDto;
@@ -19,10 +23,12 @@ public class PlaceServiceImpl implements PlaceService{
 	private PlaceDao placeDao;	
 	
 	
-	//글 저장
+	//글 저장 (썸네일 이미지 같이 전달)
 	@Override
-	public void saveContent(PlaceDto dto) {
-		placeDao.insert(dto);
+	public void saveContent(PlaceDto dto, HttpSession session) {
+      String id=(String)session.getAttribute("id");
+      dto.setWriter(id);
+      placeDao.insert(dto);
 		
 	}
 	//글 목록 (페이징처리)
@@ -69,25 +75,7 @@ public class PlaceServiceImpl implements PlaceService{
 		PlaceDto dto=new PlaceDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-		
-//		char[] content = (dto.getContent()).toCharArray();
-//	      String img = "";
-//	      boolean check = false;
-//	      int c = 0;
-//	      for (int i=0; i<content.length; i++) {
-//	         if (content[i] == '<') {
-//	            if (content[i+1] == 'i' && content[i+2] == 'm' && content[i+3] == 'g') {
-//	               check = true;
-//	            }
-//	         }
-//	         if (check) {
-//	            img += content[i];
-//	         }
-//	         if (check && content[i] == '>') {
-//	            break;
-//	         }
-//	      }
-	      
+      
 		//ArrayList 객체의 참조값을 담을 지역변수를 미리 만든다.
 		List<PlaceDto> list=null;
 		//전체 row 의 갯수를 담을 지역변수를 미리 만든다.
@@ -103,7 +91,7 @@ public class PlaceServiceImpl implements PlaceService{
 		//만일 검색 키워드가 넘어온다면 
 		if(!keyword.equals("")){
 			//검색 조건이 무엇이냐에 따라 분기 하기
-			if(condition.equals("title_writer")){//제목 +작성자 검색인 경우
+			if(condition.equals("title_content")){//제목 +내용 검색인 경우
 				//검색 키워드를 PlaceDto 에 담아서 전달한다.
 				dto.setTitle(keyword);
 				dto.setContent(keyword);	
@@ -142,7 +130,6 @@ public class PlaceServiceImpl implements PlaceService{
 		mView.addObject("encodedK", encodedK);
 		mView.addObject("totalRow", totalRow);
 		mView.addObject("category",category);
-//		mView.addObject("content",content);
 		
 	}
 	//디테일 페이지
@@ -154,15 +141,44 @@ public class PlaceServiceImpl implements PlaceService{
 		placeDao.addViewCount(num);
 		
 	}
+	//글 업데이트
 	@Override
 	public void updateContent(PlaceDto dto) {
 		placeDao.update(dto);
 		
 	}
+	//글 삭제
 	@Override
 	public void deleteContent(int num) {
 		placeDao.delete(num);
 		
 	}
-
+	//썸네일 이미지 저장
+	@Override
+	public String saveImage(MultipartFile image, HttpServletRequest request) {
+		//원본 파일명
+		String orgFileName=image.getOriginalFilename();
+		// webapp/upload 폴더 까지의 실제 경로(서버의 파일시스템 상에서의 경로)
+		String realPath=request.getServletContext().getRealPath("/upload");
+		//저장할 파일의 상세 경로
+		String filePath=realPath+File.separator;
+		//디렉토리를 만들 파일 객체 생성
+		File upload=new File(filePath);
+		if(!upload.exists()) {//만일 디렉토리가 존재하지 않으면 
+			upload.mkdir(); //만들어 준다.
+		}
+		//저장할 파일 명을 구성한다.
+		String saveFileName=
+				System.currentTimeMillis()+orgFileName;
+		try {
+			//upload 폴더에 파일을 저장한다.
+			image.transferTo(new File(filePath+saveFileName));
+			System.out.println(filePath+saveFileName);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		//업로드 경로를 리턴한다.
+		return "/upload/"+saveFileName;
+	}
+		
 }
