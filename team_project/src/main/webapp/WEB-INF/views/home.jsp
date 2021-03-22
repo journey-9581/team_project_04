@@ -422,20 +422,18 @@
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<!-- 소제목 -->
-				<span class="subheading">소제목</span>    
+				<span class="subheading">QnA</span>    
 				<!-- 제목 -->     
-				<a href="/customer/service/list.do">
-					<h2 class="mb-4">Service</h2>
-				</a>
+				<h2 class="mb-4">Service</h2>
 				<!-- 내용 -->
-				<p id="font_1">서비스 내용 어쩌구 저쩌구 블라블라 아무말 아무말 대잔치</p>
+				<a id="font_1" href="/customer/service/list.do" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
 			</div>
 		</div>		
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
 			
-				<form action="/customer/service/insert.do" id="sermyForm"
+				<form action="/customer/service/insert.do" id="sermyForm" method="post"
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->

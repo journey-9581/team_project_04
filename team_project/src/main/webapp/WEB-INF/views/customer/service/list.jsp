@@ -14,7 +14,7 @@
 
 <script src="/resources/js/jquery-3.5.1.js"></script>
 <!-------------타이틀 (페이지 제목)------------->
-<title>FreeBoard</title>
+<title>ServiceBoard</title>
 <!------------- css 영역------------->
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
@@ -88,17 +88,27 @@
 				<div class="row justify-content-center pb-5">
 					<div class="col-md-12 heading-section text-center ftco-animate">
 						<!--대분류-->
-						<span class="subheading">contents</span>
-						<!--소분류 영어-->
-						<h2 class="mb-4">FreeBoard</h2>
-						<!--소분류 한글 -->
-						<p id="font_1">자유게시판</p>
-						<!-- 버튼 -->
-						<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
-							data-target="#exampleModal" data-whatever="@getbootstrap">New Post</button>
-						<!-- 관리자만 보이는 버튼 -->
-						<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1"
-						onclick="location.href='insertf.do'">New F&A</button>
+						<span class="subheading">service</span>
+						<c:choose>
+							<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+								<!--소분류 영어-->
+								<h2 class="mb-4">QnABoard</h2>
+								<!--소분류 한글 -->
+								<p id="font_1">질문답변</p>
+								<!-- 버튼 -->
+								<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
+								data-target="#exampleModal" data-whatever="@getbootstrap">New Post</button>
+							</c:when>
+							<c:otherwise>
+								<h2 class="mb-4">FAQBoard</h2>
+								<p id="font_1">자주 묻는 질문</p>
+								<!-- 관리자만 보이는 버튼 -->
+								<c:if test="${not(empty manage) }">
+									<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1"
+											onclick="location.href='insertf.do'">New Post</button>
+								</c:if>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 
@@ -108,8 +118,8 @@
 					<!-- category 카테고리 -->
 					<h3 class="heading-sidebar">Select Category</h3>
 					<div class="tagcloud">
-						<a id="font_1" href="list.do?isQnA=0" class="tag-cloud-link">Q&A</a>
-						<a id="font_1" href="list.do?isQnA=1" class="tag-cloud-link">F&A</a>
+						<a id="font_1" href="list.do?isQnA=0" class="tag-cloud-link">QNA</a>
+						<a id="font_1" href="list.do?isQnA=1" class="tag-cloud-link">FAQ</a>
 					</div>
 					<!-- 테이블 -->
 					<table class="board_list">

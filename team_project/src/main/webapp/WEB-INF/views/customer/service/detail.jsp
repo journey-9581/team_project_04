@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>FreeBoard Detail</title>
+<title>ServiceBoard Detail</title>
 <!------------- css 영역------------->  
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
@@ -124,20 +124,33 @@
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<!--대분류-->
 				<span class="subheading">contents</span>
-				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
-				<!--소분류 한글 -->
-				<p id="font_1">자유게시판</p>
-				<!--수정,삭제 버튼  -->
+				<c:choose>
+						<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+							<!--소분류 영어-->
+							<h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">QnABoard</a></h2>
+							<!--소분류 한글 -->
+							<p id="font_1">질문답변</p>
+							<!-- 버튼 -->
+						</c:when>
+						<c:otherwise>
+							<h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">FAQBoard</a></h2>
+							<p id="font_1">자주 묻는 질문</p>
+						</c:otherwise>
+					</c:choose>
+				<!-- 관리자만 보이는 버튼 -->
 				<!-- 관리자 아이디면 수정 "${manage}='yes" -->
-				<c:if test="${dto.bbsType == 0}">
-					<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
-							data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>	
-				</c:if>
-					<c:if test="${dto.bbsType == 1}">
-						<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" onclick="location.href='updatef.do?num=${dto.num }'">Update Post</button>
-					</c:if>
+				<c:if test="${not(empty manage) }">
+					<c:choose>
+						<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+							<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
+									data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" onclick="location.href='updatef.do?num=${dto.num }'">Update Post</button>
+						</c:otherwise>
+					</c:choose>
 					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletemodal">Delete Post</button>
+				</c:if>
 			</div>
 		</div>	
 

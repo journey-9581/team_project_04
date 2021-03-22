@@ -46,6 +46,7 @@ public class FQnAController {
 		String manage = "";
 		if (session.getAttribute("manage") != null){
 			manage = (String) session.getAttribute("manage");
+			model.addAttribute("manage", manage);
 		}
 		
 		FQnADto dto = null;
