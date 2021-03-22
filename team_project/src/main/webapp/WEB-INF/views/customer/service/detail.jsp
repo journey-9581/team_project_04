@@ -1,4 +1,4 @@
-<%@page import="com.team04.spring.service.entity.FQnA"%>
+<%@page import="com.team04.spring.service.dto.FQnADto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>FreeBoard Detail</title>
+<title>ServiceBoard Detail</title>
 <!------------- css 영역------------->  
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
 <!-- css  -->
 
@@ -114,7 +114,7 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar.jsp"></jsp:include>
 
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
@@ -124,16 +124,33 @@
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<!--대분류-->
 				<span class="subheading">contents</span>
-				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
-				<!--소분류 한글 -->
-				<p id="font_1">자유게시판</p>
-				<!--수정,삭제 버튼  -->
-				<!-- 관리자 아이디면 삭제 or 수정 -->
-				<%-- <c:if test="${dto.writerId eq id }"></c:if> --%>
-					<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
-							data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>	
-					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete Post</button>
+				<c:choose>
+						<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+							<!--소분류 영어-->
+							<h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">QnABoard</a></h2>
+							<!--소분류 한글 -->
+							<p id="font_1">질문답변</p>
+							<!-- 버튼 -->
+						</c:when>
+						<c:otherwise>
+							<h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">FAQBoard</a></h2>
+							<p id="font_1">자주 묻는 질문</p>
+						</c:otherwise>
+					</c:choose>
+				<!-- 관리자만 보이는 버튼 -->
+				<!-- 관리자 아이디면 수정 "${manage}='yes" -->
+				<c:if test="${not(empty manage) }">
+					<c:choose>
+						<c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
+							<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" data-toggle="modal"
+									data-target="#replymodal" data-whatever="@getbootstrap">Reply Post</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" onclick="location.href='updatef.do?num=${dto.num }'">Update Post</button>
+						</c:otherwise>
+					</c:choose>
+					<button id="font_1" class="btn btn px-5 py-8 mt-1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletemodal">Delete Post</button>
+				</c:if>
 			</div>
 		</div>	
 
@@ -260,6 +277,28 @@
 	</div><!--container -->	  	
 </section><!-- contents1 섹션-->
 
+
+<!-- delete Modal -->
+		<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        	정말 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" onclick="location.href='delete.do?num=${dto.num }'">확인</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 <!-- reply modal 부분 -->
 	<div class="modal fade" id="replymodal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -297,31 +336,39 @@
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
-					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
-							name="title" id="sertitle">
+							name="title" id="title">
 						<div class="invalid-feedback">제목을 입력해주세요.</div>
 					</div>
 					<div class="form-group">
 						<textarea cols="30" rows="7" class="form-control"
-							placeholder="Message" name="content" id="sercontent"></textarea>
+							placeholder="Message" name="content" id="content"></textarea>
 						<div class="invalid-feedback">내용을 입력해주세요.</div>
 						
 					</div>
 					<div><input style="display:none;" name="num" id="num" value="${dto.num }"></input></div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
-					</div>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -332,38 +379,20 @@
 		</div>
 	</div>
 	
-	<!-- delete Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		        	정말 삭제하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" onclick="location.href='delete.do?num=${dto.num }'">확인</button>
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+	
+		
 	
 	
 <div class="loader">
 	<img src="${pageContext.request.contextPath }/resources/images/ajax-loader.gif"/>
 </div>   			
 <!------------- footer ------------->    
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 
 <!-------------script 스크립트------------->
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
-<jsp:include page="../include/resource_script.jsp"></jsp:include> 
+<jsp:include page="../../include/resource_script.jsp"></jsp:include> 
 <script>
 	
 	//아이디 유효성 여부를 관리할 변수 만들고 초기값 부여하기
@@ -385,35 +414,35 @@
 		console.log(isFormValid);
 		if(!isFormValid){
 			if(!isContentValid){
-				$("#sercontent").addClass("is-invalid");
+				$("#content").addClass("is-invalid");
 			}
 			if(!isTitleValid){
-				$("#sertitle").addClass("is-invalid");
+				$("#title").addClass("is-invalid");
 			}
 			return false; ///폼 전송 막기 
 		}
 	});
 	
 	//이메일을 입력했을때 실행할 함수 등록
-	$("#sertitle").on("input", function(){
-		let inputTitle=$("#sertitle").val();
+	$("#title").on("input", function(){
+		let inputTitle=$("#title").val();
 		//만일 이메일이 정규표현식에 매칭되지 않는다면		
 		if(!inputTitle){
 			isTitleValid=false;
 		}else{
 			isTitleValid=true;
-			$("#sertitle").addClass("is-valid");
+			$("#title").addClass("is-valid");
 		}
 		console.log(isTitleValid);
 	});
-	$("#sercontent").on("input", function(){
-		let inputContent=$("#sercontent").val();
+	$("#content").on("input", function(){
+		let inputContent=$("#content").val();
 		//만일 이메일이 정규표현식에 매칭되지 않는다면		
 		if(!inputContent){
 			isContentValid=false;
 		}else{
 			isContentValid=true;
-			$("#sercontent").addClass("is-valid");
+			$("#content").addClass("is-valid");
 		}
 		console.log(isContentValid);
 	});

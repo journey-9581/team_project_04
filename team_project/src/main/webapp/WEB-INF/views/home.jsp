@@ -420,28 +420,40 @@
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<!-- 소제목 -->
-				<span class="subheading">소제목</span>    
+				<span class="subheading">QnA</span>    
 				<!-- 제목 -->     
-				<a href="/customer/service/list.do">
-					<h2 class="mb-4">Service</h2>
-				</a>
+				<h2 class="mb-4">Service</h2>
 				<!-- 내용 -->
-				<p id="font_1">서비스 내용 어쩌구 저쩌구 블라블라 아무말 아무말 대잔치</p>
+				<a id="font_1" href="/customer/service/list.do" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
 			</div>
 		</div>		
 		<div class="row block-9">			
 			<!----Q&A 전송 폼---->
 			<div class="col-md-7 order-md-last d-flex">
 			
-				<form action="/customer/service/insert.do" id="sermyForm"
+				<form action="/customer/service/insert.do" id="sermyForm" method="post"
 					class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
 						<!-- 로그인 상태면 아이디 출력, 아니면 '로그인 상태가 아닙니다.' -->
-						<p class="mb-3">사용자 아이디()</p>
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">${sessionScope.id }</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
-					<div class="form-group">
-						<p class="mb-3">사용자 이메일()</p>
-					</div>
+				<%-- 	<div class="form-group">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+								<p class="mb-3">로그인 상태가 아닙니다.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="mb-3">이메일</p>
+							</c:otherwise>
+						</c:choose>
+					</div> --%>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Subject"
 							name="title" id="sertitle">
@@ -454,12 +466,18 @@
 						
 					</div>
 					<div class="form-group">
-						<!-- 로그인 상태일 때만 보이게 하기 -->
-						<input type="submit" value="Send Message"
-							class="btn btn-primary py-3 px-5"> <img
-							src="/resources/images/OIP.jpg" style="margin-left: 10px"
-							alt="lockQnAimg"> <input type="checkbox"
-							style="margin-left: 5px" name="secrete">
+						<c:choose>
+							<c:when test="${empty sessionScope.id }">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								<img src="/resources/images/OIP.jpg" style="margin-left: 10px"
+										alt="lockQnAimg">
+								<input type="checkbox" style="margin-left: 5px" name="secrete">
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</form>
 			</div>
@@ -580,28 +598,26 @@ $(document).ready(function() {
 			}
 		});
 		
-		//이메일을 입력했을때 실행할 함수 등록
+		
 		$("#sertitle").on("input", function(){
 			let inputTitle=$("#sertitle").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sertitle").removeClass("is-valid is-invalid");
 			if(!inputTitle){
 				isTitleValid=false;
 			}else{
 				isTitleValid=true;
 				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isTitleValid);
 		});
 		$("#sercontent").on("input", function(){
 			let inputContent=$("#sercontent").val();
-			//만일 이메일이 정규표현식에 매칭되지 않는다면		
+			$("#sercontent").removeClass("is-valid is-invalid");
 			if(!inputContent){
 				isContentValid=false;
 			}else{
 				isContentValid=true;
-				$("#sercontent").addClass("is-valid");
+				$("#sertitle").addClass("is-valid");
 			}
-			console.log(isContentValid);
 		});
 });
 </script>
