@@ -1,77 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="premium">
-	<update id="addViewCount" parameterType="int">
-		UPDATE premium
-		SET viewCount=viewCount+1
-		WHERE num=#{num}
-	</update>
 	<delete id="delete" parameterType="int">
 		DELETE premium
 		WHERE num=#{num}
 	</delete>
 	<insert id="insert" parameterType="premiumDto">
 		INSERT INTO premium
-		(num,writer,title,category,imagePath,content,viewCount,regdate)
-		VALUES(premium_seq.NEXTVAL,#{writer},
-				#{title},#{category},#{imagePath},#{content},0,SYSDATE)		
+		(num, writer, caption, content, imagePath, regdate)
+		VALUES(premium_seq.NEXTVAL, #{writer}, #{caption}, #{content}, #{imagePath},SYSDATE)
 	</insert>
-	<update id="update" parameterType="premiumDto">
-		UPDATE premium
-		SET title=#{title}, content=#{content},category=#{category}
-		WHERE num=#{num}
-	</update>
-	<select id="getList" parameterType="premiumDto" resultType="premiumDto">
-		SELECT *
+	<select id="getData" parameterType="int" resultType="premiumDto">
+		SELECT * 
 		FROM
-			(SELECT result1.*, ROWNUM AS rnum
-			FROM
-				(SELECT num,writer,title,category,content,viewCount,
-					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
-				FROM premium
-				<choose>
-					<when test="title != null and content != null and category != null">
-						WHERE title LIKE '%'||#{title}||'%' 
-						OR content LIKE '%'||#{content}||'%'
-						OR category LIKE '%'||#{category}||'%'
-					</when>
-					<when test="title != null">
-						WHERE title LIKE '%'||#{title}||'%'
-					</when>
-					<when test="writer != null">
-						WHERE writer LIKE '%'||#{writer}||'%'
-					</when>
-					<when test="category != null">
-						WHERE category LIKE '%'||#{category}||'%'
-					</when>
-				</choose>
-				ORDER BY num DESC) result1)
-		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
-	</select>
-	<select id="getCount" parameterType="premiumDto" resultType="int">
-		SELECT NVL(MAX(ROWNUM), 0)
-		FROM premium
-		<choose>
-			<when test="title != null and content != null and category !=null">
-				WHERE title LIKE '%'||#{title}||'%' 
-				OR content LIKE '%'||#{content}||'%'
-				OR category LIKE '%'||#{category}||'%'
-			</when>
-			<when test="title != null">
-				WHERE title LIKE '%'||#{title}||'%'
-			</when>
-			<when test="writer != null">
-				WHERE writer LIKE '%'||#{writer}||'%'
-			</when>
-			<when test="category != null">
-				WHERE category LIKE '%'||#{category}||'%'
-			</when>
-		</choose>		
-	</select>
-	<select id="getData" parameterType="int" resultType="premiumDto">		
-		SELECT num,category,writer,title,content,viewCount,imagePath, 
-		FROM
-			(SELECT num, writer, title, imagePath, 
+			(SELECT num, writer, caption, content, imagePath, 
 				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
 				LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum, 
 				LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum 
@@ -79,4 +21,25 @@
 			ORDER BY num DESC)
 		WHERE num=#{num}
 	</select>
+	<select id="getList" parameterType="premiumDto" 
+		resultType="premiumDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num,writer,caption,content,imagePath,
+					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
+				FROM premium
+				ORDER BY num DESC) result1) 
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM premium
+	</select>
+	<update id="update" parameterType="premiumDto">
+		UPDATE premium
+		SET caption=#{caption}, content=#{content}
+		WHERE num=#{num}
+	</update>
 </mapper>
