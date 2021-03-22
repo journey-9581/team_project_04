@@ -26,7 +26,8 @@
     top: 650px;
     z-index: 5;
     text-align: center;
-}
+    border-radius: 1em;
+	}
 </style>
 <!-- 
 	CSS ,js,image 링크 주소	
@@ -167,18 +168,17 @@
 	</div>
 </section><!-- about 소개글 섹션 -->
     
-<!------------contents1 컨텐츠 유료 ------------->
+<!------------ Special part ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
 		<!---- 제목 부분 ---->
 		<div class="row justify-content-center pb-5">
 		<div class="col-md-12 heading-section text-center ftco-animate">
-			<!--소제목-->
-			<span id="font_1" class="subheading"> 유료광고</span>
+			
 			<!--제목-->
-			<h2 class="mb-4">Premium Contents1 </h2>
+			<h2 class="mb-4">Special Pick </h2>
 			<!--내용 -->
-			<p id="font_1">광고 광고중 대놓고 광고중</p>
+			<p id="font_1">특별한 여행을 원하시면,</p>
 			<!-- 버튼 -->
 			<a id="font_1" href="${pageContext.request.contextPath }/premium/list.do" class="btn btn-primary px-5 py-8 mt-1">더 알아보기</a>
 		</div>
@@ -192,17 +192,17 @@
 					<div class="img">
 						<!-- 세일표시 -->
 						<div class="vr"><span>Sale</span></div>				
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-1.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=36">				
+							<img src="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>					
 					<!-- 텍스트1 -->
 					<div class="text">
 						<!-- 가격 -->
-						<h4 class="price"><span class="old-price mr-2">$500,000</span>$130,000</h4>
-						<span >1박2일</span>
-						<h3 id="font_1"><a href="#">우리집 좋아요</a></h3>
+						<h4 class="price"><span class="old-price mr-2">$200,000</span>$130,000</h4>
+						<span >1박2일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=36">#파파홈 #글램핑 #캠핑</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!-- 별표-->
@@ -213,13 +213,13 @@
 								<span class="ion-ios-star"></span>
 							</div>
 							<div class="float-right">
-								<!-- 댓글수? -->
-								<span class="rate"><a href="#">(120)</a></span>
+								<!-- 댓글수? 
+								<span class="rate"><a href="#">(120)</a></span>-->
 							</div>
 						</div>
 					</div>	
 					<!-- 이미지1 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-1.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 						<!--이미지 오른쪽 상단 확대 아이콘1-->
 						<span class="icon-expand"></span>
@@ -232,19 +232,19 @@
 				<div class="project">
 					<!-- 이미지2 -->
 					<div class="img">
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-2.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=43">
+							<img src="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>
 					<!-- 텍스트2 -->
 					<div class="text">
 						<h4 class="price">₩400,000</h4>
-						<span id="font_1">3박 4일</span>
-						<h3 id="font_1"><a href="hotel.html">유료광고</a></h3>
+						<span id="font_1">3박 4일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=43">국내에서 프라이빗 비치 본적있어?</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
-								<!--  별표-->
+								<!--  별표 -->
 								<span class="ion-ios-star"></span>
 								<span class="ion-ios-star"></span>
 								<span class="ion-ios-star"></span>
@@ -252,12 +252,12 @@
 								<span class="ion-ios-star"></span>
 							</div>
 							<div class="float-right">
-								<span class="rate"><a href="#">(120)</a></span>
+								<!--  <span class="rate"><a href="#">(120)</a></span>-->
 							</div>
 						</div>
 					</div>
 					<!-- 이미지2-2 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-2.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/R0980826.jpg" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 						<!--이미지 오른쪽 상단 확대 아이콘2-->
 						<span class="icon-expand"></span>
@@ -270,16 +270,16 @@
 				<div class="project">
 					<!-- 이미지 3 -->
 					<div class="img">
-						<a href="#">
-							<img src="${pageContext.request.contextPath }/resources/images7/hotel-3.jpg" 
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=41">
+							<img src="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 								class="img-fluid" alt="Colorlib Template">
 						</a>
 					</div>
 					<!-- 텍스트3 -->
 					<div class="text">
 						<h4 class="price">$400,000</h4>
-						<span id="font_1">3박 4일</span>
-						<h3 id="font_1"><a href="hotel.html">여기가 숙소맛집</a></h3>
+						<span id="font_1">2박 3일, 2인</span>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=41">등산여행은 #산 새</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 							<!--별표-->
@@ -290,12 +290,12 @@
 								<span class="ion-ios-star"></span>		
 							</div>
 							<div class="float-right">
-								<span class="rate"><a href="#">(120)</a></span>
+								<!-- <span class="rate"><a href="#">(120)</a></span> -->
 							</div>
 						</div>
 					</div>
 					<!-- 이미지3-2 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/hotel-3.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 								<span class="icon-expand"></span>
 					</a>
@@ -315,17 +315,15 @@
 				<!-- 제목 -->
 				<h2 class="mb-4">Contents2</h2>
 				<!-- 내용 -->
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-				<!-- 버튼 -->
-				<a id="font_1 href="#" class="btn btn-primary px-5 py-8 mt-1">자세히 보기</a>
+				<p>Eat,Talking,Share</p>							
 			</div>
 		</div>
 	<div class="row d-flex">
 			<!---- 세번째 POST1 ---->
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
-					<a href="#" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
+					<a href="${pageContext.request.contextPath }/review/list.do" class="block-20" 
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/food2.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -343,7 +341,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="${pageContext.request.contextPath }/withboard/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_2.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/with.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -361,7 +359,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="${pageContext.request.contextPath }/freeboard/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_3.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/light.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -379,7 +377,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					<a href="gallery/list.do" class="block-20" 
-						style="background-image: url('${pageContext.request.contextPath }/resources/images7/image_1.jpg');">
+						style="background-image: url('${pageContext.request.contextPath }/resources/images7/kbg.jpg');">
 					</a>
 					<div class="text float-right d-block">
 						<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -395,7 +393,7 @@
 		</div><!-- row -->
 	</div><!-- container -->
 </section><!-- contents2 섹션 -->
-		
+
 <!-------------Reservation 예약 섹션 ------------->
 <section class="ftco-intro img" id="Reservation-section" 
 	style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_3.jpg);"><!--이미지 -->

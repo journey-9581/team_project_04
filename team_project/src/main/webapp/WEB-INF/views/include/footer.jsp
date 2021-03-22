@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!------------- footer ------------->    
-<footer class="ftco-footer ftco-section">
+<footer class="ftco-footer ftco-section" style="z-index:100;">
 	<div class="container">
 		<div class="row mb-5">
 			<!--  -->

@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Premium</title>
-<!------------- css 영역------------->
+<title>Special Pick</title>
+<!------------- css 영역------------->  
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <!-- css  -->
 
@@ -20,16 +20,44 @@
 	.img{
 		height: 250px;
 		text-align: center;
+	}
+	/* floating bar */
+	#floatMenu {
+		position: absolute;
+		width: 100px;
+		height: auto;
+		left: 90%;
+		top: 300px;
+		z-index: 5;
+		text-align: center;
 	}			
 </style>
 </head>
 <!-------------body 바디 영역 ------------->
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
 
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
+	</br>
+	<a href="${pageContext.request.contextPath }/premium/list.do">
+		<p>Special Pick</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/freeboard/list.do">
+		<p>Free Board</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/gallery/list.do">
+		<p>Gallery</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/withboard/list.do">
+		<p>With me</p>
+	</a>
+	<a href="#home-section">
+		<p>Review</p>
+	</a>	
+</div>
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
@@ -37,13 +65,12 @@
 		<div class="row justify-content-center pb-5">
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<!--대분류-->
-				<span class="subheading">contents</span>
+				<span class="subheading">Your</span>
 				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/premium/list.do">Premium</a></h2>
-				<!--소분류 한글 -->
-				<p id="font_1">갤러리</p>
+				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/premium/list.do">Special Pick</a></h2>
+				
 				<!-- 버튼 -->				
-				<a id="font_1" href="${pageContext.request.contextPath }/premium/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> Image upload</a>				
+				<a id="font_1" href="${pageContext.request.contextPath }/premium/private/ajax_form.do" class="btn btn-primary px-5 py-8 mt-1"> POST</a>				
 			</div>
 		</div>	
 		<div class="row">	
@@ -63,7 +90,7 @@
 						<div class="text">
 							<h4 class="price">${tmp.writer }</h4>
 							<span id="font_1">${tmp.regdate }"</span>
-							<h3 id="font_1"><a href="hotel.html">${tmp.title }</a></h3>
+							<h3 id="font_1"><a href="hotel.html">${tmp.caption }</a></h3>
 	
 						</div>
 						<!-- 이미지1-1 -->
@@ -134,6 +161,29 @@
 
 <!-------------script 스크립트------------->
 <jsp:include page="../include/resource_script.jsp"></jsp:include> 
+<script>
+$(document).ready(function() {
 
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition;
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
+</script>
 </body>
 </html>
