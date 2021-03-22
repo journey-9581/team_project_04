@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
 <!-------------타이틀 (페이지 제목)------------->
-<title>Post Update </title>
+<title>Post Update</title>
 <!------------- css 영역------------->  
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 
@@ -35,27 +35,20 @@
 				</div>
 			</div>	
 			<form action="update.do" method="post">				
-				<div class="form-group">
-				<label for="category">Category</label>
-				<select class="form-control" id="font_1" name="category" id="category">
-						<option value="">선택</option>
-						<option value="잡담">잡담</option>
-						<option value="정보">정보</option>
-						<option value="나눔">나눔</option>
-				</select>
-				<br>
-				<input type="hidden" name="num" value="${dto.num }"/>
-				<label for="title">Writer</label>
-				<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>							
-				<br>
-				<label for="title">Title</label>
-				<input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
-				<br>
-				<label for="content">Content</label>
-				<textarea class="form-control" name="content" id="content">${dto.content }</textarea>
+				<div class="form-group">				
+					<br>
+					<input type="hidden" name="num" value="${dto.num }"/>
+					<label for="title">Writer</label>
+					<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>							
+					<br>
+					<label for="caption">Caption</label>
+					<input class="form-control" type="text" name="caption" id="caption" value="${dto.caption }"/>
+					<br>
+					<label for="content">Content</label>
+					<textarea class="form-control" name="content" id="content">${dto.content }</textarea>
 				</div>
 				<br>
-				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
+				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정</button>
 				<button class="btn btn" type="reset">취소</button>
 			</form>							
 		</div>	
