@@ -79,20 +79,25 @@ public class WithBoardServiceImpl implements WithBoardService{
 		List<WithBoardDto> list=null;
 		//전체 row 의 갯수를 담을 지역변수를 미리 만든다.
 		int totalRow=0;
+		
+		//카테고리
+		String category=request.getParameter("category");
+		if(category==null) {
+			category="";
+		}
+		dto.setCategory(category);
+		
 		//만일 검색 키워드가 넘어온다면 
 		if(!keyword.equals("")){
 			//검색 조건이 무엇이냐에 따라 분기 하기
-			if(condition.equals("title_content_category")){//제목 +내용+카테고리 검색인 경우
-				//검색 키워드를 WithBoardDto 에 담아서 전달한다.
+			if(condition.equals("title_content")){//제목 +내용 검색인 경우
+				//검색 키워드를 FreeBoardDto 에 담아서 전달한다.
 				dto.setTitle(keyword);
 				dto.setContent(keyword);	
-				dto.setCategory(keyword);
 			}else if(condition.equals("title")){ //제목 검색인 경우
 				dto.setTitle(keyword);			
 			}else if(condition.equals("writer")){ //작성자 검색인 경우
 				dto.setWriter(keyword);	
-			}else if(condition.equals("category")) {//카테고리 검색인 경우
-				dto.setCategory(keyword);
 				// 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
 			}
 		}
@@ -123,6 +128,7 @@ public class WithBoardServiceImpl implements WithBoardService{
 		mView.addObject("keyword", keyword);
 		mView.addObject("encodedK", encodedK);
 		mView.addObject("totalRow", totalRow);
+		mView.addObject("category",category);
 		
 	}
 	//디테일 페이지

@@ -28,23 +28,23 @@
 			FROM
 				(SELECT num,writer,title,category,content,viewCount,
 					TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
-				FROM board_free 	
+				FROM board_free
 				<choose>
-					<when test="title == null and writer == null">
-						WHERE category LIKE '%'||#{category}||'%'
+					<when test="title == null and content == null">
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%'
 					</when>
-					<when test="title != null and writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%' 
-						OR writer LIKE '%'||#{writer}||'%')
+					<when test="title != null and content != null">
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(title) LIKE '%'||UPPER(#{title})||'%' 
+						OR UPPER(content) LIKE '%'||UPPER(#{content})||'%')
 					</when>
 					<when test="title != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%')
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(title) LIKE '%'||UPPER(#{title})||'%')
 					</when>
 					<when test="writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						writer LIKE '%'||#{writer}||'%')
+						WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+						UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
 					</when>
 				</choose>
 				ORDER BY num DESC) result1)
@@ -54,37 +54,20 @@
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM board_free
 		<choose>
-					<when test="title != null and writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%' 
-						OR writer LIKE '%'||#{writer}||'%')
-					</when>
-					<when test="title != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						title LIKE '%'||#{title}||'%')
-					</when>
-					<when test="writer != null">
-						WHERE category LIKE '%'||#{category}||'%' AND (
-						writer LIKE '%'||#{writer}||'%')
-					</when>
-				</choose>
-		<!-- <choose>
-		
-			<when test="title != null and content != null and category !=null">
-				WHERE title LIKE '%'||#{title}||'%' 
-				OR content LIKE '%'||#{content}||'%'
-				OR category LIKE '%'||#{category}||'%'
+			<when test="title != null and content != null">
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(title) LIKE '%'||UPPER(#{title})||'%' 
+				OR UPPER(content) LIKE '%'||UPPER(#{content})||'%')
 			</when>
 			<when test="title != null">
-				WHERE title LIKE '%'||#{title}||'%'
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(title) LIKE '%'||UPPER(#{title})||'%')
 			</when>
 			<when test="writer != null">
-				WHERE writer LIKE '%'||#{writer}||'%'
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
 			</when>
-			<when test="category != null">
-				WHERE category LIKE '%'||#{category}||'%'
-			</when>
-		</choose>	 -->	
+		</choose>	
 	</select>
 	<select id="getData" parameterType="int" resultType="freeBoardDto">
 		SELECT num,category,writer,title,content,viewCount,

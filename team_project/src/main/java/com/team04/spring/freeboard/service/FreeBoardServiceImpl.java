@@ -1,16 +1,18 @@
 package com.team04.spring.freeboard.service;
 
-import java.net.*;
-import java.util.*;
+import java.net.URLEncoder;
+import java.util.List;
 
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.web.servlet.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.team04.spring.freeboard.dao.*;
-import com.team04.spring.freeboard.dto.*;
+import com.team04.spring.freeboard.dao.FreeBoardDao;
+import com.team04.spring.freeboard.dao.FreeCommentDao;
+import com.team04.spring.freeboard.dto.FreeBoardDto;
+import com.team04.spring.freeboard.dto.FreeCommentDto;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService{
@@ -55,8 +57,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			[ 검색 키워드에 관련된 처리 ]
 			-검색 키워드가 파라미터로 넘어올수도 있고 안넘어 올수도 있다.		
 		*/
-		
-		
 		String keyword=request.getParameter("keyword");
 		String condition=request.getParameter("condition");
 		//만일 키워드가 넘어오지 않는다면 
@@ -80,28 +80,33 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		//전체 row 의 갯수를 담을 지역변수를 미리 만든다.
 		int totalRow=0;
 		
-		String category = request.getParameter("category");
-		if(category == null) {
-			category = "";
+		//카테고리
+		String category=request.getParameter("category");
+		if(category==null) {
+			category="";
 		}
 		dto.setCategory(category);
 		
 		//만일 검색 키워드가 넘어온다면 
 		if(!keyword.equals("")){
 			//검색 조건이 무엇이냐에 따라 분기 하기
-			if(condition.equals("title_content_category")){//제목 +내용 검색인 경우
+			if(condition.equals("title_content")){//제목 +내용 검색인 경우
 				//검색 키워드를 FreeBoardDto 에 담아서 전달한다.
 				dto.setTitle(keyword);
-				dto.setWriter(keyword);	
+				dto.setContent(keyword);	
 			}else if(condition.equals("title")){ //제목 검색인 경우
 				dto.setTitle(keyword);			
 			}else if(condition.equals("writer")){ //작성자 검색인 경우
 				dto.setWriter(keyword);	
+				// 다른 검색 조건을 추가 하고 싶다면 아래에 else if() 를 계속 추가 하면 된다.
 			}
 		}
 		//글목록 얻어오기
 		list=freeBoardDao.getlist(dto);
 		
+		for (FreeBoardDto temp:list) {
+	         System.out.printf("제목 : %s, 작성자 : %s, 카테고리 : %s \n", temp.getTitle(), temp.getWriter(), temp.getCategory());
+	      }
 		
 		//글의 갯수
 		totalRow=freeBoardDao.getCount(dto);
@@ -128,7 +133,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		mView.addObject("keyword", keyword);
 		mView.addObject("encodedK", encodedK);
 		mView.addObject("totalRow", totalRow);
-		mView.addObject("category", category);
+		mView.addObject("category",category);
 		
 	}
 	//디테일 페이지

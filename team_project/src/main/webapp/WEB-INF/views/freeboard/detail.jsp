@@ -138,20 +138,7 @@
 
 		<!-- Post 메인 -->		
 		<div id="font_1" class="row">			
-			<!-- 사이드 컨텐츠 메뉴바 Side bar Contents Categories  -->
-			<div class="col-lg-3 sidebar ftco-animate">
-				<div class="sidebar-box ftco-animate">
-					<h3 class="heading-sidebar">Contents Categories</h3>
-					<ul class="categories">
-						<li><a href="#">Review</a></li>
-						<li><a href="#">With Us</a></li>
-						<li><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></li>
-						<li><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></li>
-					</ul>
-				</div>
-			</div>	
-
-			<div class="col-lg-8 ftco-animate">
+			<div class="col-lg-12 ftco-animate">
 			<!-- 글 제목 -->
 			<h2 id="font_1" class="mb-3" style="text-align: center;">${dto.title }</h2>			            
 				<div class="about-author d-flex p-6 bg-light">
@@ -260,7 +247,7 @@
 
 <!-------------script 스크립트------------->
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
-<jsp:include page="../include/resource_script.jsp"></jsp:include> 
+
 <script>
 //댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(document).on("click",".comment-update-link", function(){
@@ -334,7 +321,7 @@
 	function deleteConfirm(){
 		var isDelete=confirm("이 글을 삭제 하시겠습니까?");
 		if(isDelete){
-			location.href="delete.do?num=${dto.num}";
+			location.href="${pageContext.request.contextPath }/freeboard/private/delete.do?num=${dto.num}";
 		}
 	}
 	
@@ -412,5 +399,17 @@
 		}
 	});			
 </script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/popper.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/aos.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
 </body>
 </html>
