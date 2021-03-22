@@ -10,7 +10,7 @@
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" 
 				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				 <span class="oi oi-menu"></span>Menu
-			</button>		
+			</button>
 		<!-- 네비바 메뉴 -->
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav nav ml-auto">				
