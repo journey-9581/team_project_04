@@ -17,7 +17,7 @@
 	}
 </style>
 </head>
-<body>
+<body class="pt-5">
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 	<div class="container">
 		<table class="table table-striped">

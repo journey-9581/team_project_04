@@ -101,12 +101,12 @@
 				<div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
 					<!----홈 이미지 2---->
 					<div class="one-third order-md-last">					
-						<div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/images7/bg_2.jpg);">
+						<div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/images7/patrick.jpg);">
 							<div class="overlay"></div>
 						</div>
 						<!-- 이미지 위 분홍 박스 텍스트2 / 홈 이미지 2-2 -->
 						<div class="vr">						
-							<span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_2-2.jpg);">
+							<span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/images7/patrick.jpg);">
 								Tribus2
 							</span>
 						</div>
@@ -117,7 +117,7 @@
 							<!--제목2 -->
 							<span class="subheading pl-5">Tribus2</span>
 							<!--소제목2 -->
-							<h1 id="font_1" class="mb-4 mt-3">부제2</span></h1>
+							<h1 id="font_1" class="mb-4 mt-3">부제2</h1>
 							<!--내용2 -->
 							<p id="font_1">
 								내용 - 어쩌구 저쩌구 12345671234567 아무말 아무말 대잔치 !!!					

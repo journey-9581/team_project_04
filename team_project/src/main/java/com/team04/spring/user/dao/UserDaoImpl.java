@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.team04.spring.user.dto.UserDto;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private SqlSession session;
@@ -62,6 +62,18 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void updateProfile(UserDto dto) {
 		session.update("user_team.updateProfile", dto);
+	}
+
+	@Override
+	public String getManage(String id) {
+		String manage=session.selectOne("user_team.getManage", id);
+		return manage;
+	}
+
+	@Override
+	public String getPremium(String id) {
+		String premium=session.selectOne("user_team.getPremium", id);
+		return premium;
 	}
 
 }

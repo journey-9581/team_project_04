@@ -48,7 +48,7 @@
 				<input class="form-control" type="text" name="title" id="title"/>
 				<br>
 					<label for="content">Content</label>
-					<textarea class="form-control" name="content" id="content"></textarea>
+					<textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'></textarea>
 				</div>
 				<br>
 				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>

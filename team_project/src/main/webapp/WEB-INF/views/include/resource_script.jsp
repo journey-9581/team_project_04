@@ -15,3 +15,5 @@
 <script src="${pageContext.request.contextPath }/resources/js7/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js7/scrollax.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js7/main.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.5.1.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>

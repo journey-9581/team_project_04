@@ -20,7 +20,8 @@
 	.img{
 		height: 250px;
 		text-align: center;
-	}			
+	}
+        			
 </style>
 </head>
 <!-------------body 바디 영역 ------------->
@@ -57,14 +58,14 @@
 						<div class="img">
 							<a href="detail.do?num=${tmp.num }">
 								<img src="${pageContext.request.contextPath }${tmp.imagePath}" 
-									class="img-fluid" alt="Colorlib Template">
+									class="img-fluid" alt="No Image">
 							</a>
 						</div>
 						<!-- 텍스트 -->
 						<div class="text">
 							<h4 class="price">${tmp.writer }</h4>
 							<span id="font_1">${tmp.regdate }"</span>
-							<h3 id="font_1"><a href="hotel.html">${tmp.caption }</a></h3>
+							<h3 id="font_1"><a href="detail.do?num=${tmp.num }">${tmp.caption }</a></h3>
 	
 						</div>
 						<!-- 이미지1-1 -->
