@@ -43,8 +43,8 @@
 <div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
 	</br>
 	<a href="${pageContext.request.contextPath }/premium/list.do">
-		<p>Special Pick</p>
-	</a>
+		<p>Special</p>
+	</a>	
 	<a href="${pageContext.request.contextPath }/freeboard/list.do">
 		<p>Free Board</p>
 	</a>
@@ -54,8 +54,11 @@
 	<a href="${pageContext.request.contextPath }/withboard/list.do">
 		<p>With me</p>
 	</a>
-	<a href="#home-section">
+	<a href="${pageContext.request.contextPath }/review/list.do">
 		<p>Review</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/customer/service/list.do">
+		<p>QnA</p>
 	</a>	
 </div>
 <!-------------contents1 컨텐츠 유료 ------------->
@@ -83,7 +86,7 @@
 						<div class="img">
 							<a href="detail.do?num=${tmp.num }">
 								<img src="${pageContext.request.contextPath }${tmp.imagePath}" 
-									class="img-fluid" alt="Colorlib Template">
+									class="img-fluid" alt="No Image">
 							</a>
 						</div>
 						<!-- 텍스트 -->

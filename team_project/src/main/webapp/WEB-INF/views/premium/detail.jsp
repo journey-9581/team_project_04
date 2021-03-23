@@ -40,7 +40,7 @@
 <div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
 	</br>
 	<a href="${pageContext.request.contextPath }/premium/list.do">
-		<p>Premium</p>
+		<p>Special</p>
 	</a>	
 	<a href="${pageContext.request.contextPath }/freeboard/list.do">
 		<p>Free Board</p>
@@ -51,8 +51,11 @@
 	<a href="${pageContext.request.contextPath }/withboard/list.do">
 		<p>With me</p>
 	</a>
-	<a href="#home-section">
+	<a href="${pageContext.request.contextPath }/review/list.do">
 		<p>Review</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/customer/service/list.do">
+		<p>QnA</p>
 	</a>	
 </div>
 
@@ -63,7 +66,7 @@
 			<div class="row justify-content-center pb-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<!--카테고리-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/premium/list.do">Premium</a></span>
+					<span class="subheading"><a href="${pageContext.request.contextPath }/premium/list.do">Special Pick</a></span>
 					<!--내용-->
 					<h2 class="mb-4">${dto.caption }</h2>	
 					<!-- 이미지 삭제 버튼 -->		

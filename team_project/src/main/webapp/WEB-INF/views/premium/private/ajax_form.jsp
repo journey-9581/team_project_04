@@ -22,7 +22,7 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 <section class="ftco-section" id="contents-section">
 	<div class="container">
     	<div class="comment-form-wrap pt-5">
@@ -46,7 +46,8 @@
 			<label for="content">Content</label>
 	    	<textarea class="form-control" name="content" id="content"></textarea>
 	    </form>      
-	    <button class="btn py-3 px-4 btn-primary" onclick="submitContents(this);" id="submitBtn">Post</button>
+	    <button class="btn py-3 px-4 btn-primary" onclick="submitContents(this);" id="submitBtn">저장</button>
+	    <button class="btn btn" type="button" onClick="location.href='${pageContext.request.contextPath}/premium/list.do'">취소</button>
 		<div class="img-wrapper">
 			<br/>
 			   <!-- 섬네일 이미지 업로드 폼 -->

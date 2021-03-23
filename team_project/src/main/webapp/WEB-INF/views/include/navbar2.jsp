@@ -5,6 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar" style="z-index: 100;">
 	<div class="container">
 		<!-- 상단 왼쪽 로고 타이틀 -->
+		<a href="${pageContext.request.contextPath }/""><img style="width: 30px"; src="${pageContext.request.contextPath }/resources/image_p/tribus.png"></a> &nbsp;&nbsp;
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">TRIBUS</a>
 			<!-- menu(메뉴) 버튼 상단 -->
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" 

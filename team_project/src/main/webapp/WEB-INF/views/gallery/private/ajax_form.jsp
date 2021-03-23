@@ -22,43 +22,45 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 <section class="ftco-section" id="contents-section">
-	<div class="container">
-		<div class="comment-form-wrap pt-5">
-			<!---- 제목 부분 ---->
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<!--소제목-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></span>
-					<!--제목-->
-					<h2 class="mb-4">Image Upload</h2>			
-				</div>
-			</div>		
-		</div>
-		<!-- 이미지 업로드 폼 -->
-		<form action="insert.do" method="post" id="insertForm">
-		<input type="hidden" name="imagePath" id="imagePath"/>
-			<div class="form-group">
-				<label for="caption">Caption</label>
-				<input class="form-control" type="text" name="caption" id="caption"/>
-			</div>
-		</form>
-		<form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="image">Image</label>
-				<input class="form-control" type="file" name="image" id="image" 
-					accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
-			</div>
-		</form>
-		<button class="btn py-3 px-4 btn-primary" id="submitBtn">Upload</button>
-		<div class="img-wrapper">
-			<br/>
-			<label>Preview image</label>
-			<img style="height: auto !important; max-width: 100%;"/>
-		</div>
-	</div><!-- container -->
+   <div class="container">
+      <div class="comment-form-wrap pt-5">
+         <!---- 제목 부분 ---->
+         <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+               <!--소제목-->
+               <span class="subheading"><a href="${pageContext.request.contextPath }/gallery/list.do">Gallery</a></span>
+               <!--제목-->
+               <h2 class="mb-4">Image Upload</h2>         
+            </div>
+         </div>      
+      </div>
+      <!-- 이미지 업로드 폼 -->
+      <form action="insert.do" method="post" id="insertForm">
+      <input type="hidden" name="imagePath" id="imagePath"/>
+         <div class="form-group">
+            <label for="caption">Caption</label>
+            <input class="form-control" type="text" name="caption" id="caption"/>
+         </div>
+      </form>
+      <form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
+         <div class="form-group">
+            <label for="image">Image</label>
+            <input class="form-control" type="file" name="image" id="image" 
+               accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
+         </div>
+      </form>
+      <button class="btn py-3 px-4 btn-primary" id="submitBtn">Upload</button>
+      <button class="btn btn" type="button" onClick="location.href='${pageContext.request.contextPath}/gallery/list.do'">취소</button>
+      <div class="img-wrapper">
+         <br/>
+         <label>Preview image</label>
+         <img style="height: auto !important; max-width: 100%;"/>
+      </div>
+   </div><!-- container -->
 </section>
+
 <!-- jquery form 플러그인 javascript 로딩 -->
 <!-------------script 스크립트------------->
 <jsp:include page="../../include/resource_script.jsp"></jsp:include>

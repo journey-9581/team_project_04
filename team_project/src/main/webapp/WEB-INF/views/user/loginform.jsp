@@ -7,38 +7,44 @@
 <meta charset="UTF-8">
 <title>TRIBUS</title>
 <style>
-	#myForm{
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	body{
-		padding-top: 68px;
-	}
+   #myForm{
+      font-family: 'Noto Sans KR', sans-serif;
+   }
+   body{
+      padding-top: 68px;
+   }
 </style>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
 </head>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body>
-	<form action="login.do" method="post" id="myForm">
-		<input type="hidden" name="url" value="${url }"/>
-	  	<label for="id">아이디</label>
-	  	<input type="text" id="id" name="id" class="form-group" 
-	  		placeholder="아이디 입력..." value="${savedId }" required autofocus>
-	  	<label for="pwd" class="sr-only">비밀번호</label>
-	  	<input type="password" id="pwd" name="pwd" class="form-group" 
-	  		placeholder="비밀번호 입력..." value="${savedPwd }" required>
-		<div class="checkbox mb-3">
-		    <label>
-		      <input type="checkbox" name="isSave" value="yes"> 로그인 정보 저장
-		    </label>
-		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		<br>
-		<!-- 네이버 로그인 창으로 이동 -->
-		<div id="naver_id_login" style="text-align:center"><a href="${url}">
-		<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-		<br>
-	</form>
+   <section class="ftco-section" id="contents-section">
+   <div class="container">
+   <form action="login.do" method="post" id="myForm">
+      <input type="hidden" name="url" value="${url }"/>
+      <div class="form-group">
+         <label for="id">아이디</label>
+           <input class="form-control" type="text" id="id" name="id" class="form-group" value="${savedId }">
+      </div>
+      <div class="form-group">
+         <label for="pwd">비밀번호</label>
+           <input class="form-control" type="password" id="pwd" name="pwd" class="form-group" value="${savedPwd }">
+      </div>
+      <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" name="isSave" value="yes"> 로그인 정보 저장
+          </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <br>
+      <!-- 네이버 로그인 창으로 이동 -->
+      <div id="naver_id_login" style="text-align:center"><a href="${url}">
+      <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+      <br>
+   </form>
+   </div>
+   </section>
 </body>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </html>

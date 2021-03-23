@@ -25,48 +25,53 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
-
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
-  	<div class="container">
-		<!---- 제목 부분 ---->
-		<div class="row justify-content-center pb-5">
-			<div class="col-md-12 heading-section text-center ftco-animate">
-				<!--대분류-->
-				<span class="subheading">contents</span>
-				<!--소분류 영어-->
-				<h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
-				<!--소분류 한글 -->
-				<p id="font_1">자유게시판</p>				
-			</div>
-		</div>	
+     <div class="container">
+      <!---- 제목 부분 ---->
+      <div class="row justify-content-center pb-5">
+         <div class="col-md-12 heading-section text-center ftco-animate">
+            <!--대분류-->
+            <span class="subheading">contents</span>
+            <!--소분류 영어-->
+            <h2 class="mb-4"><a href="${pageContext.request.contextPath }/freeboard/list.do">FreeBoard</a></h2>
+            <!--소분류 한글 -->
+            <p id="font_1">자유게시판</p>            
+         </div>
+      </div>   
 
-		<!-- Post 메인 -->		
-		<div id="font_1" class="row">			
-			
-			<div class="col-lg-12 ftco-animate">
-			<!-- 글 제목 -->
-			<h2 id="font_1" class="mb-3" style="text-align: center;">공지</h2>			            
-				<div class="about-author d-flex p-6 bg-light">
-					<table id="font_1" class="board_list">
-						<thead>
-							<tr>
-								<th style="font-weight:bold; color: black;">공지</th>
-								<th>관리자</th>									
-							</tr>
-						</thead>					
-					</table>			
-				</div>
-	            <!-- 컨텐츠 내용 -->
-	            <div style="text-align: center;">
-	            	<p>자유게시판 양식</p>
-	            </div>
-			</div> 	
-		</div><!-- row -->			
-	</div><!--container -->	  	
+      <!-- Post 메인 -->      
+      <div id="font_1" class="row">         
+         
+         <div class="col-lg-12 ftco-animate">
+         <!-- 글 제목 -->
+         <h2 id="font_1" class="mb-3" style="text-align: center;">공지</h2>                     
+            <div class="about-author d-flex p-6 bg-light">
+               <table id="font_1" class="board_list">
+                  <thead>
+                     <tr>
+                        <th style="font-weight:bold; color: black;">공지</th>
+                        <th>관리자</th>                           
+                     </tr>
+                  </thead>               
+               </table>         
+            </div>
+               <!-- 컨텐츠 내용 -->
+            <div style="text-align: center;">
+                  <br />
+                  <p style="font-weight: bold; color: purple;">자유게시판 나눔시 작성 양식</p>
+                  <p><span style="font-weight: bold; color:black; ">지역,장소 : </span>예) 부산, 남포동</p>
+                  <p><span style="font-weight: bold; color:black; ">나눔물품 : </span>예) 패스 1일권 </p>
+                  <p><span style="font-weight: bold; color:black; ">이메일 : </span>예) aaa@naver.com</p>
+                  <p><span style="font-weight: bold; color:black; ">기타 내용 : </span> </p>
+               </div>
+         </div>    
+      </div><!-- row -->         
+   </div><!--container -->        
 </section><!-- contents1 섹션-->
- 			
+          
+
 <!------------- footer ------------->    
 <jsp:include page="../include/footer.jsp"></jsp:include>
 

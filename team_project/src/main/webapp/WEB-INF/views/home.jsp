@@ -54,83 +54,84 @@
 
 <!-------------Home 홈 섹션  ------------->	  
 <section id="home-section" class="hero">
-	<!--회색 배경 그림 -->
-	<img src="resources/images7/blob-shape-3.svg" class="svg-blob" alt="Colorlib Free Template">	
-	<div class="home-slider owl-carousel">		
-		<!-------------홈 메인 1 ------------->
+   <!--회색 배경 그림 -->
+   <img src="resources/images7/blob-shape-3.svg" class="svg-blob" alt="Colorlib Free Template">   
+   <div class="home-slider owl-carousel">   
+   <!-------------홈 메인 1------------->
 		<div class="slider-item">
-			<div class="overlay"></div>
-			<div class="container-fluid p-0">
-				<div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-					<!----홈 이미지 1---->
-					<div class="one-third order-md-last">						
-						<div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/image_p/main_image1.jpg);">
-							<div class="overlay"></div>
-						</div>
-						<!-- 이미지 위 분홍 박스 텍스트1 / 홈 이미지 1-1 -->
-						<div class="vr">						
-							<span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/image_p/main_image1.jpg);">
-								Tribus1
-							</span>
-						</div>
-					</div>
-					<!----텍스트1---->
-					<div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-						
-						<div class="text">
-							<!--제목1 -->
-							<span class="subheading pl-5">Tribus1</span>
-							<!--소제목1 -->
-							<h1 id="font_1" class="mb-4 mt-3">부제1</span></h1>
-							<!--내용1 -->
-							<p id="font_1">
-								내용 - 어쩌구 저쩌구 12345671234567 아무말 아무말 대잔치 !!!					
-							</p>	
-							<!-- 버튼1 -->					
-							<p><a href="#" class="btn btn-primary px-5 py-3 mt-3">button1</a></p>
-						</div><!-- text 2-->
-					</div>					
-				</div><!--row 2-->
-			</div><!-- container-fluid 1 -->
-		</div><!-- 홈 메인1 -->
-		
-		<!-------------홈 메인 2------------->
-		<div class="slider-item">
-		<div class="overlay"></div>
-			<div class="container-fluid p-0">
-				<div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-					<!----홈 이미지 2---->
-					<div class="one-third order-md-last">					
-						<div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/images7/patrick.jpg);">
-							<div class="overlay"></div>
-						</div>
-						<!-- 이미지 위 분홍 박스 텍스트2 / 홈 이미지 2-2 -->
-						<div class="vr">						
-							<span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/images7/patrick.jpg);">
-								Tribus2
-							</span>
-						</div>
-					</div>
-					<!----텍스트2---->
-					<div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">						
-						<div class="text">
-							<!--제목2 -->
-							<span class="subheading pl-5">Tribus2</span>
-							<!--소제목2 -->
-							<h1 id="font_1" class="mb-4 mt-3">부제2</h1>
-							<!--내용2 -->
-							<p id="font_1">
-								내용 - 어쩌구 저쩌구 12345671234567 아무말 아무말 대잔치 !!!					
-							</p>	
-							<!-- 버튼2 -->					
-							<p><a href="#" class="btn btn-primary px-5 py-3 mt-3">button2</a></p>
-						</div><!-- text 2-->
-					</div>						
-				</div><!--row 2-->
-			</div><!-- container-fluid 2 -->
-		</div><!-- 홈 메인 2 -->		
-	</div><!-- home-slider  -->
+        <div class="overlay"></div>
+        <div class="container-fluid p-0">
+            <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+               <!----홈 이미지 1---->
+               <div class="one-third order-md-last">                  
+                  <div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/image_p/main_image1.jpg);">
+                     <div class="overlay"></div>
+                  </div>
+                  <!-- 이미지 위 분홍 박스 텍스트1 / 홈 이미지 1-1 -->
+                  <div class="vr">                  
+                     <span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/image_p/main_image1.jpg);">
+                        Tribus
+                     </span>
+                  </div>
+               </div>
+               <!----텍스트1---->
+               <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                  
+                  <div class="text">
+                     <!--제목1 -->
+                     <span class="subheading pl-5">Tribus</span>
+                     <!--소제목1 -->
+                     <h1 id="font_1" class="mb-4 mt-3">밖으로 나가 용기를 얻는것,</span></h1>
+                     <!--내용1 -->
+                     <p id="font_1">
+                   		여행과 비슷하지않나요 ?
+                     </p>   
+                     <!-- 버튼1                
+                     <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">button1</a></p>-->
+                  </div><!-- text 2-->
+               </div>               
+            </div><!--row 2-->
+         </div><!-- container-fluid 1 -->
+      </div><!-- 홈 메인1 -->
+      
+      <!-------------홈 메인 2------------->
+      <div class="slider-item">
+      <div class="overlay"></div>
+         <div class="container-fluid p-0">
+            <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+               <!----홈 이미지 2---->
+               <div class="one-third order-md-last">               
+                  <div class="img" style="background-image:url(${pageContext.request.contextPath }/resources/image_p/R0980804.JPG);">
+                     <div class="overlay"></div>
+                  </div>
+                  <!-- 이미지 위 분홍 박스 텍스트2 / 홈 이미지 2-2 -->
+                  <div class="vr">                  
+                     <span class="pl-3 py-4" style="background-image: url(${pageContext.request.contextPath }/resources/image_p/R0980804.JPG);">
+                        Tribus
+                     </span>
+                  </div>
+               </div>
+               <!----텍스트2---->
+               <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">                  
+                  <div class="text">
+                     <!--제목2 -->
+                     <span class="subheading pl-5">Tribus</span>
+                     <!--소제목2 -->
+                     <h1 id="font_1" class="mb-4 mt-3">여행 계획세우면,</span></h1>
+                     <!--내용2 -->
+                     <p id="font_1">
+                        	여행갈때 까지는 거뜬하죠? 힘내보자구요.          
+                     </p>   
+                     <!-- 버튼2                
+                     <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">button2</a></p>-->
+                  </div><!-- text 2-->
+               </div>                  
+            </div><!--row 2-->
+         </div><!-- container-fluid 2 -->
+      </div><!-- 홈 메인 2 -->      
+   </div><!-- home-slider  -->
 </section><!--Home 홈 섹션 -->
+
 
 <!-------------about 소개글------------->
 <section class="ftco-counter img ftco-section" id="about-section">
@@ -139,7 +140,7 @@
 			<!--소개글 이미지 -->
 			<div class="col-md-6 col-lg-5 d-flex">				
 				<div class="img d-flex align-self-stretch align-items-center" 
-					style="background-image:url(${pageContext.request.contextPath }/resources/image_p/main_image1.jpg);">
+					style="background-image:url(${pageContext.request.contextPath }/resources/image_p/R0980810.JPG);">
 				</div>
 			</div>
 			<!--About 소개글 텍스트 -->
@@ -148,18 +149,21 @@
 					<div class="row justify-content-start pb-3">
 						<div class="col-md-12 heading-section ftco-animate p-5 p-lg-0">
 							<!--소제목-->
-							<span class="subheading">Get in touch with us</span>
+							<span class="subheading">Get in with us</span>
 							<!--제목 -->
-							<h2 class="mb-4">Get Best Travel Deals</h2>
+							<h2 class="mb-4">Get Best Travel Information</h2>
 							<!--내용 -->
-							<p id="font_1">소개글1 내용어쩌구 저쩌구 아무말 </p>
-							<p id="font_1">소개글2 어쩌구 저쩌구 여행 </p>
-							<p id="font_1">소개글3 내용 어쩌구 아무말 아무말</p>
-							<!--버튼 -->
+							<p id="font_1">여행을 사랑하고, 기대하는 사람들. </p>
+							<p id="font_1">여행이 주는 행복과, 설렘을 온몸으로 느끼고 싶어하는,</p>							
+							<p id="font_1">그 때의 추억이 담긴 사진 한장으로 수 백 가지 이야기가 나오는,</p>
+							<p id="font_1">사람들이 모여 추억을 나누고, 또 다음 여행을 계획하는,</p>
+							<p id="font_1">우리는 Tribus 입니다.</p>
+							<!--버튼 
 							<p>
 								<a href="#" class="btn btn-primary py-3 px-4">button1</a>
 								<a href="#" class="btn btn-white py-3 px-4">button2</a>
 							</p>
+							-->
 						</div>
 					</div>
 				</div>
@@ -167,14 +171,14 @@
 		</div>
 	</div>
 </section><!-- about 소개글 섹션 -->
-    
 <!------------ Special part ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
 		<!---- 제목 부분 ---->
 		<div class="row justify-content-center pb-5">
 		<div class="col-md-12 heading-section text-center ftco-animate">
-			
+			<!-- 소제목 -->
+			<span class="subheading">Your</span>
 			<!--제목-->
 			<h2 class="mb-4">Special Pick </h2>
 			<!--내용 -->
@@ -194,7 +198,7 @@
 						<div class="vr"><span>Sale</span></div>				
 						<a href="${pageContext.request.contextPath }/premium/detail.do?num=36">				
 							<img src="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
-								class="img-fluid" alt="Colorlib Template">
+								class="img-fluid" alt="No Image">
 						</a>
 					</div>					
 					<!-- 텍스트1 -->
@@ -234,7 +238,7 @@
 					<div class="img">
 						<a href="${pageContext.request.contextPath }/premium/detail.do?num=43">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
-								class="img-fluid" alt="Colorlib Template">
+								class="img-fluid" alt="No Image">
 						</a>
 					</div>
 					<!-- 텍스트2 -->
@@ -272,7 +276,7 @@
 					<div class="img">
 						<a href="${pageContext.request.contextPath }/premium/detail.do?num=41">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
-								class="img-fluid" alt="Colorlib Template">
+								class="img-fluid" alt="No Image">
 						</a>
 					</div>
 					<!-- 텍스트3 -->
@@ -311,9 +315,9 @@
 		<div class="row justify-content-center mb-5 pb-5">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<!-- 소제목 -->
-				<span class="subheading">컨텐츠</span>
+				<span class="subheading">contents</span>
 				<!-- 제목 -->
-				<h2 class="mb-4">Contents2</h2>
+				<h2 class="mb-4">Our Story</h2>
 				<!-- 내용 -->
 				<p>Eat,Talking,Share</p>							
 			</div>
@@ -402,13 +406,13 @@
 		<div class="row justify-content-center">
 			<div class="col-md-9 text-center">
 				<!-- 제목 -->
-				<h2>Reservation</h2>
+				<h5>여기 뭐넣을지, 결국 지울지 일단 고민 더 해볼게요</h5>
 				<!-- 내용 -->
-				<p id="font_1">내용 예약 발권 여기로!! </p>
-				<!-- 버튼 -->
+				<p id="font_1"></p>
+				<!-- 버튼 
 				<p id="font_1" class="mb-0">
 					<a href="#" class="btn btn-white px-4 py-3">자세히 보기</a>
-				</p>
+				</p>-->
 			</div>
 		</div>
 	</div>
@@ -494,7 +498,7 @@
 							<div>
 								<!--주소 -->
 								<h3 class="mb-3">Address</h3>
-								<p>198 West 21th Street, Suite 721 New York NY 10016</p>
+								<p>경기도 화성시 남양읍 시청로 102번길 51 </p>
 							</div>
 						</div>					
 					</div>					
@@ -506,7 +510,7 @@
 							<div>
 								<!--전화번호-->
 								<h3 class="mb-3">Contact Number</h3>
-								<p><a href="tel://1234567920">+ 1235 2355 98</a></p>
+								<p><a href="tel://1234567920">010 2597 6602</a></p>
 							</div>
 						</div>
 					</div>					
@@ -518,7 +522,7 @@
 							<div>
 								<!-- 이메일 -->
 								<h3 class="mb-3">Email Address</h3>
-								<p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+								<p><a href="mailto:info@yoursite.com">hwa12622@gmail.com</a></p>
 							</div>
 						</div>
 					</div>					
@@ -530,7 +534,7 @@
 							<div>
 								<!-- 사이트주소 -->
 								<h3 class="mb-3">Website</h3>
-								<p><a href="#">yoursite.com</a></p>
+								<p><a href="#">http://tribus.com</a></p>
 							</div>
 						</div>
 					</div>
@@ -551,7 +555,6 @@
 	</svg>
 </div>
 <!-------------script 스크립트------------->
-<jsp:include page="include/resource_script.jsp"></jsp:include>
 <script>
 $(document).ready(function() {
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.

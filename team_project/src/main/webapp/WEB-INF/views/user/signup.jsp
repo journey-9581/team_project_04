@@ -7,12 +7,9 @@
 <title>TRIBUS</title>
 </head>
 <body>
-	<div class="container">
-		<h1>알림</h1>
-		<p>
-			<strong>${dto.id }</strong>님 회원가입 되었습니다
-			<a href="${pageContext.request.contextPath }/user/loginform.do">로그인 하러 가기</a>
-		</p>
-	</div>
+   <script>
+      alert("${dto.id} 님 회원 가입 되셨습니다");
+      location.href="${pageContext.request.contextPath}/user/loginform.do";
+   </script>
 </body>
 </html>

@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 
 <section class="ftco-section" id="contents-section">
 	<div class="container">
@@ -49,7 +49,7 @@
 				</div>
 				<br>
 				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정</button>
-				<button class="btn btn" type="reset">취소</button>
+				<button class="btn btn" type="button" onClick="location.href='${pageContext.request.contextPath}/premium/list.do'">취소</button>
 			</form>							
 		</div>	
 	</div><!-- container -->

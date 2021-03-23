@@ -105,6 +105,16 @@
 		text-align: center; /* 이미지를 좌우로 가운데  정렬 */
 		z-index: 1000;
 		display: none; /* 일단 숨겨 놓기 */
+	}
+	/* floating bar */
+	#floatMenu {
+		position: absolute;
+		width: 100px;
+		height: auto;
+		left: 90%;
+		top: 300px;
+		z-index: 5;
+		text-align: center;
 	}	
 </style>	
 </head>
@@ -113,8 +123,29 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
-
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
+	</br>
+	<a href="${pageContext.request.contextPath }/premium/list.do">
+		<p>Special</p>
+	</a>	
+	<a href="${pageContext.request.contextPath }/freeboard/list.do">
+		<p>Free Board</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/gallery/list.do">
+		<p>Gallery</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/withboard/list.do">
+		<p>With me</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/list.do">
+		<p>Review</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/customer/service/list.do">
+		<p>QnA</p>
+	</a>	
+</div>
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
@@ -397,7 +428,29 @@
 				}
 			});
 		}
-	});			
+	});
+	$(document).ready(function() {
+
+		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+		var floatPosition = parseInt($("#floatMenu").css('top'));
+		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+		$(window).scroll(function() {
+			// 현재 스크롤 위치를 가져온다.
+			var scrollTop = $(window).scrollTop();
+			var newPosition = scrollTop + floatPosition;
+
+			/* 애니메이션 없이 바로 따라감
+			 $("#floatMenu").css('top', newPosition);
+			 */
+
+			$("#floatMenu").stop().animate({
+				"top" : newPosition
+			}, 500);
+
+		}).scroll();
+
+	});
 </script>
 <script src="${pageContext.request.contextPath }/resources/js7/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js7/popper.min.js"></script>

@@ -9,7 +9,7 @@
 <!-------------타이틀 (페이지 제목)------------->
 <title>Image upload</title>
 <!------------- css 영역------------->  
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 
 <style>	
 /*한글 폰트 적용 (사용법 id="font_1")*/
@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 
 <section class="ftco-section" id="contents-section">
 	<div class="container">
@@ -57,10 +57,10 @@
 	</div><!-- container -->
 </section>
 <!------------- footer ------------->    
-<jsp:include page="../include/footer.jsp"></jsp:include>   
+<jsp:include page="../../include/footer.jsp"></jsp:include>   
 
 <!-------------script 스크립트------------->
-<jsp:include page="../include/resource_script.jsp"></jsp:include>
+<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>

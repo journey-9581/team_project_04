@@ -5,7 +5,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar" style="z-index: 100;">
 	<div class="container">
 		<!-- 상단 왼쪽 로고 타이틀 -->
+		<a href="${pageContext.request.contextPath }/""><img style="width: 30px"; src="${pageContext.request.contextPath }/resources/image_p/tribus.png"></a> &nbsp;&nbsp;
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">TRIBUS</a>
+		
 			<!-- menu(메뉴) 버튼 상단 -->
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" 
 				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +20,7 @@
 				<li class="nav-item"><a href="${pageContext.request.contextPath }/" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>about</span></a></li>
 				<li class="nav-item"><a href="#contents-section" class="nav-link"><span>special</span></a></li>
-				<li class="nav-item"><a href="#Reservation-section" class="nav-link"><span>Reservation</span></a></li>
+				<li class="nav-item"><a href="#blog-section" class="nav-link"><span>our story</span></a></li>
 				<li class="nav-item"><a href="#service-section" class="nav-link"><span>service</span></a></li>
 				<c:choose>
 					<c:when test="${empty sessionScope.id }">
