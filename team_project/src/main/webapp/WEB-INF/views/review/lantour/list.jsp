@@ -20,7 +20,18 @@
 	.img{
 		height: 250px;
 		text-align: center;
-	}			
+	}
+			/* floating bar */
+	#floatMenu {
+		position: absolute;
+		width: 100px;
+		height: auto;
+		left: 90%;
+		top: 300px;
+		z-index: 5;
+		text-align: center;
+	}
+				
 </style>
 </head>
 <!-------------body 바디 영역 ------------->
@@ -28,8 +39,26 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
-
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
+	</br>
+	<a href="${pageContext.request.contextPath }/review/place/list.do">
+		<p>Place</p>
+	</a>	
+	<a href="${pageContext.request.contextPath }/review/food/list.do">
+		<p>Food</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/secret/list.do">
+		<p>Secret</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/month/list.do">
+		<p>Month</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/lantour/list.do">
+		<p>Lan tour</p>
+	</a>	
+</div>
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
@@ -51,14 +80,15 @@
 				<!-- category 카테고리 -->	
 				<h3 class="heading-sidebar">Select Category</h3>
 				<div id="font_1" class="tagcloud">
-					<a href="list.do" class="tag-cloud-link">전체</a>
-					<a href="list.do?category=서울" class="tag-cloud-link">서울</a>
-					<a href="list.do?category=경기" class="tag-cloud-link">경기</a>
-					<a href="list.do?category=강원" class="tag-cloud-link">강원</a>
-					<a href="list.do?category=충청" class="tag-cloud-link">충청</a>
-					<a href="list.do?category=전라" class="tag-cloud-link">전라</a>
-					<a href="list.do?category=경상" class="tag-cloud-link">경상</a>
-					<a href="list.do?category=제주" class="tag-cloud-link">제주</a>
+               <a href="list.do" class="tag-cloud-link">전체</a>
+               <a href="list.do?category=한국" class="tag-cloud-link">한국</a>
+               <a href="list.do?category=미주" class="tag-cloud-link">미주</a>
+               <a href="list.do?category=유럽" class="tag-cloud-link">유럽</a>
+               <a href="list.do?category=동남아시아" class="tag-cloud-link">동남아시아</a>
+               <a href="list.do?category=서아시아" class="tag-cloud-link">서아시아</a>
+               <a href="list.do?category=남태평양" class="tag-cloud-link">남태평양</a>
+               <a href="list.do?category=일본" class="tag-cloud-link">일본</a>
+               <a href="list.do?category=중국/홍콩" class="tag-cloud-link">중국/홍콩</a>
 				</div>
 			<br/>
 			<!-- 반복문 돌면서 사진 목록 출력 -->
@@ -180,6 +210,30 @@
 
 <!-------------script 스크립트------------->
 <jsp:include page="../../include/resource_script.jsp"></jsp:include> 
+<script>
 
+$(document).ready(function() {
+
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition;
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
+</script>
 </body>
 </html>

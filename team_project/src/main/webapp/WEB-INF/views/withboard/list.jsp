@@ -16,158 +16,216 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	/* floating bar */
+	#floatMenu {
+		position: absolute;
+		width: 100px;
+		height: auto;
+		left: 90%;
+		top: 300px;
+		z-index: 5;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../include/navbar.jsp"></jsp:include>
-
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
+	</br>
+	<a href="${pageContext.request.contextPath }/premium/list.do">
+		<p>Special</p>
+	</a>	
+	<a href="${pageContext.request.contextPath }/freeboard/list.do">
+		<p>Free Board</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/gallery/list.do">
+		<p>Gallery</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/withboard/list.do">
+		<p>With me</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/list.do">
+		<p>Review</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/customer/service/list.do">
+		<p>QnA</p>
+	</a>	
+</div>
 <section class="ftco-section" id="contents-section">
-	<div class="container">
-		<div class="comment-form-wrap pt-5">
-			<!---- 제목 부분 ---->
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<!--대분류-->
-					<span class="subheading">contents</span>
-					<!--소분류 영어-->
-					<h2 class="mb-4"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></h2>
-					<!--소분류 한글 -->
-					<p id="font_1">동행게시판</p>
-					<!-- 버튼 -->						
-					<a id="font_1" href="${pageContext.request.contextPath }/withboard/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>				
-				</div>
-			</div>	
-										
-			<!-- 자유게시판 테이블-->
-			<div class="board_list_wrap">			
-				<!-- category 카테고리 -->	
-				<h3 class="heading-sidebar">Select Category</h3>
-				<div id="font_1" class="tagcloud">
-					<a href="list.do" class="tag-cloud-link">전체</a>
-					<a href="list.do?category=서울" class="tag-cloud-link">서울</a>
-					<a href="list.do?category=경기" class="tag-cloud-link">경기</a>
-					<a href="list.do?category=강원" class="tag-cloud-link">강원</a>
-					<a href="list.do?category=충청" class="tag-cloud-link">충청</a>
-					<a href="list.do?category=전라" class="tag-cloud-link">전라</a>
-					<a href="list.do?category=경상" class="tag-cloud-link">경상</a>
-					<a href="list.do?category=제주" class="tag-cloud-link">제주</a>
-					
-				</div>
-				<!-- 테이블 -->
-				<table class="board_list">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>Category</th>
-							<th>Title</th>
-							<th>Writer</th>
-							<th>Date</th>
-							<th>Count</th>
-						</tr>
-					</thead>
-					<!-- 공지 -->
-					<tbody style="font-weight:bold; color: black;">
-						<tr>
-							<td style="color: purple;">Notice</td>
-							<td>공지</td>
-							<td><a href="#">공지제목</a></td>
-							<td>admin</td>
-							<td>날짜</td>
-							<td>조회</td>
-						</tr>
-					</tbody>	
-					<!--반복 content -->				
-					<tbody>
-					<c:forEach var="tmp" items="${list }">
-						<tr>
-							<td>${tmp.num }</td>
-							<td>${tmp.category }</td>
-							<td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
-							<td>${tmp.writer }</td>
-							<td>${tmp.regdate }</td>
-							<td>${tmp.viewCount }</td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-			</div>
-					
-			<!-- 페이징 처리 -->
-			<div class="row mt-5">	
-				<div class="col text-center">
-					<div class="block-27">
-						<ul>
-							<c:choose>
-								<c:when test="${startPageNum ne 1 }">
-									<li>
-										<a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&lt;</a>
-									</li>
-								</c:when>
-							<c:otherwise>
-								<li>
-									<a href="javascript:">&lt;</a>
-								</li>
-							</c:otherwise>
-							</c:choose>
-							
-							<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-								<c:choose>
-									<c:when test="${i eq pageNum }">
-										<li class="active">
-											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li>
-											<a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							
-							<c:choose>
-								<c:when test="${endPageNum lt totalPageCount }">						
-									<li>
-										<a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&gt;</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li>
-										<a href="javascript:">&gt;</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</div>
-				</div>
-			</div><!-- 페이징처리 -->
-			<br>
-			<!--검색 Search -->
-			<div class="form-group">
-				<form action="list.do" method="get" class="search-form">				
-					<select id="font_1" name="condition" id="condition">
-						<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
-						<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
-						<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-					</select>		
-					<input id="font_1" class="form-control" type="text" name="keyword" placeholder="검색어..." value="${keyword }"/>
-					<button class="btn btn-primary px-5 py-8 mt-1" type="submit">Search</button>		
-				</form>
-			</div>
-			<%-- 만일 검색 키워드가 존재한다면 몇개의 글이 검색 되었는지 알려준다. --%>
-			<c:if test="${not empty keyword }">
-				<div class="alert alert-success">
-					<strong>${totalRow }</strong> 개의 자료가 검색되었습니다.
-				</div>
-			</c:if>
-		</div>
-	</div><!-- container -->
+   <div class="container">
+      <div class="comment-form-wrap pt-5">
+         <!---- 제목 부분 ---->
+         <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+               <!--대분류-->
+               <span class="subheading">contents</span>
+               <!--소분류 영어-->
+               <h2 class="mb-4"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></h2>
+               <!--소분류 한글 -->
+               <p id="font_1">동행게시판</p>
+               <!-- 버튼 -->                  
+               <a id="font_1" href="${pageContext.request.contextPath }/withboard/private/insertform.do" class="btn btn-primary px-5 py-8 mt-1"> New Post</a>            
+            </div>
+         </div>   
+                              
+         <!-- 자유게시판 테이블-->
+         <div class="board_list_wrap">         
+            <!-- category 카테고리 -->   
+            <h3 class="heading-sidebar">Select Category</h3>
+            <div id="font_1" class="tagcloud">
+               <a href="list.do" class="tag-cloud-link">전체</a>
+               <a href="list.do?category=서울" class="tag-cloud-link">서울</a>
+               <a href="list.do?category=경기" class="tag-cloud-link">경기</a>
+               <a href="list.do?category=강원" class="tag-cloud-link">강원</a>
+               <a href="list.do?category=충청" class="tag-cloud-link">충청</a>
+               <a href="list.do?category=전라" class="tag-cloud-link">전라</a>
+               <a href="list.do?category=경상" class="tag-cloud-link">경상</a>
+               <a href="list.do?category=제주" class="tag-cloud-link">제주</a>
+               
+            </div>
+            <!-- 테이블 -->
+            <table class="board_list">
+               <thead>
+                  <tr>
+                     <th>No.</th>
+                     <th>Category</th>
+                     <th>Title</th>
+                     <th>Writer</th>
+                     <th>Date</th>
+                     <th>Count</th>
+                  </tr>
+               </thead>
+               <!-- 공지 -->
+               <tbody style="font-weight:bold; color: black;">
+                  <tr>
+                     <td style="color: purple;">Notice</td>
+                     <td>공지</td>
+                     <td><a href="${pageContext.request.contextPath }/withboard/notice.do">공지</a></td>
+                     <td>admin</td>
+                     <td>날짜</td>
+                     <td>조회</td>
+                  </tr>
+               </tbody>   
+               <!--반복 content -->            
+               <tbody>
+               <c:forEach var="tmp" items="${list }">
+                  <tr>
+                     <td>${tmp.num }</td>
+                     <td>${tmp.category }</td>
+                     <td><a href="detail.do?num=${tmp.num }">${tmp.title }</a></td>
+                     <td>${tmp.writer }</td>
+                     <td>${tmp.regdate }</td>
+                     <td>${tmp.viewCount }</td>
+                  </tr>
+               </c:forEach>
+               </tbody>
+            </table>
+         </div>
+               
+         <!-- 페이징 처리 -->
+         <div class="row mt-5">   
+            <div class="col text-center">
+               <div class="block-27">
+                  <ul>
+                     <c:choose>
+                        <c:when test="${startPageNum ne 1 }">
+                           <li>
+                              <a href="list.do?pageNum=${startPageNum-1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&lt;</a>
+                           </li>
+                        </c:when>
+                     <c:otherwise>
+                        <li>
+                           <a href="javascript:">&lt;</a>
+                        </li>
+                     </c:otherwise>
+                     </c:choose>
+                     
+                     <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+                        <c:choose>
+                           <c:when test="${i eq pageNum }">
+                              <li class="active">
+                                 <a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
+                              </li>
+                           </c:when>
+                           <c:otherwise>
+                              <li>
+                                 <a href="list.do?pageNum=${i }&condition=${condition }&keyword=${encodedK }&category=${category}">${i }</a>
+                              </li>
+                           </c:otherwise>
+                        </c:choose>
+                     </c:forEach>
+                     
+                     <c:choose>
+                        <c:when test="${endPageNum lt totalPageCount }">                  
+                           <li>
+                              <a href="list.do?pageNum=${endPageNum+1 }&condition=${condition }&keyword=${encodedK }&category=${category}">&gt;</a>
+                           </li>
+                        </c:when>
+                        <c:otherwise>
+                           <li>
+                              <a href="javascript:">&gt;</a>
+                           </li>
+                        </c:otherwise>
+                     </c:choose>
+                  </ul>
+               </div>
+            </div>
+         </div><!-- 페이징처리 -->
+         <br>
+         <!--검색 Search -->
+         <div class="form-group">
+            <form action="list.do" method="get" class="search-form">            
+               <select id="font_1" name="condition" id="condition">
+                  <option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
+                  <option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+                  <option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
+               </select>      
+               <input id="font_1" class="form-control" type="text" name="keyword" placeholder="검색어..." value="${keyword }"/>
+               <button class="btn btn-primary px-5 py-8 mt-1" type="submit">Search</button>      
+            </form>
+         </div>
+         <%-- 만일 검색 키워드가 존재한다면 몇개의 글이 검색 되었는지 알려준다. --%>
+         <c:if test="${not empty keyword }">
+            <div class="alert alert-success">
+               <strong>${totalRow }</strong> 개의 자료가 검색되었습니다.
+            </div>
+         </c:if>
+      </div>
+   </div><!-- container -->
 </section>
+
 <!------------- footer ------------->    
 <jsp:include page="../include/footer.jsp"></jsp:include>   
   
 <!-------------script 스크립트------------->
 <jsp:include page="../include/resource_script.jsp"></jsp:include>
+<script>
+$(document).ready(function() {
+
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition;
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
+</script>
+
+
 </body>
 </html>

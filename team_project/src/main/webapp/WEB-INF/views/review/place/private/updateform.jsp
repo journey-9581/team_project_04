@@ -21,70 +21,71 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../../include/navbar2.jsp"></jsp:include>
 
 <section class="ftco-section" id="contents-section">
-	<div class="container">
-		<div class="comment-form-wrap pt-5">
-			<!---- 제목 부분 ---->
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<!--대분류-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/review/place/list.do">Place</a></span>
-					<!--소분류 영어-->
-					<h2 class="mb-4">Post</h2>					
-				</div>
-			</div>	
-			<!-- updateform  -->
-			<form action="update.do" method="post" id="insertForm">		
-			<input type="hidden" name="num" value="${dto.num }"/>
-			<input type="hidden" name="imagePath" id="imagePath" value="${dto.imagePath }"/>
-			<label for="title">Writer</label>
-			<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>	
-				<br/>	
-				<div class="form-group">
-				<!-- 카테고리 -->
-				<label for="category">Category</label>
-				<select class="form-control" id="font_1" name="category" id="category">
-						<option value="">선택</option>
-						<option value="서울">서울</option>
-						<option value="경기">경기</option>
-						<option value="강원">강원</option>
-						<option value="충청">충청</option>
-						<option value="전라">전라</option>
-						<option value="경상">경상</option>
-						<option value="제주">제주</option>	
-				</select>
-				<br>
-				<!-- 제목 -->
-				<label for="title">Title</label>
-				<input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
-				<br>
-					<!-- 내용 -->
-					<label for="content">Content</label>
-					<textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'>${dto.content }</textarea>
-				</div>								
-			</form>	
-			<!-- 버튼 -->
-			<button id="submitBtn" class="btn btn-primary" onclick="submitContents(this);">저장</button>
-			<button class="btn btn" type="reset">취소</button>
-			<br/>
-			<!-- 썸네일 이미지 업로드 폼 -->										
-			<form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
-				<br/>
-				<div class="form-group">
-					<label for="image">Thumnail Image</label>
-					<input class="form-control" type="file" name="image" id="image"  
-						accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
-				</div>
-			</form>			
-			<!-- 썸네일 미리보기 -->			
-			<div class="img-wrapper">			
-				<img height="250" width="auto"/> <!-- 이미지 사이즈 -->
-			</div>		
-		</div>	
-	</div><!-- container -->
+   <div class="container">
+      <div class="comment-form-wrap pt-5">
+         <!---- 제목 부분 ---->
+         <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+               <!--대분류-->
+               <span class="subheading"><a href="${pageContext.request.contextPath }/review/place/list.do">Place</a></span>
+               <!--소분류 영어-->
+               <h2 class="mb-4">Post</h2>               
+            </div>
+         </div>   
+         <!-- updateform  -->
+         <form action="update.do" method="post" id="insertForm">      
+         <input type="hidden" name="num" value="${dto.num }"/>
+         <input type="hidden" name="imagePath" id="imagePath" value="${dto.imagePath }"/>
+         <label for="title">Writer</label>
+         <input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>   
+            <br/>   
+            <div class="form-group">
+            <!-- 카테고리 -->
+            <label for="category">Category</label>
+            <select class="form-control" id="font_1" name="category" id="category">
+                  <option value="">선택</option>
+                  <option value="서울">서울</option>
+                  <option value="경기">경기</option>
+                  <option value="강원">강원</option>
+                  <option value="충청">충청</option>
+                  <option value="전라">전라</option>
+                  <option value="경상">경상</option>
+                  <option value="제주">제주</option>   
+            </select>
+            <br>
+            <!-- 제목 -->
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
+            <br>
+               <!-- 내용 -->
+               <label for="content">Content</label>
+               <textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'>${dto.content }</textarea>
+            </div>                        
+         </form>   
+         <!-- 버튼 -->
+         <button id="submitBtn" class="btn btn-primary" onclick="submitContents(this);">저장</button>
+         <button class="btn btn" type="button" onClick="location.href='${pageContext.request.contextPath}/review/place/list.do'">취소</button>
+         <br/>
+         <!-- 썸네일 이미지 업로드 폼 -->                              
+         <form action="ajax_upload.do" method="post" id="ajaxForm" enctype="multipart/form-data">
+            <br/>
+            <div class="form-group">
+               <label for="image">Thumnail Image</label>
+               <input class="form-control" type="file" name="image" id="image"  
+                  accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
+            </div>
+         </form>         
+         <!-- 썸네일 미리보기 -->         
+         <div class="img-wrapper">         
+            <img height="250" width="auto"/> <!-- 이미지 사이즈 -->
+         </div>      
+      </div>   
+   </div><!-- container -->
 </section>
+
 <!------------- footer ------------->    
 <jsp:include page="../../../include/footer.jsp"></jsp:include>   
 

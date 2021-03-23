@@ -22,7 +22,7 @@
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/resource_script.jsp"></jsp:include>
 </head>
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 <body>
 <div class="container">
 	<form action="pwd_update.do" method="post" id="myForm">

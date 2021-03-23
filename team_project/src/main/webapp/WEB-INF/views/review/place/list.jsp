@@ -20,7 +20,17 @@
 	.img{
 		height: 250px;
 		text-align: center;
-	}			
+	}
+			/* floating bar */
+	#floatMenu {
+		position: absolute;
+		width: 100px;
+		height: auto;
+		left: 90%;
+		top: 300px;
+		z-index: 5;
+		text-align: center;
+	}				
 </style>
 </head>
 <!-------------body 바디 영역 ------------->
@@ -28,8 +38,26 @@
 
 
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
-
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
+<!-- floting bar -->
+<div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
+	</br>
+	<a href="${pageContext.request.contextPath }/review/place/list.do">
+		<p>Place</p>
+	</a>	
+	<a href="${pageContext.request.contextPath }/review/food/list.do">
+		<p>Food</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/secret/list.do">
+		<p>Secret</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/month/list.do">
+		<p>Month</p>
+	</a>
+	<a href="${pageContext.request.contextPath }/review/lantour/list.do">
+		<p>Lan tour</p>
+	</a>	
+</div>
 <!-------------contents1 컨텐츠 유료 ------------->
 <section class="ftco-section" id="contents-section">
   	<div class="container">
@@ -180,6 +208,29 @@
 
 <!-------------script 스크립트------------->
 <jsp:include page="../../include/resource_script.jsp"></jsp:include> 
+<script>
+$(document).ready(function() {
 
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#floatMenu").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition;
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#floatMenu").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+
+});
+</script>
 </body>
 </html>

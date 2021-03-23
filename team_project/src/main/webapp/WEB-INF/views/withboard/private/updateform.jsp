@@ -20,51 +20,52 @@
 </head>
 <body>
 <!-------------navbar 네비바------------->
-<jsp:include page="../../include/navbar.jsp"></jsp:include>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 
 <section class="ftco-section" id="contents-section">
-	<div class="container">
-		<div class="comment-form-wrap pt-5">
-			<!---- 제목 부분 ---->
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<!--대분류-->
-					<span class="subheading"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></span>
-					<!--소분류 영어-->
-					<h2 class="mb-4">Post</h2>					
-				</div>
-			</div>	
-			<form action="update.do" method="post">				
-				<div class="form-group">
-				<label for="category">Category</label>
-				<select class="form-control" id="font_1" name="category" id="category">
-						<option value="">선택</option>
-						<option value="서울">서울</option>
-						<option value="경기">경기</option>
-						<option value="강원">강원</option>
-						<option value="충청">충청</option>
-						<option value="전라">전라</option>
-						<option value="경상">경상</option>
-						<option value="제주">제주</option>
-				</select>
-				<br>
-				<input type="hidden" name="num" value="${dto.num }"/>
-				<label for="title">Writer</label>
-				<input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>							
-				<br>
-				<label for="title">Title</label>
-				<input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
-				<br>
-				<label for="content">Content</label>
-				<textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'>${dto.content }</textarea>
-				</div>
-				<br>
-				<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
-				<button class="btn btn" type="reset">취소</button>
-			</form>							
-		</div>	
-	</div><!-- container -->
+   <div class="container">
+      <div class="comment-form-wrap pt-5">
+         <!---- 제목 부분 ---->
+         <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+               <!--대분류-->
+               <span class="subheading"><a href="${pageContext.request.contextPath }/withboard/list.do">withBoard</a></span>
+               <!--소분류 영어-->
+               <h2 class="mb-4">Post</h2>               
+            </div>
+         </div>   
+         <form action="update.do" method="post">            
+            <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="font_1" name="category" id="category">
+                  <option value="">선택</option>
+                  <option value="서울">서울</option>
+                  <option value="경기">경기</option>
+                  <option value="강원">강원</option>
+                  <option value="충청">충청</option>
+                  <option value="전라">전라</option>
+                  <option value="경상">경상</option>
+                  <option value="제주">제주</option>
+            </select>
+            <br>
+            <input type="hidden" name="num" value="${dto.num }"/>
+            <label for="title">Writer</label>
+            <input class="form-control" type="text" id="writer" value="${dto.writer }" disabled/>                     
+            <br>
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title" id="title" value="${dto.title }"/>
+            <br>
+            <label for="content">Content</label>
+            <textarea class="form-control" name="content" id="content" rows='10' style='width:100%; min-width:260px; height:30em; display:none;'>${dto.content }</textarea>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
+            <button class="btn btn" type="button" onClick="location.href='${pageContext.request.contextPath}/withboard/list.do'">취소</button>
+         </form>                     
+      </div>   
+   </div><!-- container -->
 </section>
+
 <!------------- footer ------------->    
 <jsp:include page="../../include/footer.jsp"></jsp:include>   
 

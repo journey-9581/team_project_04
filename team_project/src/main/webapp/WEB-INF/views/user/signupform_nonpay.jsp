@@ -13,7 +13,7 @@
 		padding-top: 68px;
 	}
 </style>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
 <head>
 <title>TRIBUS</title>
 <meta charset="UTF-8">
