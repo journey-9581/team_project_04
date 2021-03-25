@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIBUS</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <style>
    #myDivTitle1 {
       font-family: 'Noto Sans KR', sans-serif;
@@ -25,11 +27,9 @@
       font-family: 'Noto Sans KR', sans-serif;
    }
 </style>
-<jsp:include page="../include/navbar2.jsp"></jsp:include>
 </head>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
    <br>
    <br>
    <br>

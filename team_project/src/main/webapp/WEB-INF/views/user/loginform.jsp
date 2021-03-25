@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIBUS</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <style>
    #myForm{
       font-family: 'Noto Sans KR', sans-serif;
@@ -14,11 +16,9 @@
       padding-top: 68px;
    }
 </style>
-<jsp:include page="../include/navbar2.jsp"></jsp:include>
 </head>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
    <section class="ftco-section" id="contents-section">
    <div class="container">
    <form action="login.do" method="post" id="myForm">
@@ -46,5 +46,4 @@
    </div>
    </section>
 </body>
-<jsp:include page="../include/footer.jsp"></jsp:include>
 </html>

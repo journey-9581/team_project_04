@@ -67,6 +67,10 @@
 				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
 				UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
 			</when>
+			<when test="category != null">
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(category) LIKE '%'||UPPER(#{category})||'%')
+			</when>
 		</choose>	
 	</select>
 	<select id="getData" parameterType="int" resultType="withBoardDto">

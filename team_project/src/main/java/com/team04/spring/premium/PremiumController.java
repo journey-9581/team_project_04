@@ -60,12 +60,6 @@ public class PremiumController {
    }
    @RequestMapping("/premium/detail")
    public ModelAndView detail(@RequestParam int num, HttpServletRequest request, ModelAndView mView) {
-      HttpSession session = request.getSession();
-      String manage = "";
-      if (session.getAttribute("manage") != null){
-         manage = (String) session.getAttribute("manage");
-         mView.addObject("manage", manage);
-      }
       service.getDetail(num, mView);
       mView.setViewName("premium/detail");
       return mView;
