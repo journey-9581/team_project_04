@@ -54,7 +54,7 @@
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM board_free
 		<choose>
-			<when test="title != null and content != null">
+			<when test="title != null and content != null ">
 				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
 				UPPER(title) LIKE '%'||UPPER(#{title})||'%' 
 				OR UPPER(content) LIKE '%'||UPPER(#{content})||'%')
@@ -66,6 +66,10 @@
 			<when test="writer != null">
 				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
 				UPPER(writer) LIKE '%'||UPPER(#{writer})||'%')
+			</when>
+			<when test="category != null">
+				WHERE UPPER(category) LIKE '%'||UPPER(#{category})||'%' AND (
+				UPPER(category) LIKE '%'||UPPER(#{category})||'%')
 			</when>
 		</choose>	
 	</select>

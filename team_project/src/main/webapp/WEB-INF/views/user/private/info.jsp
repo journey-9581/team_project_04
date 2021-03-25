@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>TRIBUS</title>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 <style>
    /* 프로필 이미지를 작은 원형으로 만든다 */
    #profileImage{
@@ -21,11 +23,9 @@
       padding-top: 68px;
    }
 </style>
-<jsp:include page="../../include/navbar2.jsp"></jsp:include>
 </head>
-<jsp:include page="../../include/resource.jsp"></jsp:include>
-<jsp:include page="../../include/resource_script.jsp"></jsp:include>
 <body>
+<jsp:include page="../../include/navbar2.jsp"></jsp:include>
    <section class="ftco-section" id="contents-section">
    <div class="container">
       <table id="infoTable" class="table table-striped">
@@ -82,6 +82,6 @@
          }
       }
    </script>
+   <jsp:include page="../../include/footer.jsp"></jsp:include>
 </body>
-<jsp:include page="../../include/footer.jsp"></jsp:include>
 </html>

@@ -71,12 +71,8 @@
                <h2 class="mb-4">${dto.caption }</h2>   
                <!-- 이미지 삭제 버튼 -->      
                <!-- 아이디가 같으면 삭제 -->
-               <c:if test="${dto.writer eq id }">
+               <c:if test="${dto.writer eq id || manage eq 'yes'}">
                   <a id="font_1" href="private/updateform.do?num=${dto.num}" class="btn btn-primary px-5 py-8 mt-1"> Update Post</a>
-                  <a id="font_1" href="javascript:deleteConfirm()" class="btn btn-primary px-5 py-8 mt-1"> Delete Post</a>
-               </c:if>
-               <c:if test="${manage eq 'yes' }">
-<a id="font_1" href="private/updateform.do?num=${dto.num}" class="btn btn-primary px-5 py-8 mt-1"> Update Post</a>
                   <a id="font_1" href="javascript:deleteConfirm()" class="btn btn-primary px-5 py-8 mt-1"> Delete Post</a>
                </c:if>
             </div>

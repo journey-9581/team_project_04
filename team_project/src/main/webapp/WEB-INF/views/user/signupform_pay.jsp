@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<head>
 <style>
    #myForm{
       font-family: 'Noto Sans KR', sans-serif;
@@ -10,19 +13,16 @@
       padding-top: 68px;
    }
 </style>
-<jsp:include page="../include/navbar2.jsp"></jsp:include>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<head>
 <title>TRIBUS</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <title>Join us</title>
 </head>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-<jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
    <section class="ftco-section" id="contents-section">
    <div class="container">
       <form action="signup.do" method="post" id="myForm" novalidate>
@@ -197,5 +197,4 @@
    });
    </script>
 </body>
-<jsp:include page="../include/footer.jsp"></jsp:include>
 </html>
