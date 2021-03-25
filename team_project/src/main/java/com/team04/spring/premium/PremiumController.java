@@ -1,23 +1,17 @@
 package com.team04.spring.premium;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
+import org.springframework.web.servlet.*;
 
-import com.team04.spring.premium.dto.PremiumDto;
-import com.team04.spring.premium.service.PremiumService;
+import com.team04.spring.premium.dto.*;
+import com.team04.spring.premium.service.*;
 
 @Controller
 public class PremiumController {
@@ -65,20 +59,26 @@ public class PremiumController {
       return "redirect:/premium/list.do";
    }
    @RequestMapping("/premium/detail")
-   public ModelAndView detail(@RequestParam int num, ModelAndView mView) {
+   public ModelAndView detail(@RequestParam int num, HttpServletRequest request, ModelAndView mView) {
+      HttpSession session = request.getSession();
+      String manage = "";
+      if (session.getAttribute("manage") != null){
+         manage = (String) session.getAttribute("manage");
+         mView.addObject("manage", manage);
+      }
       service.getDetail(num, mView);
       mView.setViewName("premium/detail");
       return mView;
    }
    @RequestMapping("premium/private/update")
-	public String update(@ModelAttribute("dto") PremiumDto dto) {
-		service.updateContent(dto);
-		return "premium/private/update";
+   public String update(@ModelAttribute("dto") PremiumDto dto) {
+      service.updateContent(dto);
+      return "premium/private/update";
    }
    @RequestMapping("premium/private/updateform")
    public ModelAndView updateform(@RequestParam int num, ModelAndView mView) {
-	   service.getDetail(num, mView);
-	   mView.setViewName("premium/private/updateform");
-	   return mView;
+      service.getDetail(num, mView);
+      mView.setViewName("premium/private/updateform");
+      return mView;
    }
 }

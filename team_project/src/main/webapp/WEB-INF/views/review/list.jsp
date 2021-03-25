@@ -40,7 +40,7 @@
 <div class="bg-primary" id="floatMenu" style="color: white; border-radius: 1em;">
 	</br>
 	<a href="${pageContext.request.contextPath }/premium/list.do">
-		<p>Premium</p>
+		<p>Special</p>
 	</a>	
 	<a href="${pageContext.request.contextPath }/freeboard/list.do">
 		<p>Free Board</p>

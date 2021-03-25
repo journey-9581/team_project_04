@@ -17,6 +17,10 @@
 	#font_1{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	#font_2{
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 23px;
+	}
 	/* floating bar */
     #floatMenu {
     position: absolute;
@@ -55,7 +59,7 @@
 <!-------------Home 홈 섹션  ------------->	  
 <section id="home-section" class="hero">
    <!--회색 배경 그림 -->
-   <img src="resources/images7/blob-shape-3.svg" class="svg-blob" alt="Colorlib Free Template">   
+   <img src="resources/images7/blob-shape-3.svg" class="svg-blob" alt="No Image">   
    <div class="home-slider owl-carousel">   
    <!-------------홈 메인 1------------->
 		<div class="slider-item">
@@ -196,7 +200,7 @@
 					<div class="img">
 						<!-- 세일표시 -->
 						<div class="vr"><span>Sale</span></div>				
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=36">				
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=82">				
 							<img src="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -206,7 +210,7 @@
 						<!-- 가격 -->
 						<h4 class="price"><span class="old-price mr-2">$200,000</span>$130,000</h4>
 						<span >1박2일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=36">#파파홈 #글램핑 #캠핑</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=82">#파파홈 #글램핑 #캠핑</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!-- 별표-->
@@ -236,7 +240,7 @@
 				<div class="project">
 					<!-- 이미지2 -->
 					<div class="img">
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=43">
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=83">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -245,7 +249,7 @@
 					<div class="text">
 						<h4 class="price">₩400,000</h4>
 						<span id="font_1">3박 4일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=43">국내에서 프라이빗 비치 본적있어?</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=83">국내에서 프라이빗 비치 본적있어?</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!--  별표 -->
@@ -274,7 +278,7 @@
 				<div class="project">
 					<!-- 이미지 3 -->
 					<div class="img">
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=41">
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=84">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -283,7 +287,7 @@
 					<div class="text">
 						<h4 class="price">$400,000</h4>
 						<span id="font_1">2박 3일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=41">등산여행은 #산 새</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=84">등산여행 어때? #까치산장</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 							<!--별표-->
@@ -307,8 +311,7 @@
 			</div><!-- 세번째 POST3 -->
 		</div><!--row -->
 	</div><!--container -->
-</section><!-- contents1 섹션-->
-    
+</section><!-- contents1 섹션--> 
 <!-------------contents2 컨텐츠------------->
 <section class="ftco-section bg-light" id="blog-section">
 	<div class="container">
@@ -397,27 +400,21 @@
 		</div><!-- row -->
 	</div><!-- container -->
 </section><!-- contents2 섹션 -->
-
-<!-------------Reservation 예약 섹션 ------------->
-<section class="ftco-intro img" id="Reservation-section" 
-	style="background-image: url(${pageContext.request.contextPath }/resources/images7/bg_3.jpg);"><!--이미지 -->
+<!-------------pink 명언 섹션 ------------->
+<section class="ftco-intro img" id="pink-section"><!--이미지 -->
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-9 text-center">
-				<!-- 제목 -->
-				<h5>여기 뭐넣을지, 결국 지울지 일단 고민 더 해볼게요</h5>
-				<!-- 내용 -->
-				<p id="font_1"></p>
-				<!-- 버튼 
-				<p id="font_1" class="mb-0">
-					<a href="#" class="btn btn-white px-4 py-3">자세히 보기</a>
-				</p>-->
+				<p id="font_2">여행은 그대에게 적어도 세가지의 유익함을 가져다 줄것이다.</p>
+				<p id="font_2">하나는 타향에 대한 지식이고, 다른 하나는 고향에대한 애착이며</p>				
+				<p id="font_2">마지막하나는 그대 자신에 대한 발견이다.</p>
+				<p id="font_1">- 브하그완 -</p>				
 			</div>
 		</div>
 	</div>
-</section><!--Reservation 섹션-->
-  
+</section>
+<!-- pink 명언 섹션-->
 <!-------------Service 서비스 섹션 ------------->
 <section class="ftco-section contact-section ftco-no-pb" id="service-section">
 	<div class="container">
@@ -555,6 +552,7 @@
 	</svg>
 </div>
 <!-------------script 스크립트------------->
+<jsp:include page="include/resource_script.jsp"></jsp:include>
 <script>
 $(document).ready(function() {
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -624,7 +622,5 @@ $(document).ready(function() {
 		});
 });
 </script>
-<!-------------script 스크립트 ------------->
-<jsp:include page="include/resource_script.jsp"></jsp:include>
 </body>
 </html>

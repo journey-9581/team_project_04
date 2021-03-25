@@ -78,15 +78,7 @@ public class UserController {
 		map.put("isSuccess", "isSuccess");
 		return map;
 	}
-	
-	//로그인 폼 요청 처리
-	@RequestMapping("/user/loginform")
-	public ModelAndView loginform(HttpServletRequest request, ModelAndView mView) {
-		service.loginformLogic(request, mView);
-		mView.setViewName("user/loginform");
-		return mView;
-	}
-	
+		
 	//로그인 요청 처리
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {

@@ -76,7 +76,7 @@
 			</div>
 			<!--detail 이미지 출력 -->
 			<p style="text-align: center">
-				<img src="${pageContext.request.contextPath }${dto.imagePath}" class="img-fluid" alt="Colorlib Free Template" style="text-align: center">
+				<img src="${pageContext.request.contextPath }${dto.imagePath}" class="img-fluid" alt="No Image" style="text-align: center">
 			</p>			
 			<div class="text py-5" style="text-align: center">
 				<!-- 작성자 -->
