@@ -127,16 +127,19 @@
             <c:choose>
                   <c:when test="${((empty param.isQnA)?0:param.isQnA) eq 0}">
                      <!--소분류 영어-->
-                     <h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">QnABoard</a></h2>
+                     <h2 class="mb-4"><a href="/customer/service/list.do?num=${isQnA }">QnABoard</a></h2>
                      <!--소분류 한글 -->
                      <p id="font_1">질문답변</p>
                      <!-- 버튼 -->
                   </c:when>
                   <c:otherwise>
-                     <h2 class="mb-4"><a href="${pageContext.request.contextPath }/list.do">FAQBoard</a></h2>
+                     <h2 class="mb-4"><a href="/customer/service/list.do?num=${isQnA }">FAQBoard</a></h2>
                      <p id="font_1">자주 묻는 질문</p>
                   </c:otherwise>
                </c:choose>
+            <div>
+               <button type="button" class="btn btn-primary btn btn-primary px-5 py-8 mt-1" onclick="location.href='/customer/service/list.do?num=${isQnA }'">목록</button>
+            </div>
             <!-- 관리자만 보이는 버튼 -->
             <!-- 관리자 아이디면 수정 "${manage}='yes" -->
             <c:if test="${manage eq 'yes' }">

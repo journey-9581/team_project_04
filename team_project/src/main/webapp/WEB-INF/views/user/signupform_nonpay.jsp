@@ -13,7 +13,7 @@
 		padding-top: 68px;
 	}
 </style>
-<jsp:include page="../include/navbar2.jsp"></jsp:include>
+
 <head>
 <title>TRIBUS</title>
 <meta charset="UTF-8">
@@ -24,42 +24,47 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <jsp:include page="../include/resource_script.jsp"></jsp:include>
 <body class="pt-5" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	<div class="container">
-		<form action="signup.do" method="post" id="myForm" novalidate>
-			<input type="hidden" name="pay" id="pay" value="no"/>
-			<input type="hidden" name="manage" id="manage" value="no"/>
-			<div class="form-group">
-				<label for="id">아이디</label>
-				<input class="form-control" type="text" name="id" id="id"/>
-				<small class="form-text text-muted">소문자로 시작하는 5~10글자의 아이디를 작성해주세요</small>
-				<div class="invalid-feedback">사용할 수 없는 아이디 입니다</div>
-			</div>
-			<div class="form-group">
-				<label for="pwd">비밀번호</label>
-				<input class="form-control" type="password" name="pwd" id="pwd"/>
-				<small class="form-text text-muted">숫자와 문자 포함 6~12자리 이내의 비밀번호를 작성해주세요</small>
-				<div class="invalid-feedback">비밀번호 양식에 맞는지 확인해주세요</div>
-			</div>
-			<div class="form-group">
-				<label for="pwd2">비밀번호 확인</label>
-				<input class="form-control" type="password" name="pwd2" id="pwd2"/>
-				<div class="invalid-feedback">입력하신 비밀번호와 일치하는지 확인해주세요</div>
-			</div>
-			<div class="form-group">
-				<label for="email">이메일</label>
-				<input class="form-control" type="email" name="email" id="email"/>
-				<div class="invalid-feedback">이메일 형식을 확인해주세요</div>
-			</div>
-			<div class="form-group">
-				<label for="phone">핸드폰</label>
-				<input class="form-control" type="text" name="phone" id="phone"/>
-				<small class="form-text text-muted">000-0000-0000의 형식으로 작성해주세요</small>
-				<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
-			</div>
-			<button class="btn btn-primary px-5 py-8 mt-1" style="width:140px; height: 40px; text-align: center;" type="submit">가입</button>
-		</form>
-	</div>
-	<script>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
+	<section class="ftco-section" id="nonpay-section">
+		<div class="container">
+			<form action="signup.do" method="post" id="myForm" novalidate>
+				<input type="hidden" name="pay" id="pay" value="no"/>
+				<input type="hidden" name="manage" id="manage" value="no"/>
+				<div class="form-group">
+					<label for="id">아이디</label>
+					<input class="form-control" type="text" name="id" id="id"/>
+					<small class="form-text text-muted">소문자로 시작하는 5~10글자의 아이디를 작성해주세요</small>
+					<div class="invalid-feedback">사용할 수 없는 아이디 입니다</div>
+				</div>
+				<div class="form-group">
+					<label for="pwd">비밀번호</label>
+					<input class="form-control" type="password" name="pwd" id="pwd"/>
+					<small class="form-text text-muted">숫자와 문자 포함 6~12자리 이내의 비밀번호를 작성해주세요</small>
+					<div class="invalid-feedback">비밀번호 양식에 맞는지 확인해주세요</div>
+				</div>
+				<div class="form-group">
+					<label for="pwd2">비밀번호 확인</label>
+					<input class="form-control" type="password" name="pwd2" id="pwd2"/>
+					<div class="invalid-feedback">입력하신 비밀번호와 일치하는지 확인해주세요</div>
+				</div>
+				<div class="form-group">
+					<label for="email">이메일</label>
+					<input class="form-control" type="email" name="email" id="email"/>
+					<div class="invalid-feedback">이메일 형식을 확인해주세요</div>
+				</div>
+				<div class="form-group">
+					<label for="phone">핸드폰</label>
+					<input class="form-control" type="text" name="phone" id="phone"/>
+					<small class="form-text text-muted">000-0000-0000의 형식으로 작성해주세요</small>
+					<div class="invalid-feedback">핸드폰 형식을 확인해주세요</div>
+				</div>
+				<button class="btn btn-primary px-5 py-8 mt-1" style="width:140px; height: 40px; text-align: center;" type="submit">가입</button>
+			</form>
+		</div>
+	</section>	
+</body>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+<script>
 	let reg_id=/^[a-z].{4,9}$/;
 	let reg_pwd=/^[A-Za-z0-9]{6,12}$/;
 	let reg_email=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -151,6 +156,4 @@
 		});
 	});
 	</script>
-</body>
-<jsp:include page="../include/footer.jsp"></jsp:include>
 </html>
