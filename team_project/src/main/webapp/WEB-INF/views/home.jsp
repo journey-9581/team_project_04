@@ -265,7 +265,7 @@
 						</div>
 					</div>
 					<!-- 이미지2-2 -->
-					<a href="${pageContext.request.contextPath }/resources/images7/R0980826.jpg" 
+					<a href="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
 						class="icon image-popup d-flex justify-content-center align-items-center">
 						<!--이미지 오른쪽 상단 확대 아이콘2-->
 						<span class="icon-expand"></span>
