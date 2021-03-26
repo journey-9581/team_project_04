@@ -200,7 +200,7 @@
 					<div class="img">
 						<!-- 세일표시 -->
 						<div class="vr"><span>Sale</span></div>				
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=82">				
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=122">				
 							<img src="${pageContext.request.contextPath }/resources/images7/thumb.jpg" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -210,7 +210,7 @@
 						<!-- 가격 -->
 						<h4 class="price"><span class="old-price mr-2">$200,000</span>$130,000</h4>
 						<span >1박2일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=82">#파파홈 #글램핑 #캠핑</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=122">#파파홈 #글램핑 #캠핑</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!-- 별표-->
@@ -240,7 +240,7 @@
 				<div class="project">
 					<!-- 이미지2 -->
 					<div class="img">
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=83">
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=123">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0980826.JPG" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -249,7 +249,7 @@
 					<div class="text">
 						<h4 class="price">₩400,000</h4>
 						<span id="font_1">3박 4일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=83">국내에서 프라이빗 비치 본적있어?</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=123">국내에서 프라이빗 비치 본적있어?</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 								<!--  별표 -->
@@ -278,7 +278,7 @@
 				<div class="project">
 					<!-- 이미지 3 -->
 					<div class="img">
-						<a href="${pageContext.request.contextPath }/premium/detail.do?num=84">
+						<a href="${pageContext.request.contextPath }/premium/detail.do?num=124">
 							<img src="${pageContext.request.contextPath }/resources/images7/R0981180.JPG" 
 								class="img-fluid" alt="No Image">
 						</a>
@@ -287,7 +287,7 @@
 					<div class="text">
 						<h4 class="price">$400,000</h4>
 						<span id="font_1">2박 3일, 2인</span>
-						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=84">등산여행 어때? #까치산장</a></h3>
+						<h3 id="font_1"><a href="${pageContext.request.contextPath }/premium/detail.do?num=124">등산여행 어때? #까치산장</a></h3>
 						<div class="star d-flex clearfix">
 							<div class="mr-auto float-left">
 							<!--별표-->
